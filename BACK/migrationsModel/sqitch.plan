@@ -1,0 +1,16 @@
+%syntax-version=1.0.0
+%project=ocolis
+
+10-init 2020-12-07T11:02:22Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # Strucure intiale de la BDD
+20-package_serial_as_text 2020-12-07T13:43:03Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # On passe le type du serial number en TEXT
+30-package_add_constraint_unique 2020-12-07T13:53:05Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # Ajout d'une contrainte unique sur le serial_number
+40-volume_detail 2020-12-07T13:55:11Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # Split de la valeur de volume en 3 colonnes
+50-date_traca_expedition 2020-12-07T13:58:31Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # On ajoute des dates pour mieux suivre les expéditions
+60-expedition 2020-12-08T08:33:16Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # Migration vers une table expedition à part
+70-constraints 2020-12-08T09:18:09Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # Ajout de contraintes d'intégrité
+80-domain 2020-12-08T10:05:39Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # Factorisation des contraintes avec un domain
+90-domain_regex 2020-12-09T08:39:06Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # Domaine code postal + plaque
+A0-meca 2020-12-16T09:22:03Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # Intégration du pole méca
+B0-factu 2020-12-16T10:02:19Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # La table de facturation
+C0-schema 2020-12-16T10:24:08Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # Ajout de schéma
+D0-views 2020-12-16T10:34:20Z teacher <teacher@maxime-oclock-teacher.cloud.eddi.xyz> # Grosse vue de facilitation
