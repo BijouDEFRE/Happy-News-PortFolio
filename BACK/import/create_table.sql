@@ -27,9 +27,9 @@ CREATE TABLE "user" (
     "password" TEXT NOT NULL UNIQUE,
     "company_name" TEXT UNIQUE,
     "shop_name" TEXT UNIQUE,
-    "registration_number" INT UNIQUE,
-    "role_id" INT NOT NULL REFERENCES "role" ("id"),
-    "activity_id" INT NOT NULL REFERENCES "activity" ("id"),
+    "registration_number" BIGINT UNIQUE,
+    "role_id" INT REFERENCES "role" ("id"),
+    "activity_id" INT REFERENCES "activity" ("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW (),
     "updated_at" TIMESTAMPTZ NOT NULL DEFAULT NOW ()
 );
@@ -41,8 +41,8 @@ CREATE TABLE "article" (
     "picture_url" TEXT,
     "price" INT NOT NULL,
     "is_news" BOOLEAN NOT NULL,
-    "user_id" INT NOT NULL REFERENCES "user" ("id"),
-    "activity_id" INT NOT NULL REFERENCES "activity" ("id"),
+    "user_id" INT REFERENCES "user" ("id"),
+    "activity_id" INT REFERENCES "activity" ("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ NOT NULL DEFAULT NOW ()
 );
