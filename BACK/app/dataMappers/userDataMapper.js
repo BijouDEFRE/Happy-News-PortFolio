@@ -4,9 +4,21 @@
 const client = require('./client');
 
 module.exports = {
-    async getUserLogin() {
+
+    async getAllUsers() {
         const result = await client.query('SELECT * FROM "user"');
         return result.rows;
+    },
+    //SELECT "email", "password" FROM "user" WHERE "email" = 'micheline@laposte.fr' AND "password" = 'mdp';
+    // http://localhost:3000/user/login/{"micheline@laposte.fr"}
+    // http://localhost:3000/user/login/{email}
+    async getUserLogin(email) {
+        const result = await client.query('SELECT * FROM "user" WHERE email = $1', [email]);
+        if (result.rowCount == 0) {
+            return null;
+        }
+        console.log(result.rows);
+        return result.rows[0];
     },
 
     async getUserById(userId) {
