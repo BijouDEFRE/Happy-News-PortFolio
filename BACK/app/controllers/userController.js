@@ -14,15 +14,18 @@ module.exports = {
         }
     },
 
-    async getUserLogin(_, response) {
+    async getUserLogin(request, response, next) {
         try {
-            const users = await userDataMapper.getUserLogin();
+            // J'extrait en décomposition la propriété email dans mes params
+            const { email } = request.params;
+
+            const user = await userDataMapper.getUserLogin(email);
             // C'est souvent une bonne idée d'englober les données de la réponse
             // dans une propriétée data
             // Car si la structure de ma réponse évoule (par ex je rajoutes des propriété
             // pour la pagination) je ne casserais pas la structure et donc les fronts
             // qui utilisent mon API
-            response.json({ data: users });
+            response.json({ data: user });
         } catch (error) {
             // Les middlewares pour la gestion d'erreur sont dans une file à part
             // pour partir dans cette file, on appele next en donnant en paramètre

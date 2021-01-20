@@ -17,7 +17,7 @@ module.exports = {
         if (result.rowCount == 0) {
             return null;
         }
-        console.log(result.rows);
+        console.log(result.rows[0]);
         return result.rows[0];
     },
 
