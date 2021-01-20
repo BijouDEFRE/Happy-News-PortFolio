@@ -38,7 +38,7 @@ CREATE TABLE "article" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "article_title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "picture_url" TEXT NOT NULL,
+    "picture_url" TEXT,
     "price" INT NOT NULL,
     "is_news" BOOLEAN NOT NULL,
     "user_id" INT NOT NULL REFERENCES "user" ("id"),
