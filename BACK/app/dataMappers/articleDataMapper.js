@@ -19,6 +19,7 @@ module.exports = {
     },
 
     async getArticlesByActivity(activityId) {
+        console.log(activityId);
         const result = await client.query('SELECT * FROM "article" WHERE "activity_id" = $1', [activityId]);
         console.log(result);
         if (result.rowCount == 0) {
@@ -50,7 +51,8 @@ return result.rows[0];
 
     },
 
-    async deleteArticle() {
-
+    async deleteArticle(articleId) {
+        const result = await client.query('DELETE FROM article WHERE id = $1', [articleId]);
+        return result.rows[0];
     }
 }
