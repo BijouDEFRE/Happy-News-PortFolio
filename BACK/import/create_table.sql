@@ -39,7 +39,7 @@ CREATE TABLE "article" (
     "article_title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "picture_url" TEXT,
-    "price" INT NOT NULL,
+    "price" DECIMAL NOT NULL,
     "is_news" BOOLEAN NOT NULL,
     "user_id" INT REFERENCES "user" ("id"),
     "activity_id" INT REFERENCES "activity" ("id"),

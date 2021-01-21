@@ -1,4 +1,4 @@
-const authDataMapper = require("../datamappers/authDataMapper");
+const authDataMapper = require("../dataMappers/authDataMapper");
 
 const authController = {
     async handleLoginForm(request, response, next) {
