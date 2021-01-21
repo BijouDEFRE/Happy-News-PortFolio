@@ -1,23 +1,29 @@
 const Joi = require('joi');
-const categoriesDataMapper = require('../../dataMappers/categoriesDataMapper');
+const userDataMapper = require('../../dataMappers/userDataMapper');
 
 const postSchema = Joi.object({
-    title: Joi.string().required(),
-    slug: Joi.string().required(),
-    excerpt: Joi.string(),
-    content: Joi.string(),
-    category_id: Joi.number().integer().min(1).required()
+    first_name: Joi.string().required(),
+    last_name: Joi.string().required(),
+    adress: Joi.string(),
+    zip_code: Joi.string(),
+    city: Joi.string(),
+    email: Joi.string(),
+    password: Joi.string(),
+    company_name: Joi.string(),
+    shop_name: Joi.string(),
+    registration_number: Joi.number().integer().min(5).max(8).required(),
+    user_id: Joi.number().integer().min(1).required()
                     .external(async (value) => {
                         // Vérifier que value correspond à un id existant
-                        const category = await categoriesDataMapper.getCategoryById(value);
+                        const user = await userDataMapper.getUserById(value);
 
-                        if (! category) {
+                        if (! user) {
                             // remonter l'erreur
-                            throw new Error('category.invalid');
+                            throw new Error('user.invalid');
                         }
 
                         return value;
-                    }, "Le category_id doit exister"),
+                    }, "Le user_id doit exister"),
 });
 
 module.exports = postSchema;

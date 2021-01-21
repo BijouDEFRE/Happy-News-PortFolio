@@ -8,7 +8,8 @@ const userController = require('../controllers/userController');
 const router = express.Router();
 
 router.get('/', userController.getAllUser);
-router.get('/login/:email', userController.getUserLogin);
 router.get('/:userId', userController.getUserById);
+
+//router.post('/', validateBody(postSchema), userController.createUser);
 
 module.exports = router;

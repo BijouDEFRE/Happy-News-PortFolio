@@ -9,17 +9,6 @@ module.exports = {
         const result = await client.query('SELECT * FROM "user"');
         return result.rows;
     },
-    //SELECT "email", "password" FROM "user" WHERE "email" = 'micheline@laposte.fr' AND "password" = 'mdp';
-    // http://localhost:3000/user/login/{"micheline@laposte.fr"}
-    // http://localhost:3000/user/login/{email}
-    async getUserLogin(email) {
-        const result = await client.query('SELECT * FROM "user" WHERE email = $1', [email]);
-        if (result.rowCount == 0) {
-            return null;
-        }
-        console.log(result.rows[0]);
-        return result.rows[0];
-    },
 
     async getUserById(userId) {
         const result = await client.query('SELECT * FROM "user" WHERE id = $1', [userId]);
@@ -35,6 +24,24 @@ module.exports = {
             return null;
         }
 
+        return result.rows[0];
+    },
+
+    async createUser(user) {
+        const result = await client.query(`INSERT INTO "user"("first_name", "last_name", "email", "password", "adress", "zip_code", "city", "role_id")
+                                           VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+                                           [
+                                            user.first_name,
+                                            user.last_name,
+                                            user.adress,
+                                            user.zip_code,
+                                            user.email,
+                                            user.password,
+                                            user.company_name,
+                                            user.shop_name,
+                                            user.registration_number,
+                                            user.user_id
+                                        ]);
         return result.rows[0];
     }
 }

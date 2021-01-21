@@ -14,10 +14,10 @@ module.exports = {
                 next();
 
             } catch (error) {
-                if (error.message == 'category.invalid (category_id)') {
+                if (error.message == 'user.invalid (user_id)') {
                     response.status(400).json({error: {
                         details: error.message,
-                        message: "Le category id n'existe pas"
+                        message: "Le user id n'existe pas"
                     }});
                     return;
                 }
