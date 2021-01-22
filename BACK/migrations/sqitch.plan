@@ -1,3 +1,8 @@
 %syntax-version=1.0.0
 %project=happynews
 
+10-init 2021-01-22T14:50:54Z System Administrator <root@MBP-de-Frederic> # Structure initiale de la BDD
+20-insertions-datas-role 2021-01-22T16:21:44Z System Administrator <root@MBP-de-Frederic> # insertions-for-tests
+21-insertions-datas-activity 2021-01-22T17:51:19Z System Administrator <root@MBP-de-Frederic> # insertions-for-tests
+22-insertions-datas-user 2021-01-22T17:51:31Z System Administrator <root@MBP-de-Frederic> # insertions-for-tests
+23-insertions-datas-article 2021-01-22T17:57:57Z System Administrator <root@MBP-de-Frederic> # insertions-for-tests
