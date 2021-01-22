@@ -25,7 +25,7 @@ Cela va me créer 3 dossiers et 2 fichiers
 ### Un mot sur les `target`
 
 Dans sqitch on appelle target un serveur cible et on utilise une syntaxe proche
-de `PG_URL` du module `pg` de npm.
+de `DATABASE_URL` du module `pg` de npm.
 
 Par ex: `db:pg:user:password@host:port/database`.
 
