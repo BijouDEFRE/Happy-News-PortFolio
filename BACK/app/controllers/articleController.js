@@ -50,7 +50,7 @@ module.exports = {
         }
     },
 
-    // ajout d'une image dans l'article à faire
+    // ajout d'une image dans l'article: à faire
     async addArticleImage(request, response, next) {
         try {
 

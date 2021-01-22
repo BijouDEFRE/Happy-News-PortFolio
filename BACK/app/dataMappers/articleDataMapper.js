@@ -6,7 +6,9 @@ const client = require('./client');
 module.exports = {
 
     async getAllArticles() {
-        const result = await client.query('SELECT * FROM article JOIN "user" ON user_id ="user"."id" JOIN activity ON article.activity_id = activity.id');
+        const result = await client.query('SELECT * FROM article');
+        // query with JOIN on user and activity tables
+        // const result = await client.query('SELECT * FROM article JOIN "user" ON user_id ="user"."id" JOIN activity ON article.activity_id = activity.id');
         return result.rows;
     },
 
@@ -53,6 +55,6 @@ return result.rows[0];
 
     async deleteArticle(articleId) {
         const result = await client.query('DELETE FROM article WHERE id = $1', [articleId]);
-        return result.rows[0];
+        // return result.rows[0];
     }
 }
