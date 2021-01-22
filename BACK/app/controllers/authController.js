@@ -1,4 +1,6 @@
+require('dotenv').config();
 const authDataMapper = require("../dataMappers/authDataMapper");
+const jwt = require('jsonwebtoken');
 
 const authController = {
     async handleLoginForm(request, response, next) {
@@ -13,13 +15,16 @@ const authController = {
                 next();
                 return;
             }
-
+            
             request.session.userID = user.id;
             
-            response.json({
-                data: user,
-                message: 'client connecté'
-            });
+            response.json({ user, userToken: jwt.sign(
+                {
+                    userId: user.id,
+                },
+                process.env.ACCES_TOKEN_SECRET,
+                { expiresIn: '1h' }
+            ) });
 
         } catch (error) {
             next(error);
