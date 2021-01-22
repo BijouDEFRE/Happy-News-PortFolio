@@ -55,6 +55,5 @@ return result.rows[0];
 
     async deleteArticle(articleId) {
         const result = await client.query('DELETE FROM article WHERE id = $1', [articleId]);
-        // return result.rows[0];
     }
 }

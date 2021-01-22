@@ -1,8 +1,8 @@
 const client = require('./client');
 
 const authDataMapper = {
-    async getUser (email, password) {
-        const result = await client.query('SELECT * FROM "user" WHERE "email" = $1 AND "password" = $2', [email, password]);
+    async getUser (email) {
+        const result = await client.query('SELECT * FROM "user" WHERE "email" = $1', [email]);
 
         if (result.rowcount == 0){
             return null;

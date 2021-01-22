@@ -1,6 +1,7 @@
 require('dotenv').config();
 const authDataMapper = require("../dataMappers/authDataMapper");
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const authController = {
     async handleLoginForm(request, response, next) {
@@ -8,17 +9,34 @@ const authController = {
             const email = request.body.email;
             const password = request.body.password;
 
-            const user = await authDataMapper.getUser(email, password);
+            const user = await authDataMapper.getUser(email);
 
             if(!user) {
                 response.locals.notFound = "Email et/ou password invalide";
                 next();
                 return;
             }
-            
+            console.log('password', password);
+            console.log('user.password', user.password);
+            // hashed password validation with bcrypt compareSync
+            const isPasswordValid = bcrypt.compare(
+                 password,
+                 user.password
+            );
+            console.log('isPasswordValid', isPasswordValid);
+            if (!isPasswordValid) {
+                // error management
+                return response.status(401).send({
+                    token: null,
+                    message: 'Mot de passe incorrect'
+                });
+            }
+            // jwt token management
             request.session.userID = user.id;
             
-            response.json({ user, userToken: jwt.sign(
+            response.json({ 
+                user, 
+                userToken: jwt.sign(
                 {
                     userId: user.id,
                 },
