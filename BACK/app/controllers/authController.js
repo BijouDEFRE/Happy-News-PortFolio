@@ -1,7 +1,7 @@
 require('dotenv').config();
 const authDataMapper = require("../dataMappers/authDataMapper");
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const authController = {
     async handleLoginForm(request, response, next) {
@@ -19,7 +19,8 @@ const authController = {
             console.log('password', password);
             console.log('user.password', user.password);
             // hashed password validation with bcrypt compareSync
-            const isPasswordValid = bcrypt.compare(
+
+            const isPasswordValid = bcrypt.compareSync(
                  password,
                  user.password
             );
@@ -31,6 +32,7 @@ const authController = {
                     message: 'Mot de passe incorrect'
                 });
             }
+
             // jwt token management
             request.session.userID = user.id;
             
@@ -42,8 +44,9 @@ const authController = {
                 },
                 process.env.ACCES_TOKEN_SECRET,
                 { expiresIn: '1h' }
-            ) });
-
+                ) 
+            });
+            
         } catch (error) {
             next(error);
         }
