@@ -1,5 +1,5 @@
-const { response } = require('express');
 const articleDataMapper = require('../dataMappers/articleDataMapper');
+const activityDataMapper = require('../dataMappers/activityDataMapper');
 
 module.exports = {
     async getAllArticles(_, response, next) {
@@ -25,13 +25,18 @@ module.exports = {
         }
     },
 
-    async getArticlesByActivity(request, response, next) {
-        console.log("request.params", request.params);
+    async getArticlesByActivityId(request, response, next) {
         try {
             const { activityId } = request.params;
-            const articles = await articleDataMapper.getArticlesByActivity(activityId);
+            const activity = await activityDataMapper.getActivityById(activityId);
+            if (! activity) {
+                response.locals.notFound = "activity";
+                next();
+                return;
+            };
+            const articleList = await articleDataMapper.getArticlesByActivityID(activityId);
             response.json({
-                data: articles
+                data: articleList
             });
         } catch (error) {
             next(error);
@@ -81,5 +86,5 @@ module.exports = {
         } catch (error) {
             next(error);
         }
-    }
+    },
 }

@@ -34,7 +34,7 @@ const authController = {
             }
 
             // jwt token management
-            request.session.userID = user.id;
+            // request.session.userID = user.id;
             
             response.json({ 
                 user, 

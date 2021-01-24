@@ -22,14 +22,10 @@ module.exports = {
         return result.rows[0];
     },
 
-    async getArticlesByActivity(activityId) {
+    async getArticlesByActivityID(activityId) {
         console.log(activityId);
         const result = await client.query('SELECT * FROM "article" WHERE "activity_id" = $1', [activityId]);
-        console.log(result);
-        if (result.rowCount == 0) {
-            return null;
-        }
-        return result.rows
+        return result.rows;
     },
 
     async createArticle(newArticle) {
@@ -44,7 +40,7 @@ module.exports = {
             newArticle.user_id,
             newArticle.activity_id
      ]);
-return result.rows[0];
+    return result.rows[0];
     },
 
     async addArticleImage() {
