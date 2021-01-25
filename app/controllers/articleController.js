@@ -45,7 +45,7 @@ module.exports = {
 
     async createArticle(request, response, next) {
         try {
-            const newArticle = request.body
+            const newArticle = request.body;
             const article = await articleDataMapper.createArticle(newArticle);
             response.json({
                 data: article
@@ -67,7 +67,10 @@ module.exports = {
     async updateArticle(request, response, next) {
         try {
             const { articleId } = request.params;
-            const articles = await articleDataMapper.updateArticle(articleId);
+            const articleInfo = request.body;
+
+            const article = await articleDataMapper.updateArticle(articleId);
+
             response.json({
                 data: article
             })

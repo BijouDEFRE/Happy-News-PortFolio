@@ -23,7 +23,7 @@ module.exports = {
     },
 
     async getArticlesByActivityID(activityId) {
-        console.log(activityId);
+
         const result = await client.query('SELECT * FROM "article" WHERE "activity_id" = $1', [activityId]);
         return result.rows;
     },
@@ -44,15 +44,33 @@ module.exports = {
     return result.rows[0];
     },
 
-    async addArticleImage() {
+    async addArticleImage() { 
 
     },
 
-    async updateArticle() {
+    async updateArticle(articleInfo, articleId) {
+        const { article_title, description, picture_url, price, is_news, user_id, activity_id, news_duration } = articleInfo;
 
+        const result = await client.query(`UPDATE article SET "article_title" = $1, "description" = $2, "picture_url" = $3, "price" = $4, "is_news" = $5, "user_id" = $6, "activity_id" = $7, "news_duration" = $8 WHERE id = $9 RETURNING *`, 
+        [
+            article_title, 
+            description, 
+            picture_url, 
+            price, 
+            is_news, 
+            user_id, 
+            activity_id, 
+            news_duration,
+            articleId
+        ]);
+        console.table(result)
+        return result.rowCount[0];
     },
 
     async deleteArticle(articleId) {
         const result = await client.query('DELETE FROM article WHERE id = $1', [articleId]);
+
+        return deleted.rowCount;
     }
+
 }
