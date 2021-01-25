@@ -7,6 +7,7 @@ const articleController = require('../controllers/articleController');
 const router = express.Router();
 
 router.get('/', articleController.getAllArticles);
+
 router.get('/:articleId(\\d+)', articleController.getArticleById);
 router.get('/activity/:activityId(\\d+)', articleController.getArticlesByActivityId);
 

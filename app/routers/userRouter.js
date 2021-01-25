@@ -11,5 +11,6 @@ router.get('/', userController.getAllUser);
 router.get('/:userId(\\d+)', userController.getUserById);
 
 //router.post('/', validateBody(postSchema), userController.createUser);
+router.post('/', userController.createUser);
 
 module.exports = router;
