@@ -56,7 +56,10 @@ const authController = {
         try {
             const userInfo = request.body;
 
-            const newUser = await authDataMapper.createUser(userInfo);
+            const saltRounds = 10;
+            const hashedPassword = bcrypt.hashSync(userInfo.password, saltRounds);
+
+            const newUser = await authDataMapper.createUser(userInfo, hashedPassword);
 
             if(!newUser) {
                 response.locals.notFound = "Vous n'avez pas encore de compte";

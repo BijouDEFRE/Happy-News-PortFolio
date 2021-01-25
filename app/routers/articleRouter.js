@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', articleController.getAllArticles);
 router.get('/:articleId', articleController.getArticleById);
-router.get('/:activityId', articleController.getArticlesByActivity);
+router.get('/actvity/:activityId', articleController.getArticlesByActivity);
 
 router.post('/', articleController.createArticle);
 router.post('/:id/uploadImage', articleController.addArticleImage);

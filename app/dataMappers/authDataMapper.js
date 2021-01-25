@@ -10,8 +10,9 @@ const authDataMapper = {
         return result.rows[0];
     },
 
-    async createUser(userinfo) {
-        const { email, password } = userInfo;
+    async createUser(userinfo, hashedPassword) {
+        const { email } = userInfo;
+        const password = hashedPassword;
 
         // je vérifie si le user existe déjà
         const isExist = await client.query(`SELECT * FROM "user" WHERE "email" = $1 AND "password" = $2`, [email, password]);
@@ -21,7 +22,7 @@ const authDataMapper = {
         }
         
         // il n'est pas présent en BDD
-        const result = await client.query(`INSERT INTO user(first_name, last_name, adress, zip_code, email, password, company_name, shop_name, registration_number, user_id)
+        const result = await client.query(`INSERT INTO user(first_name, last_name, adress, zip_code, email, password, company_name, shop_name, registration_number, role_id, activity_id)
         VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
               [
                   userinfo.first_name,
@@ -29,11 +30,12 @@ const authDataMapper = {
                   userinfo.adress,
                   userinfo.zip_code,
                   userinfo.email,
-                  userinfo.password,
+                  password,
                   userinfo.company_name,
                   userinfo.shop_name,
                   userinfo.registration_number,
-                  userinfo.user_id
+                  userinfo.role_id,
+                  userinfo.activity_id
               ]);
         return result.rows[0];
     }
