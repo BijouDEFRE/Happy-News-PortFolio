@@ -7,14 +7,15 @@ const articleController = require('../controllers/articleController');
 const router = express.Router();
 
 router.get('/', articleController.getAllArticles);
-router.get('/:articleId', articleController.getArticleById);
-router.get('/actvity/:activityId', articleController.getArticlesByActivity);
+
+router.get('/:articleId(\\d+)', articleController.getArticleById);
+router.get('/activity/:activityId(\\d+)', articleController.getArticlesByActivityId);
 
 router.post('/', articleController.createArticle);
 router.post('/:id/uploadImage', articleController.addArticleImage);
 
-router.patch('/:articleId', articleController.updateArticle);
+router.patch('/:articleId(\\d+)', articleController.updateArticle);
 
-router.delete('/:articleId', articleController.deleteArticle);
+router.delete('/:articleId(\\d+)', articleController.deleteArticle);
 
 module.exports = router;
