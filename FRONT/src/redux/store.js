@@ -1,6 +1,6 @@
+import clsx from 'clsx';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { reducerAddNews } from './reducers/reducerAddNews';
 // import thunk from 'redux-thunk';
 import authMiddleware from '../middlewares/auth';
 // rootReducer = résultat de combineReducers
@@ -12,6 +12,8 @@ const store = createStore (rootReducer,composeWithDevTools(applyMiddleware(
     authMiddleware
     // thunk
 )));
+
+console.log(store.getState());
 
 export default store;
 

@@ -7,7 +7,6 @@ import { addNews } from '../../redux/actions';
 import './style.scss';
 
 const AddNewsForm = ({ newsData,addNewsToList }) => {
-  console.log(newsData);
   const initialState = {
     title: '',
     description: '',
@@ -18,11 +17,11 @@ const AddNewsForm = ({ newsData,addNewsToList }) => {
   }
 
   const [newHappyNews, setNewHappyNews] = useState(initialState);
-  
+  console.log(newHappyNews.title);
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log(newHappyNews);
+     
     addNewsToList(newHappyNews);
 
     // Vider le input
@@ -124,11 +123,12 @@ const AddNewsForm = ({ newsData,addNewsToList }) => {
 
 const mapStateToProps = state => {
   return {
+    // retourne undefined
     newsData: state.newsList
   }
 }
 
-console.log(mapStateToProps)
+console.log()
 
 const mapDispatchToProps = dispatch => {
   return {
