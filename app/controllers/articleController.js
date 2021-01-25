@@ -68,8 +68,9 @@ module.exports = {
         try {
             const { articleId } = request.params;
             const articleInfo = request.body;
-
-            const article = await articleDataMapper.updateArticle(articleId);
+            console.log("request.params", request.params);
+            console.log("request.body", request.body);
+            const article = await articleDataMapper.updateArticle(articleId, articleInfo);
 
             response.json({
                 data: article

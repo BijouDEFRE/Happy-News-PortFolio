@@ -29,7 +29,7 @@ const authController = {
                 // error management
                 return response.status(401).send({
                     token: null,
-                    message: 'Mot de passe incorrect'
+                    message: 'Email et/ou password invalide'
                 });
             }
 

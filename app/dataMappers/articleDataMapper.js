@@ -48,9 +48,54 @@ module.exports = {
 
     },
 
-    async updateArticle(articleInfo, articleId) {
-        const { article_title, description, picture_url, price, is_news, user_id, activity_id, news_duration } = articleInfo;
+    async updateArticle(articleId, articleInfo) {
 
+        const selectById = await client.query('SELECT * FROM "article" WHERE id = $1', [articleId]);
+        console.log("selectById.rows", selectById.rows);
+
+        let { article_title, description, picture_url, price, is_news, user_id, activity_id, news_duration } = articleInfo;
+        console.log ("articleInfo", articleInfo);
+        console.log ("articleId", articleId);
+        console.log ("description", description);
+        console.log("article_title", article_title);
+        if (article_title = null) {
+            console.log("je suis là")
+            article_title = selectById.rows.article_title;
+            console.log("article_title après", article_title);
+        }
+
+        if (description == null) {
+            description = selectById.rows.description;
+        }
+
+        if (picture_url == null) {
+            picture_url = selectById.rows.picture_url;
+        }
+
+        if (price == null) {
+            price = selectById.rows.price;
+        }
+
+        if (price == null) {
+            price = selectById.rows.price;
+        }
+
+        if (is_news == null) {
+            is_news = selectById.rows.is_news;
+        }
+
+        if (user_id == null) {
+            user_id = selectById.rows.user_id;
+        }
+
+        if (activity_id == null) {
+            activity_id = selectById.rows.activity_id;
+        }
+
+        if (news_duration == null) {
+            news_duration = selectById.rows.news_duration;
+        }
+        
         const result = await client.query(`UPDATE article SET "article_title" = $1, "description" = $2, "picture_url" = $3, "price" = $4, "is_news" = $5, "user_id" = $6, "activity_id" = $7, "news_duration" = $8 WHERE id = $9 RETURNING *`, 
         [
             article_title, 
