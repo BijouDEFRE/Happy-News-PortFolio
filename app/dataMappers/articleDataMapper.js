@@ -10,7 +10,7 @@ module.exports = {
         // query with JOIN on activity tables
         // const result = await client.query('SELECT * FROM article JOIN activity ON article.activity_id = activity.id');
         // query with JOIN on user and activity tables
-        const result = await client.query('SELECT * FROM article JOIN activity ON activity_id = activity.id JOIN "user" ON user_id ="user"."id"');
+        const result = await client.query('SELECT article.id, "article_title", "description", "picture_url", "price", "is_news", article.activity_id, "activity_name", "user_id", "first_name", "last_name", "shop_name", "city"  FROM article JOIN activity ON activity_id = activity.id JOIN "user" ON user_id ="user"."id"');
         return result.rows;
     },
 

@@ -37,7 +37,8 @@ const authController = {
             // request.session.userID = user.id;
             
             response.json({ 
-                user, 
+                logged: true,
+                user: [user], 
                 userToken: jwt.sign(
                 {
                     userId: user.id,

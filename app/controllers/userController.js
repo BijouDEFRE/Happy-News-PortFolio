@@ -36,14 +36,6 @@ module.exports = {
         } catch(error) {
             next(error);
         }
-    },
-
-    async createUser(request, response, next) {
-        try {
-            const user = request.body;
-            const saveUser = await userDataMapper.createUser(user)
-        } catch (error) {
-            next(error);
-        }
     }
+
 }
