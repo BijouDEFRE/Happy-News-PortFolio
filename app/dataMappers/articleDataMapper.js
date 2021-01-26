@@ -65,7 +65,7 @@ module.exports = {
             articleUpdate.user_id,
             articleId       
         ]);
-    return updateUser.rowCount;
+        return updateUser.rowCount;
     },
 
     // async updateArticle(articleId, articleInfo) {
