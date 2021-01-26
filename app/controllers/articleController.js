@@ -64,13 +64,11 @@ module.exports = {
         }
     },
 
-    async updateArticle(request, response, next) {
+    async updateArticleById(request, response, next) {
         try {
             const { articleId } = request.params;
-            const articleInfo = request.body;
-            console.log("request.params", request.params);
-            console.log("request.body", request.body);
-            const article = await articleDataMapper.updateArticle(articleId, articleInfo);
+            const articleUpdate = request.body;
+            const article = await articleDataMapper.updateArticleById(articleId, articleUpdate);
 
             response.json({
                 data: article
