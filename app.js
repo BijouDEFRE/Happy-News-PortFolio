@@ -5,7 +5,8 @@ const cors = require('cors');
 
 // require project modules
 const router = require('./app/routers');
-// const session = require('express-session')
+// require package for upload files
+const multer = require('multer');
 // express server creation
 const app = express();
 // call express middleware to manage POST data

@@ -12,9 +12,9 @@ router.get('/:articleId(\\d+)', articleController.getArticleById);
 router.get('/activity/:activityId(\\d+)', articleController.getArticlesByActivityId);
 
 router.post('/', articleController.createArticle);
-router.post('/:id/uploadImage', articleController.addArticleImage);
+router.post('/:articleId(\\d+)/uploadImage', articleController.addArticleImage);
 
-router.patch('/:articleId(\\d+)', articleController.updateArticle);
+router.patch('/:articleId(\\d+)', articleController.updateArticleById);
 
 router.delete('/:articleId(\\d+)', articleController.deleteArticle);
 
