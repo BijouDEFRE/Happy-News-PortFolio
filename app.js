@@ -7,20 +7,16 @@ const cors = require('cors');
 const router = require('./app/routers');
 // require package for upload files
 const multer = require('multer');
+const bodyParser = multer();
 // express server creation
 const app = express();
 // call express middleware to manage POST data
 app.use( express.urlencoded({extended: true}) );
+app.use(bodyParser.none());
 // call express middleware for json data reading 
-app.use(express.json());
+// app.use(express.json());
 // authorize data echange between different websites
 app.use(cors('*'));
-
-// app.use(session({
-//     secret: process.env.SESSION_SECRET,
-//     saveUninitialized: true,
-//     resave: true
-//  }));
 
 app.use(router);
 // start server on port
