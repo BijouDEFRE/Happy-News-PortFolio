@@ -43,6 +43,25 @@ module.exports = {
         }
     },
 
+    async getArticlesByActivityName(request, response, next) {
+        try {
+            const { activityName } = request.params;
+            const articleByactivity = await activityDataMapper.getActivityByName(activityName);
+            if (! articleByactivity == null) {
+                response.locals.notFound = "Activity not exist";
+                next();
+                return;
+            };
+            const articleList = await articleDataMapper.getArticlesByActivity(activityName);
+            response.json({
+                data: articleList
+            });
+            console.log(articleList)
+        } catch (error) {
+            next(error);
+        }
+    },
+
     async createArticle(request, response, next) {
         try {
             const newArticle = request.body;
@@ -58,7 +77,15 @@ module.exports = {
     // ajout d'une image dans l'article: à faire
     async addArticleImage(request, response, next) {
         try {
+            const articleImage = request.savedArticleImage;
+            const { articleId } = request.params;
+            console.log(id);
+            const article = await articleDataMapper.imageUpload(articleImage, articleId);
 
+            response.json({
+                message: "Image upload succesfull",
+                data: article
+            })
         } catch (error) {
             next(error);
         }

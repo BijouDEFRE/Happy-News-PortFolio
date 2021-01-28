@@ -2,18 +2,16 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 
 // require project modules
-const router = require('./app/routers');
+const router = require('../app/routers');
 // require package for upload files
 const multer = require('multer');
 const bodyParser = multer();
 // express server creation
 const app = express();
-app.use(express.static(path.join(__dirname, './app/public')));
 // call express middleware to manage POST data
-app.use(express.urlencoded({extended: true}));
+app.use( express.urlencoded({extended: true}) );
 app.use(bodyParser.none());
 // call express middleware for json data reading 
 // app.use(express.json());

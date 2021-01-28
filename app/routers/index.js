@@ -22,8 +22,6 @@ router.use('/activity', activityRouter);
 router.post('/login', authController.handleLoginForm);
 router.post('/signup', authController.handleSignForm);
 
-router.use('/article', articleRouter);
-
 //router.use('activity', activityRouter);
 
 router.use(auth);

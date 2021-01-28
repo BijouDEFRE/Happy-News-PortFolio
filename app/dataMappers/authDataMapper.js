@@ -23,14 +23,16 @@ const authDataMapper = {
         }
      
         // il n'est pas présent en BDD
-        const result = await client.query(`INSERT INTO "user" ("first_name", "last_name", "adress", "zip_code", "city", "email", "password", "company_name", "shop_name", "registration_number", "role_id", "activity_id")
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *`,
+        const result = await client.query(`INSERT INTO "user" ("first_name", "last_name", "adress", "zip_code", "city", "latitude", "longitude", "email", "password", "company_name", "shop_name", "registration_number", "role_id", "activity_id")
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *`,
               [
                   userinfo.first_name,
                   userinfo.last_name,
                   userinfo.adress,
                   userinfo.zip_code,
                   userinfo.city,
+                  userinfo.latitude,
+                  userinfo.longitude,
                   userinfo.email,
                   password,
                   userinfo.company_name,

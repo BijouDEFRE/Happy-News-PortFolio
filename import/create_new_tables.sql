@@ -1,6 +1,6 @@
--- Deploy happynews:init to pg
-
 BEGIN;
+
+DROP TABLE IF EXISTS "article", "user", "role", "activity";
 
 CREATE TABLE "role" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

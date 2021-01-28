@@ -23,4 +23,17 @@ module.exports = {
             next(error);
         }
     },
+
+    async getActivityByName(request, response, next) {
+        try {
+            const { activityName } = request.params;
+            const activities = await activityDataMapper.getActivityByName(activityName);
+            response.json({
+                data: activities
+            });
+            console.log(activities);
+        } catch (error) {
+            next(error);
+        }
+    },
 }
