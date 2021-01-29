@@ -22,14 +22,14 @@ VALUES
             ('Jean', 'Bon', '33 rue Marechal Legoinfre', 72110, 'Bonnetable', 'jambon@deparme.fr', '$2y$10$EbVw52rmlnmhuxTD2nUMPOtnP4PJc6UhR5ig3.iqi87jzzZF0UxR6', 'jeanbon eurl', 'Le palais gourmand', 25846278514445, 1, 2);
 
 INSERT INTO "article" ("article_title", "description", "picture_url", "price", "is_news", "user_id", "activity_id") VALUES
-('Lot de 10 cahiers', 'Lot de cahiers sans lignes', '', 10, true, 1, 9),
-('Hot Saucisses', 'Chapelet de 10 saucisses au piment', '', 9, true, 2, 5),
+('Lot de 10 cahiers', 'Lot de cahiers sans lignes', '', 10, true, 6, 9),
+('Hot Saucisses', 'Chapelet de 10 saucisses au piment', '', 9, true, 7, 5),
 ('Planche apéro gourmand', 'Votre pack apéro des gourmands pour 8 à 10 personnes comprend :
 - 1 sachet de lomo
 - 1 sachet de coppa
 - 1 saucisson sec fermier médaillé de bronze au Salon de L''Agriculture 2019
 - 1 saucisse sèche au piment d''Espelette
 - 1 boîte de pâté de campagne médaillé de bronze au Salon de L''Agriculture 2020
-- 1 boîte de chichon', '', 27.5, true, 2, 5);
+- 1 boîte de chichon', '', 27.5, true, 7, 5);
  
 COMMIT;

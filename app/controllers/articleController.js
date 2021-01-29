@@ -77,6 +77,7 @@ module.exports = {
     // ajout d'une image dans l'article: à faire
     async addArticleImage(request, response, next) {
         try {
+            // je cherche l'id de l'article
             const articleImage = request.savedArticleImage;
             const { articleId } = request.params;
             console.log(id);

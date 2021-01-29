@@ -42,7 +42,7 @@ const authDataMapper = {
                   userinfo.activity_id
               ]);
         return result.rows[0];
-    }
+    },
 };
 
 module.exports = authDataMapper;

@@ -83,9 +83,14 @@ module.exports = {
         return updateArticle.rowCount;
     },
 
-    async deleteArticle(articleId) {
-        const result = await client.query('DELETE FROM article WHERE id = $1', [articleId]);
+    async deleteArticleById(articleId) {
+        const findArticle = await client.query('SELECT * FROM "article" WHERE id = $1', [articleId]);
 
-        return deleted.rowCount;
-    }
+        if (findArticle.rowCount == 0) {
+            return null;
+        }
+        const deleteArticle = client.query('DELETE FROM "article" WHERE id = $1', [articleId]);
+
+        return deleteArticle.rowCount;
+    },
 }

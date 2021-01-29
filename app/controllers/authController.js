@@ -76,6 +76,30 @@ const authController = {
             next(error);
         }
     },
+
+    async handleSignFormCustomer(request, response, next) {
+        try {
+            const customerInfo = request.body;
+
+            const saltRounds = 10;
+            const hashedPassword = bcrypt.hashSync(customerInfo.password, saltRounds);
+
+            const newUser = await authDataMapper.createCustomer(userInfo, hashedPassword);
+
+            if(!newUser) {
+                response.locals.notFound = "Vous n'avez pas encore de compte";
+                next();
+                return;
+            }
+
+            response.json({
+                data: newUser
+            })
+
+        } catch (error) {
+            next(error);
+        }
+    },
 };
 
 module.exports = authController;
