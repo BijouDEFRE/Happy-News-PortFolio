@@ -1,5 +1,5 @@
-const multer = require('multer');
 const path = require('path');
+const multer = require('multer');
 
 // Storage, FileFilter
 
@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
     destination: function(request,file,callback){
         
         const rootDir = path.dirname(require.main.filename);
-        callback(null, path.join(rootDir, "projet-happy-news/public/uploads/images"));
+        callback(null, path.join(rootDir, "./public/uploads/images"));
     },
     filename: function(request,file,callback) {
         

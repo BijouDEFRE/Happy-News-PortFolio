@@ -51,19 +51,16 @@ module.exports = {
                 // userUpdate.updated_at = new Date(),
                 userId       
             ]);
-            return updateUser.rowCount;
+            // return updateUser.rowCount;
+            return 'User Update';
         }
     },
 
     async deleteUserById(userId) {
-        const findUser = await client.query('SELECT * FROM "user" WHERE id = $1', [userId]);
-
-        if (findUser.rowCount == 0) {
-            return null;
+        const result = await client.query('DELETE FROM "user" WHERE id=$1 RETURNING *', [userId]);
+        if (result.rowCount == 0) {
+            return 'User not exist';
         }
-        const deleteUser = client.query('DELETE FROM "user" WHERE id = $1', [userId]);
-
-        return deleteUser.rowCount;
+        return 'User deleted';
     },
-
 }

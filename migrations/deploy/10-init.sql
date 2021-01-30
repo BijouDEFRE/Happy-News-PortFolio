@@ -21,7 +21,7 @@ CREATE TABLE "user" (
     "first_name" TEXT NOT NULL,
     "last_name" TEXT NOT NULL,
     "adress" TEXT NOT NULL,
-    "zip_code" INT NOT NULL,
+    "zip_code" TEXT NOT NULL,
     "latitude" DECIMAL,
     "longitude" DECIMAL,
     "city" TEXT NOT NULL,

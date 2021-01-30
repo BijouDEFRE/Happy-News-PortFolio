@@ -5,6 +5,7 @@ module.exports = {
     async getAllArticles(_, response, next) {
         try {
             const articles = await articleDataMapper.getAllArticles();
+
             response.json({ 
                 data: articles 
             });
@@ -17,6 +18,7 @@ module.exports = {
         try {
             const { articleId } = request.params;
             const article = await articleDataMapper.getArticleById(articleId);
+
             response.json({
                 data: article
             });
@@ -35,6 +37,7 @@ module.exports = {
                 return;
             };
             const articleList = await articleDataMapper.getArticlesByActivityID(activityId);
+
             response.json({
                 data: articleList
             });
@@ -53,6 +56,7 @@ module.exports = {
                 return;
             };
             const articleList = await articleDataMapper.getArticlesByActivity(activityName);
+
             response.json({
                 data: articleList
             });
@@ -66,6 +70,7 @@ module.exports = {
         try {
             const newArticle = request.body;
             const article = await articleDataMapper.createArticle(newArticle);
+
             response.json({
                 data: article
             });
@@ -78,14 +83,14 @@ module.exports = {
     async addArticleImage(request, response, next) {
         try {
             // je cherche l'id de l'article
-            const articleImage = request.savedArticleImage;
             const { articleId } = request.params;
-            console.log(id);
-            const article = await articleDataMapper.imageUpload(articleImage, articleId);
+            console.log(articleId);
+            const { picture_url } = request.body;
+            console.log(picture_url, 'image upload')
+            const article = await articleDataMapper.imageUpload(articleId, picture_url);
 
             response.json({
-                message: "Image upload succesfull",
-                data: article
+                data: article.picture_url
             })
         } catch (error) {
             next(error);
@@ -95,8 +100,8 @@ module.exports = {
     async updateArticleById(request, response, next) {
         try {
             const { articleId } = request.params;
-            const articleUpdate = request.body;
-            const article = await articleDataMapper.updateArticleById(articleId, articleUpdate);
+            const updateArticle = request.body;
+            const article = await articleDataMapper.updateArticleById(articleId, updateArticle);
 
             response.json({
                 data: article
@@ -110,6 +115,7 @@ module.exports = {
         try {
             const { articleId } = request.params;
             const article = await articleDataMapper.deleteArticle(articleId);
+
             response.json({
                 data: article
             })

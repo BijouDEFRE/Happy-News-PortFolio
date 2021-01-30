@@ -52,11 +52,12 @@ module.exports = {
             newArticle.activity_id,
             newArticle.news_duration
         ]);
-        return result.rows[0];
+        // return result.rows[0];
+        return 'Vous avez créer une Happy News';
     },
 
     async imageUpload(articleImage, articleId) { 
-        const result = await client.query(`UPDATE "article" SET picture_url = $1 WHERE id = $2 RETURNING *`, [articleImage, articleId]);
+        const result = await client.query(`UPDATE "article" SET picture_url = $1 WHERE id = $2 RETURNING id, picture_url`, [articleImage, articleId]);
         if (result.rowCount == 0) {
             return null;
         }
@@ -65,7 +66,7 @@ module.exports = {
 
     async updateArticleById(articleId, articleUpdate) {
 
-        const updateArticle = await client.query(`UPDATE "article" SET "article_title" =$1, "description" = $2,
+        const result = await client.query(`UPDATE "article" SET "article_title" = $1, "description" = $2,
          "picture_url" = $3, "price" = $4, "is_news" = $5, "news_duration" = $6, "activity_id" = $7,
          "user_id" = $8 WHERE id = $9 RETURNING *`,
         [
@@ -80,17 +81,20 @@ module.exports = {
             articleUpdate.user_id,
             articleId       
         ]);
-        return updateArticle.rowCount;
+        console.log(result.rows);
+        // return result.rowCount;
+        return 'Article Updated';
     },
 
     async deleteArticleById(articleId) {
         const findArticle = await client.query('SELECT * FROM "article" WHERE id = $1', [articleId]);
 
         if (findArticle.rowCount == 0) {
-            return null;
+            return 'Article not exist';
         }
         const deleteArticle = client.query('DELETE FROM "article" WHERE id = $1', [articleId]);
 
-        return deleteArticle.rowCount;
+        // return deleteArticle.rowCount;
+        return 'Article Deleted';
     },
 }

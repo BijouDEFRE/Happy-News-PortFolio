@@ -36,4 +36,17 @@ module.exports = {
             next(error);
         }
     },
+
+    async createActivity(request, response, next) {
+        try {
+            const newActivity = request.body;
+            const activity = await activityDataMapper.createActivity(newActivity);
+
+            response.json({
+                data: activity
+            });
+        } catch (error) {
+            next(error);
+        }
+    },
 }
