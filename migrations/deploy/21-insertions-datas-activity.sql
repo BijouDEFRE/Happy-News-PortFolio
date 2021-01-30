@@ -11,6 +11,7 @@ INSERT INTO "activity" ("activity_name") VALUES
 ('garagiste'),
 ('primeur'),
 ('coiffeur'),
-('papeterie');
+('papeterie'),
+('restauration');
 
 COMMIT;

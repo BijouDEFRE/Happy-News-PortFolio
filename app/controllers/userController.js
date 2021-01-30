@@ -36,6 +36,32 @@ module.exports = {
         } catch(error) {
             next(error);
         }
-    }
+    },
 
+    async updateUserById(request, response, next) {
+        try {
+            const { userId } = request.params;
+            const userUpdate = request.body;
+            const user = await userDataMapper.updateUserById(userId, userUpdate);
+            response.json({ data: user })
+        } catch (error) {
+            next(error)
+        }
+    },
+
+    async deleteUserById(request, response, next) {
+        try {
+            const { userId } = request.params;
+            const deleteUser = await userDataMapper.deleteUserById(userId);
+
+            if(deleteUser){
+                response.locals.notFound = "user unknow";
+                next();
+                return;
+            }
+            response.json({data:deleteUser});
+        } catch (error) {
+            next(error)
+        }
+    },
 }

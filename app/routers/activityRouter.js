@@ -9,4 +9,6 @@ const router = express.Router();
 router.get('/', acitivityController.getAllActivities);
 router.get('/:activityId(\\d+)', acitivityController.getActivityById);
 
+router.post('/', acitivityController.createActivity);
+
 module.exports = router;

@@ -27,4 +27,15 @@ module.exports = {
         console.log(name);
         return activityName.rows;
     },
+
+    async createActivity(newActivity) {
+
+        const result = await client.query(`INSERT INTO "activity" ("activity_name")
+        VALUES($1) RETURNING *`,
+        [
+            newActivity.activity_name,
+        ]);
+        return result.rows[0];
+        // return 'Vous avez créer une Happy News';
+    },
 }
