@@ -2,6 +2,6 @@
 
 BEGIN;
 
-SELECT "description" FROM "activity";
+SELECT "description" FROM "content";
 
 ROLLBACK;

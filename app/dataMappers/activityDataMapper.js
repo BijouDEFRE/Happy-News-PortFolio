@@ -30,11 +30,11 @@ module.exports = {
 
     async createActivity(newActivity) {
 
-        const result = await client.query(`INSERT INTO "activity" ("activity_name", "description")
+        const result = await client.query(`INSERT INTO "activity" ("activity_name", "content")
         VALUES($1, $2) RETURNING *`,
         [
             newActivity.activity_name,
-            newActivity.description
+            newActivity.content
         ]);
         return result.rows[0];
     },
@@ -46,11 +46,11 @@ module.exports = {
         if (findActivity.rowCount == 0) {
             return 'Activity not exist';
         }
-        const result = await client.query(`UPDATE "activity" SET "activity_name" = $1, "description" = $2
+        const result = await client.query(`UPDATE "activity" SET "activity_name" = $1, "content" = $2
         WHERE id = $3 RETURNING *`,
         [
             activityUpdate.activity_name,
-            activityUpdate.description,
+            activityUpdate.content,
             activityId
         ]);
         console.log(result.rows);

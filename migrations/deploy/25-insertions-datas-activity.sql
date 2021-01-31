@@ -2,6 +2,6 @@
 
 BEGIN;
 
-ALTER TABLE "activity" ADD COLUMN "description" TEXT;
+ALTER TABLE "activity" ADD COLUMN "content" TEXT;
 
 COMMIT;
