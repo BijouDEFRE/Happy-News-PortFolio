@@ -49,4 +49,31 @@ module.exports = {
             next(error);
         }
     },
+
+    async updateActivityById(request, response, next) {
+        try {
+            const { activityId } = request.params;
+            const updateActivity = request.body;
+            const activity = await activityDataMapper.updateActivityById(activityId, updateActivity);
+
+            response.json({
+                data: activity
+            });
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    async deleteActivityById(request, response, next) {
+        try {
+            const { activityId } = request.params;
+            const activity = await activityDataMapper.deleteActivityById(activityId);
+
+            response.json({
+                data: activity
+            })
+        } catch (error) {
+            next(error);
+        }
+    },
 }

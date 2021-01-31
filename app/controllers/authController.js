@@ -19,7 +19,7 @@ const authController = {
             console.log('password', password);
             console.log('user.password', user.password);
             // hashed password validation with bcrypt compareSync
-
+            
             const isPasswordValid = bcrypt.compareSync(
                  password,
                  user.password
@@ -32,10 +32,6 @@ const authController = {
                     message: 'Email et/ou password invalide'
                 });
             }
-
-            // jwt token management
-            // request.session.userID = user.id;
-            
             response.json({ 
                 logged: true,
                 user: [user], 

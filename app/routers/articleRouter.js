@@ -14,11 +14,10 @@ router.get('/activity/:activityId(\\d+)', articleController.getArticlesByActivit
 router.get('/activity/:activity_name', articleController.getArticlesByActivityName);
 
 router.post('/', articleController.createArticle);
-router.post('/picture_url/:articleId(\\d+)', articleController.addArticleImage);
+// router.post('/picture_url/:articleId(\\d+)', articleController.addArticleImage);
 // router.post('/picture_url/:articleId(\\d+)', articleImageUploads.single('picture_url'), articleController.addArticleImage);
 
 router.patch('/:articleId(\\d+)', articleController.updateArticleById);
-
 router.delete('/:articleId(\\d+)', articleController.deleteArticle);
 
 module.exports = router;

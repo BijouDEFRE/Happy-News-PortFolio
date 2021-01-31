@@ -30,12 +30,43 @@ module.exports = {
 
     async createActivity(newActivity) {
 
-        const result = await client.query(`INSERT INTO "activity" ("activity_name")
-        VALUES($1) RETURNING *`,
+        const result = await client.query(`INSERT INTO "activity" ("activity_name", "description")
+        VALUES($1, $2) RETURNING *`,
         [
             newActivity.activity_name,
+            newActivity.description
         ]);
         return result.rows[0];
-        // return 'Vous avez créer une Happy News';
+    },
+
+    async updateActivityById(activityId, activityUpdate) {
+        // je vérifie si activity existe déjà
+        const findActivity = await client.query('SELECT * FROM "activity" WHERE id = $1', [activityId]);
+
+        if (findActivity.rowCount == 0) {
+            return 'Activity not exist';
+        }
+        const result = await client.query(`UPDATE "activity" SET "activity_name" = $1, "description" = $2
+        WHERE id = $3 RETURNING *`,
+        [
+            activityUpdate.activity_name,
+            activityUpdate.description,
+            activityId
+        ]);
+        console.log(result.rows);
+        // return result.rows[0];
+        return 'Activity Updated';
+    },
+
+    async deleteActivityById(activityId) {
+        const findActivity = await client.query('SELECT * FROM "activity" WHERE id = $1', [activityId]);
+
+        if (findActivity.rowCount == 0) {
+            return 'Activity not exist';
+        }
+        const deleteActivity = client.query('DELETE FROM "activity" WHERE id = $1', [activityId]);
+
+        // return deleteArticle.rowCount;
+        return 'Activity Deleted';
     },
 }

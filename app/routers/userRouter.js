@@ -11,7 +11,6 @@ router.get('/', userController.getAllUser);
 router.get('/:userId(\\d+)', userController.getUserById);
 
 router.patch('/:userId(\\d+)', userController.updateUserById);
-
 router.delete('/:userId(\\d+)', userController.deleteUserById);
 
 //router.post('/', validateBody(postSchema), userController.createUser);

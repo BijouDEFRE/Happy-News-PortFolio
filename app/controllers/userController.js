@@ -1,4 +1,5 @@
 const userDataMapper = require('../dataMappers/userDataMapper');
+const bcrypt = require('bcryptjs');
 
 module.exports = {
 
@@ -41,13 +42,43 @@ module.exports = {
     async updateUserById(request, response, next) {
         try {
             const { userId } = request.params;
-            const userUpdate = request.body;
-            const user = await userDataMapper.updateUserById(userId, userUpdate);
+            const userInfo = request.body;
+            const saltRounds = 10;
+            const hashedPassword = bcrypt.hashSync(userInfo.password, saltRounds);
+            userInfo.password = hashedPassword;
+            const user = await userDataMapper.updateUserById(userId, userInfo);
+            if(!user) {
+                response.locals.notFound = "User not exist"
+            }
             response.json({ data: user })
         } catch (error) {
             next(error)
         }
     },
+
+    // async handleSignForm(request, response, next) {
+    //     try {
+    //         const userInfo = request.body;
+
+    //         const saltRounds = 10;
+    //         const hashedPassword = bcrypt.hashSync(userInfo.password, saltRounds);
+
+    //         const newUser = await authDataMapper.createUser(userInfo, hashedPassword);
+
+    //         if(!newUser) {
+    //             response.locals.notFound = "Vous n'avez pas encore de compte";
+    //             next();
+    //             return;
+    //         }
+
+    //         response.json({
+    //             data: newUser
+    //         })
+
+    //     } catch (error) {
+    //         next(error);
+    //     }
+    // },
 
     async deleteUserById(request, response, next) {
         try {
@@ -59,7 +90,7 @@ module.exports = {
                 next();
                 return;
             }
-            response.json({data:deleteUser});
+            response.json({ data: deleteUser });
         } catch (error) {
             next(error)
         }
