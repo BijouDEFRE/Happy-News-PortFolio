@@ -18,7 +18,7 @@ const mapStateToProps = (state) => ({
     picture_url: state.addNews.file,
     price: state.addNews.price,
     is_news: true,
-    user_id: '', // TODO: A récupérer depuis le localStorage 
+    user_id: '', // A récupérer depuis le localstorage via <localStorage.getItem('myData');>
     activity_id: state.addNews.category,
 });
 

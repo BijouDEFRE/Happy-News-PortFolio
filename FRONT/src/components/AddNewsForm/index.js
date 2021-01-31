@@ -3,24 +3,26 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-export const AddNewsForm = ({ title, activity_id, price, picture_url, handleChangeField, handleAddNews, addNews }) => {
+export const AddNewsForm = ({ title, activity_id, price, picture_url, handleChangeField, addNews }) => {
  
  
   const handleChange = e => handleChangeField([e.target.name], e.target.value);
 
   const handleChangeImage = e => {
+    console.log(e.target.files[0])
     const file = e.target.files[0]
     const reader = new FileReader()
-    const fileUrl = reader.readAsDataURL(file)
+    // const fileUrl = reader.readAsDataURL(file)
+    const fileUrl = URL.createObjectURL(file)
     console.log(fileUrl)
-    // handleChangeField(picture_url, file)
+    //handleChangeField(picture_url, file)
   }
 
   // function called when form is validate
   const handleSubmit = e => {
     // function called to block the reload of the page
     e.preventDefault();
-    addNews();
+    addNews;
     
   }
   
@@ -33,7 +35,7 @@ export const AddNewsForm = ({ title, activity_id, price, picture_url, handleChan
             action="" 
             className="form-body" 
             onSubmit={e => handleSubmit(e)}
-            enctype="multipart/form-data">
+            encType="multipart/form-data">
             <div className="input-group">
               <i className="news-title"></i>
               <input 
@@ -59,12 +61,11 @@ export const AddNewsForm = ({ title, activity_id, price, picture_url, handleChan
             <div className="input-group">
               <i className="news-category"></i>
               <select
-              onChange={e => handleChange(e)}
+                onChange={e => handleChange(e)}
                 name="activity_id"
                 // type="text"
                 // value={category}
                 placeholder="Catégorie..." 
-                // onChange={e => handleChange(e)}
                 >
                   <option  value="boulangerie" >boulangerie</option>
                   <option  value="boucherie" >boucherie</option>

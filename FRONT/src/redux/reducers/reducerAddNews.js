@@ -8,8 +8,8 @@ const initialState = {
     picture_url: '',
     price: '',
     is_news: true, 
-    user_id: null, // A récupérer depuis le localstorage
-    activity_id: '', // A récupérer depuis un champs déroulant. 9 id différents à récup dans le back
+    user_id: null, // A récupérer depuis le localstorage via <localStorage.getItem('myData');>
+    activity_id: '', 
 }
 // reducer
 
