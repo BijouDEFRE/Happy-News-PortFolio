@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import './style.scss';
-import { HandleRoleIdChecked } from '../../redux/actions';
+// import { HandleRoleIdChecked } from '../../redux/actions';
 
-export const AddNewsForm = ({ title, activity_id, price, picture_url, visible, handleChangeField, handleAddNews, addNews }) => {
+export const AddNewsForm = ({ title, activity_id, price, picture_url, handleChangeField, handleAddNews, addNews }) => {
  
  
   const handleChange = e => handleChangeField([e.target.name], e.target.value);

@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
     picture_url: state.addNews.file,
     price: state.addNews.price,
     is_news: true,
-    user_id: state.auth.userId, // TODO: A récupérer depuis le localStorage 
+    user_id: state.auth.userId, // TODO: A récupérer depuis le state 
     activity_id: state.addNews.category,
     visible: state.addNews.visible
 });

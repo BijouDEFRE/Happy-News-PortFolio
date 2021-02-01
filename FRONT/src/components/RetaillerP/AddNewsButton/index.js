@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+import AddNewsForm from 'src/components/AddNewsForm';
 import './style.scss';
 
-const AddNewsButton = () => {
-  return (
-    <div className="bouton">
-      <button>Ajouter une News</button>
-    </div>
-  )
+export default class Bouton extends Component {
+  render() {
+    return (
+      <div>
+        <button className="bouton">Ajouter une News</button>
+        <AddNewsForm />
+      </div>
+    )
+  }
 }
 
-export default AddNewsButton
+
 
