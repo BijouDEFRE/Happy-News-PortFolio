@@ -114,7 +114,7 @@ module.exports = {
     async deleteArticle(request, response, next) {
         try {
             const { articleId } = request.params;
-            const article = await articleDataMapper.deleteArticle(articleId);
+            const article = await articleDataMapper.deleteArticleById(articleId);
 
             response.json({
                 data: article
