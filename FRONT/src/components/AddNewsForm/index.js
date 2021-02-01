@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProgressBar from 'src/components/ProgressBar'
 import PropTypes from 'prop-types';
 
 import './style.scss';
@@ -115,6 +116,7 @@ export const AddNewsForm = ({ title, activity_id, price, picture_url, handleChan
                 />
                 <div className="output">
                   { error && <div className="error">{ error }</div> }
+                  {/* { file && <ProgressBar file={file} setFile={setFile} /> } */}
                 </div>
               <span className="bar"></span>
             </div>

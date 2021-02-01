@@ -1,7 +1,7 @@
 // Import Firebase
-import * as firebase from 'firebase/app'; 
+// import * as firebase from 'firebase/app'; 
 // pour pouvoir stocker nos images
-import 'firebase/storage';
+// import 'firebase/storage';
 // pour pouvoir avoir une bdd avec Firebase
 // import 'firebase/firestore';
 
@@ -15,12 +15,12 @@ var firebaseConfig = {
   appId: "1:767366119309:web:b0c20106a74174888f87c4"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 // Initialisation du stock avec Firebase
-const projectStorage = firebase.storage();
+// const projectStorage = firebase.storage();
 
 // Initialisation de la bdd avec Firebase
 // const projectFirestore = firebase.firestore();
 
-export { projectStorage }; // Ajouter projectFirestore si besoin
+// export { projectStorage }; // Ajouter projectFirestore si besoin
