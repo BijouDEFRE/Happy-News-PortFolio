@@ -2,6 +2,6 @@
 
 BEGIN;
 
-SELECT "description" FROM "content";
+SELECT "content" FROM "user";
 
 ROLLBACK;

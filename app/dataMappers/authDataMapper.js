@@ -23,8 +23,8 @@ const authDataMapper = {
         }
      
         // il n'est pas présent en BDD
-        const result = await client.query(`INSERT INTO "user" ("first_name", "last_name", "adress", "zip_code", "city", "latitude", "longitude", "email", "password", "company_name", "shop_name", "registration_number", "role_id", "activity_id")
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *`,
+        const result = await client.query(`INSERT INTO "user" ("first_name", "last_name", "adress", "zip_code", "city", "latitude", "longitude", "email", "password", "company_name", "shop_name", "registration_number", "role_id", "activity_id", "content")
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *`,
               [
                   userinfo.first_name,
                   userinfo.last_name,
@@ -39,7 +39,8 @@ const authDataMapper = {
                   userinfo.shop_name,
                   userinfo.registration_number,
                   userinfo.role_id,
-                  userinfo.activity_id
+                  userinfo.activity_id,
+                  userinfo.content
               ]);
         return result.rows[0];
     },

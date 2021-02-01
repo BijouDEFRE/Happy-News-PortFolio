@@ -33,8 +33,8 @@ module.exports = {
 
         if (isExist.rowCount >= 0) {
             const updateUser = await client.query(`UPDATE "user" SET "first_name" =$1, "last_name" = $2,
-             "adress" = $3, "zip_code" = $4, "latitude" = $5, "longitude" = $6, "city" = $7, "email" = $8, "password" = $9, "company_name" = $10, "shop_name" = $11, "registration_number" = $12
-             WHERE id = $13 RETURNING *`,
+             "adress" = $3, "zip_code" = $4, "latitude" = $5, "longitude" = $6, "city" = $7, "email" = $8, "password" = $9, "company_name" = $10, "shop_name" = $11, "registration_number" = $12, "content" = $13
+             WHERE id = $14 RETURNING *`,
             [
                 userUpdate.first_name,
                 userUpdate.last_name,
@@ -48,6 +48,7 @@ module.exports = {
                 userUpdate.company_name,
                 userUpdate.shop_name,
                 userUpdate.registration_number,
+                userUpdate.content,
                 // userUpdate.updated_at = new Date(),
                 userId       
             ]);

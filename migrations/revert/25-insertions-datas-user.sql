@@ -2,6 +2,6 @@
 
 BEGIN;
 
-ALTER TABLE "activity" DROP COLUMN "content";
+ALTER TABLE "user" DROP COLUMN "content";
 
 COMMIT;
