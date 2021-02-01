@@ -25,9 +25,10 @@ const userSchema = Joi.object({
         'any.required': 'Le mot de passe est obligatoire.',
         'string.pattern': 'Le mot de passe doit contenir 8 caractères minimum, dont une minuscule, une majuscule, un nombre et un caractère spécial parmis : !@#$%^&* .'
     }),
+    repeat_password: Joi.ref('password'),
     company_name: Joi.string(),
     shop_name: Joi.string(),
-    registration_number: Joi.number().integer().min(5).max(8),
+    registration_number: Joi.number().integer().min(5).max(14),
     user_id: Joi.number().integer().min(1).required()
                     .external(async (value) => {
                         // Vérifier que value correspond à un id existant

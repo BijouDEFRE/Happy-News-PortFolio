@@ -1,13 +1,12 @@
 // require environment modules npm
 require('dotenv').config();
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 
 // require project modules
 const router = require('./app/routers');
-// require package for upload files
-const multer = require('multer');
 // express server creation
 const app = express();
 
@@ -16,15 +15,21 @@ app.use(cors({
     methods: 'GET,POST,PATCH,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type'
 }));
-const bodyParser = multer();
-app.use(bodyParser.none());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 // call express middleware for json data reading 
-app.use(express.static(path.join(__dirname, 'public')));
-// call express middleware to manage POST data
-app.use(express.urlencoded({extended: true}));
-// app.use(express.json());
-// authorize data echange between different websites
-// app.use(cors('*'));
+app.use((request, response, next) => {
+    response.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    response.header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization');
+    response.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, UPDATE, DELETE');
+
+    if (request.method === 'OPTIONS') {
+    res.sendStatus(200);
+    }
+    else {
+        next();
+    }
+});
 
 app.use(router);
 // start server on port
