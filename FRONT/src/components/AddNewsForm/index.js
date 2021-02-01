@@ -4,17 +4,30 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 export const AddNewsForm = ({ title, activity_id, price, picture_url, handleChangeField, addNews }) => {
+  const [file, setFile] = useState(null);
+  const [error, setError] = useState(null);
+
+  const types = ['image/png', 'image/jpeg'];
  
  
   const handleChange = e => handleChangeField([e.target.name], e.target.value);
 
   const handleChangeImage = e => {
-    console.log(e.target.files[0])
-    const file = e.target.files[0]
-    const reader = new FileReader()
+    const selected = e.target.files[0]
+    console.log(selected);
+
+    if(selected && types.includes(selected.type)) {
+      setFile(selected);
+      setError('');
+    } else {
+      setFile(null);
+      setError('Please select an image file(jpeg or png)')
+
+    }
+    // const reader = new FileReader()
     // const fileUrl = reader.readAsDataURL(file)
-    const fileUrl = URL.createObjectURL(file)
-    console.log(fileUrl)
+    // const fileUrl = URL.createObjectURL(file)
+    // console.log(fileUrl)
     //handleChangeField(picture_url, file)
   }
 
@@ -100,6 +113,9 @@ export const AddNewsForm = ({ title, activity_id, price, picture_url, handleChan
                 onChange={e => handleChangeImage(e)}
                 multiple
                 />
+                <div className="output">
+                  { error && <div className="error">{ error }</div> }
+                </div>
               <span className="bar"></span>
             </div>
             <div className="input-group">
