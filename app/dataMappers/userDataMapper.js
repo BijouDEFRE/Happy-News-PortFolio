@@ -6,7 +6,7 @@ const client = require('./client');
 module.exports = {
 
     async getAllUsers() {
-        const result = await client.query('SELECT * FROM "user"');
+        const result = await client.query('SELECT * FROM "user" AS u JOIN "activity" AS a ON u.activity_id = a.id');
         return result.rows;
     },
 
