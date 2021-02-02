@@ -38,13 +38,14 @@ module.exports = {
         return result.rows;
     },
 
-    async createArticle(newArticle) {
+    async createArticle(newArticle, urlImage) {
 
         const result = await client.query(`INSERT INTO "article"("article_title", "description", "picture_url", "price", "is_news", "user_id", "activity_id", "news_duration")
         VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
         [
             newArticle.article_title,
             newArticle.description,
+            urlImage,
             newArticle.picture_url,
             newArticle.price,
             newArticle.is_news,
@@ -52,8 +53,7 @@ module.exports = {
             newArticle.activity_id,
             newArticle.news_duration
         ]);
-        // return result.rows[0];
-        return 'Vous avez créer une Happy News';
+        return result.rows[0];
     },
 
     async imageUpload(articleImage, articleId) { 
@@ -82,8 +82,7 @@ module.exports = {
             articleId       
         ]);
         console.log(result.rows);
-        // return result.rowCount;
-        return 'Article Updated';
+        return result.rowCount;
     },
 
     async deleteArticleById(articleId) {
@@ -94,7 +93,6 @@ module.exports = {
         }
         const deleteArticle = client.query('DELETE FROM "article" WHERE id = $1', [articleId]);
 
-        // return deleteArticle.rowCount;
-        return 'Article Deleted';
+        return deleteArticle.rowCount;
     },
 }

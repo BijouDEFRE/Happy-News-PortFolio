@@ -5,9 +5,11 @@ const client = require('./client');
 
 module.exports = {
 
+    //('SELECT u.id, u.first_name, u.last_name, u.email, u.adress, u.city, u.shopname, a.id AS activity_id, a.activity_name FROM "user" AS u JOIN "acticity" AS a ON u.activity_id = a.id');
     // SELECT * FROM "user" AS u JOIN "activity" AS a ON u.activity_id = a.id
+    // SELECT * FROM "user" LEFT JOIN "activity" USING (id)
     async getAllUsers() {
-        const result = await client.query('SELECT * FROM "user" LEFT JOIN "activity" USING (id)');
+        const result = await client.query('SELECT u.id, u.first_name, u.last_name, u.email, u.password, u.adress, u.zip_code, u.city, u.latitude, u.longitude, u.shop_name, u.registration_number, u.role_id, u.content, a.id AS activity_id, a.activity_name FROM "user" AS u JOIN "activity" AS a ON u.activity_id = a.id');
         return result.rows;
     },
 
@@ -53,8 +55,7 @@ module.exports = {
                 // userUpdate.updated_at = new Date(),
                 userId       
             ]);
-            // return updateUser.rowCount;
-            return 'User Update';
+            return updateUser.rows;
         }
     },
 
@@ -63,6 +64,6 @@ module.exports = {
         if (result.rowCount == 0) {
             return 'User not exist';
         }
-        return 'User deleted';
+        return result.rows;
     },
 }

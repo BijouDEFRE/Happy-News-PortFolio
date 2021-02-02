@@ -4,7 +4,8 @@ module.exports = {
     async getAllActivities(_, response, next) {
         try {
             const activities = await activityDataMapper.getAllActivities();
-            response.json({ 
+            response.json({
+                message: 'All activities', 
                 data: activities 
             });
         } catch (error) {
@@ -17,6 +18,7 @@ module.exports = {
             const { activityId } = request.params;
             const activity = await activityDataMapper.getActivityById(activityId);
             response.json({
+                message: 'Activity by id',
                 data: activity
             });
         } catch (error) {
@@ -29,6 +31,7 @@ module.exports = {
             const { activityName } = request.params;
             const activities = await activityDataMapper.getActivityByName(activityName);
             response.json({
+                message: 'Activity by name',
                 data: activities
             });
             console.log(activities);
@@ -43,6 +46,7 @@ module.exports = {
             const activity = await activityDataMapper.createActivity(newActivity);
 
             response.json({
+                message: 'Activity create',
                 data: activity
             });
         } catch (error) {
@@ -57,6 +61,7 @@ module.exports = {
             const activity = await activityDataMapper.updateActivityById(activityId, updateActivity);
 
             response.json({
+                message: 'Activity updated',
                 data: activity
             });
         } catch (error) {
@@ -70,6 +75,7 @@ module.exports = {
             const activity = await activityDataMapper.deleteActivityById(activityId);
 
             response.json({
+                message: 'Activity deleted',
                 data: activity
             })
         } catch (error) {

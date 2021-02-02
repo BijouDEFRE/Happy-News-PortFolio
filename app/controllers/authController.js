@@ -65,8 +65,9 @@ const authController = {
             }
 
             response.json({
+                message: 'User create',
                 data: newUser
-            })
+            });
 
         } catch (error) {
             next(error);

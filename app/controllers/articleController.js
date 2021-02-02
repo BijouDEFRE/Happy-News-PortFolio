@@ -7,6 +7,7 @@ module.exports = {
             const articles = await articleDataMapper.getAllArticles();
 
             response.json({ 
+                message: 'All articles',
                 data: articles 
             });
         } catch (error) {
@@ -20,6 +21,7 @@ module.exports = {
             const article = await articleDataMapper.getArticleById(articleId);
 
             response.json({
+                message: 'Article by id',
                 data: article
             });
         } catch (error) {
@@ -39,6 +41,7 @@ module.exports = {
             const articleList = await articleDataMapper.getArticlesByActivityID(activityId);
 
             response.json({
+                message: 'Articles by activity id',
                 data: articleList
             });
         } catch (error) {
@@ -58,6 +61,7 @@ module.exports = {
             const articleList = await articleDataMapper.getArticlesByActivity(activityName);
 
             response.json({
+                message: 'Articles by activity name',
                 data: articleList
             });
             console.log(articleList)
@@ -72,6 +76,7 @@ module.exports = {
             const article = await articleDataMapper.createArticle(newArticle);
 
             response.json({
+                message: 'Happy News create',
                 data: article
             });
         } catch (error) {
@@ -104,8 +109,9 @@ module.exports = {
             const article = await articleDataMapper.updateArticleById(articleId, updateArticle);
 
             response.json({
+                message: 'Article updated',
                 data: article
-            })
+            });
         } catch (error) {
             next(error);
         }
@@ -117,8 +123,9 @@ module.exports = {
             const article = await articleDataMapper.deleteArticleById(articleId);
 
             response.json({
+                message: 'Article deleted',
                 data: article
-            })
+            });
         } catch (error) {
             next(error);
         }

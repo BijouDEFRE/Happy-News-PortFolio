@@ -6,7 +6,10 @@ module.exports = {
     async getAllUser(_, response, next) {
         try {
             const users = await userDataMapper.getAllUsers();
-            response.json({ data: users });
+            response.json({
+                message: 'All users',
+                data: users
+            });
         } catch (error) {
             // Les middlewares pour la gestion d'erreur sont dans une file à part
             // pour partir dans cette file, on appele next en donnant en paramètre
@@ -32,7 +35,10 @@ module.exports = {
                 return;
             }
 
-            response.json({ data: user });
+            response.json({
+                message: 'User by id',
+                data: user
+            });
 
         } catch(error) {
             next(error);
@@ -50,7 +56,9 @@ module.exports = {
             if(!user) {
                 response.locals.notFound = "User not exist"
             }
-            response.json({ data: user })
+            response.json({
+                message: 'User update',
+                data: user });
         } catch (error) {
             next(error)
         }
@@ -90,7 +98,9 @@ module.exports = {
                 next();
                 return;
             }
-            response.json({ data: deleteUser });
+            response.json({
+                message: 'User deleted',
+                data: deleteUser });
         } catch (error) {
             next(error)
         }
