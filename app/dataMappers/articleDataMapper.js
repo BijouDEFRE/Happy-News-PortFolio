@@ -38,14 +38,13 @@ module.exports = {
         return result.rows;
     },
 
-    async createArticle(newArticle, urlImage) {
+    async createArticle(newArticle) {
 
         const result = await client.query(`INSERT INTO "article"("article_title", "description", "picture_url", "price", "is_news", "user_id", "activity_id", "news_duration")
         VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
         [
             newArticle.article_title,
             newArticle.description,
-            urlImage,
             newArticle.picture_url,
             newArticle.price,
             newArticle.is_news,
