@@ -6,10 +6,16 @@ import './style.scss';
 
 export const AddNewsForm = ({ title, activity_id, price, picture_url, handleChangeField, handleAddNews, addNews }) => {
  
- 
+  const [image, setImage ] = useState(null);
+  const [pictureUrl, setPictureUrl] = useState(null);
+
   const handleChange = e => handleChangeField([e.target.name], e.target.value);
 
   const handleChangeImage = e => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+    {/**  ------ Méthode Chris ------
     // Je crée un nouveau reader
     const reader = new FileReader()
     // Je récupère mon image
@@ -19,8 +25,15 @@ export const AddNewsForm = ({ title, activity_id, price, picture_url, handleChan
       console.log('reader.result', reader.result)
       handleChangeField('picture_url', reader.result)
     }
-    console.log(reader.readAsDataURL(file))
+    console.log(reader.readAsDataURL(file))*/}
   }
+  console.log(image);
+
+  // const handleUpload = async () => {
+  //   const url = await uploadImage(image);
+  //   setPictureUrl(url);
+  //   console.log(url)
+  // };
 
   // function called when form is validate
   const handleSubmit = e => {
