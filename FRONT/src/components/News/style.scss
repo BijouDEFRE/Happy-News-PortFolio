@@ -44,11 +44,13 @@
 .newsList {
   background: rgba(54, 88, 107, 0.6);
   display: flex;
-  // flex-wrap: wrap;
-  align-items: center;
-  height: 45em;
-  overflow-x: auto;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  // align-items: center;
+  // height: 45em;
+  height: 100%;
+  // overflow-x: auto;
   &__item {
-    min-width: 22%;
+    // min-width: 22%;
   }
 }
