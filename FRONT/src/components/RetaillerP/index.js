@@ -32,10 +32,11 @@ const RetailerP = ({
       {/* > creer une news */}
       {/* </Button> */}
 
-      <TitleProfil> bienvenue sur votre profil {user.first_name} </TitleProfil>
       <AddNewsFormulaire />
+      <TitleProfil> bienvenue sur votre profil {user.first_name} </TitleProfil>
       <ProfilInformation />
       <Tabs />
+
     </div>
   );
 };

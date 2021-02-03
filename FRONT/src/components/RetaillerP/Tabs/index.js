@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+// import AddNewsFormulaire from 'src/components/AddNewsForm';
 import NewsModal from 'src/components/NewsModal';
 import './style.scss';
 import TabTitle from './TabTitle';
@@ -46,6 +47,7 @@ const Tabs = ({ user, news }) => {
           onClick={() => toggleTab(2)}
         >
           <TabTitle> Mes happy News</TabTitle>
+          {/* <AddNewsFormulaire /> */}
         </button>
         <button
           className={toggleState === 3 ? 'tabs active-tabs' : 'tabs'}
@@ -66,7 +68,7 @@ const Tabs = ({ user, news }) => {
             {/* // news.map((item) => <li> {item.id}</li>) */}
             {
                 newsUserIdIsTrue.map((news) => (
-                  <div key={news.id} className="newsList__item">
+                  <div key={news.id} className="newsList__item_tab">
                     <NewsModal news={news} />
                   </div>
                 ))
@@ -78,9 +80,8 @@ const Tabs = ({ user, news }) => {
           <p>
             {
                 newsUserIdIsFalse.map((news) => (
-                  <div key={news.id} className="newsList__item">
+                  <div key={news.id} className="newsList__item_tab">
                     <NewsModal news={news} />
-
                   </div>
                 ))
               }

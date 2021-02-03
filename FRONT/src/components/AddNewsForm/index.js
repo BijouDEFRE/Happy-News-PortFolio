@@ -28,6 +28,9 @@ export const AddNewsForm = ({
         creer une news
       </button>
       <section className={`section-addnews-form modalBackground modalShowing-${modalState}`}>
+        {/* <button onClick={() => manageState(!modalState)}>
+        creer une news
+      </button> */}
         <div id="wraper">
           <div className="form-container">
             <span className="form-heading">Ajouter une News</span>
@@ -125,6 +128,7 @@ export const AddNewsForm = ({
           </div>
         </div>
       </section>
+
     </>
   );
 };

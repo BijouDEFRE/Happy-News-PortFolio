@@ -1,13 +1,13 @@
 @use 'src/styles/vars';
-body {
+/* body {
  background: vars.$Linear-gradient;
-}
+} */
 .container {
     display: flex;
     flex-direction: column;
-    position: relative;
+    // position: relative;
     width: 100%;
-    height: 40em;
+    height: 30em;
     background: vars.$Background;
     margin: 100px auto 0;
     word-break: break-all;
@@ -26,7 +26,7 @@ body {
     cursor: pointer;
     border-bottom: 2px solid vars.$Primary;
     box-sizing: content-box;
-    position: relative;
+    // position: relative;
     outline: none;
   }
   .tabs:not(:last-child){
@@ -39,7 +39,7 @@ body {
   }
   
   .active-tabs::before {
-    content: "";
+    // content: "";
     display: block;
     position: absolute;
     top: -5px;
@@ -53,9 +53,9 @@ body {
   button {
     border: none;
   }
-  .content-tabs {
-    flex-grow : 1;
-  }
+  // .content-tabs {
+  //   flex-grow : 1;
+  // }
   .content {
     background: vars.$Background;
     padding: 20px;
@@ -75,7 +75,22 @@ body {
   .content p {
     width: 100%;
     height: 100%;
+    // display: flex;
+    // align-items: center;
+    // background: rgba(54, 88, 107, 0.6);
+  display: flex;
+  align-items: center;
+  // height: 35em;
+  overflow-x: auto;
+  // &__item {
+  //   min-width: 22%;
   }
   .active-content {
-    display: block;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+  }
+  .newsList__item_tab {
+    margin: 0 1em;
+    height: 100%;
   }

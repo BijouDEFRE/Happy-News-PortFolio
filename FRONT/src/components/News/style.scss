@@ -4,7 +4,7 @@
   display:flex;
   justify-content: space-around;
   align-items: center;
-  padding: 4em;
+  padding: 2em;
   background: vars.$Primary;
   &__searchBar {
     display:flex;
@@ -44,7 +44,7 @@
   background: rgba(54, 88, 107, 0.6);
   display: flex;
   align-items: center;
-  height: 45em;
+  height: 38em;
   overflow-x: auto;
   &__item {
     min-width: 22%;
