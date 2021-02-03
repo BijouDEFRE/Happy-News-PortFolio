@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ProfilInformation from 'src/components/RetaillerP/ProfilInformation';
 import Tabs from 'src/containers/tab';
+import AddNewsFormulaire from '../AddNewsForm';
 import './style.scss';
 import TitleProfil from './TitleProfil';
 
@@ -14,9 +15,25 @@ const RetailerP = ({
     loadNews();
   }, []);
 
+  // const [modalState, setModalState] = useState(false);
+  // // const manageState = () => {
+  // //   setModalState(!modalState);
+  // // };
+  // const manageState = () => {
+  //   setModalState(!modalState);
+  // };
   return (
     <div className="profil-container">
+
+      {/* <Button */}
+      {/* <button onClick={() => setModalState(!modalState)}>
+        creer une news
+      </button> */}
+      {/* > creer une news */}
+      {/* </Button> */}
+
       <TitleProfil> bienvenue sur votre profil {user.first_name} </TitleProfil>
+      <AddNewsFormulaire />
       <ProfilInformation />
       <Tabs />
     </div>

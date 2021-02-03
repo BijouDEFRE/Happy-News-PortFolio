@@ -8,5 +8,4 @@ const Button = ({ children, type, event }) => (
     </button>
   </div>
 );
-
 export default Button;
