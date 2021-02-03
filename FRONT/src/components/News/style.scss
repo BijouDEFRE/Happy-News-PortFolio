@@ -4,7 +4,8 @@
   display:flex;
   justify-content: space-around;
   align-items: center;
-  padding: 2em;
+  flex-wrap: wrap;
+  padding: 1.6em;
   background: vars.$Primary;
   &__searchBar {
     display:flex;
@@ -43,8 +44,9 @@
 .newsList {
   background: rgba(54, 88, 107, 0.6);
   display: flex;
+  // flex-wrap: wrap;
   align-items: center;
-  height: 38em;
+  height: 45em;
   overflow-x: auto;
   &__item {
     min-width: 22%;

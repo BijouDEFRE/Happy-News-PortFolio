@@ -1,10 +1,10 @@
 @use '../../styles/vars';
 
 .product-card {
-  width: 25em;
+  width: 20em;
   // position: relative;
   box-shadow: 0 1px 4px #3FAFAC;
-  margin: 10px auto;
+  // margin: 50px auto;
   background: vars.$Clear;
 }
 
@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 15em;
+  height: 12em;
   padding: 10px;
   background: #ffffff;
 }
@@ -35,7 +35,7 @@
 }
 
 .product-details {
-  padding: 30px;
+  padding: 25px;
 }
 
 .product-catagory {
@@ -44,30 +44,25 @@
   font-weight: 700;
   text-transform: uppercase;
   color: rgb(255, 255, 255);
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
 
-.product-details h4 {
+.product-details p {
   font-weight: 500;
-  display: block;
-  margin-bottom: 18px;
+  // display: block;
+  // margin-bottom: 18px;
   text-transform: uppercase;
   color: #797979;
   text-decoration: none;
   transition: 0.3s;
 }
 
-.product-details h4:hover {
-  color: #fb9a2c;
-  font-size: 1.5em;
-}
-
 .product-details p {
-  height: 5em;
-  overflow: auto;
+  height: 4.5em;
+  // overflow: auto;
   font-size: 15px;
   line-height: 22px;
-  margin-bottom: 18px;
+  // margin-bottom: 10px;
   color: rgb(255, 255, 255);
 }
 
