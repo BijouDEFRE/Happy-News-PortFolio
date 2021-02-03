@@ -114,7 +114,7 @@ export const AddNewsForm = ({
                     </svg>
                   </i>
                 </button>
-                <button type="submit" className="news-valid-form-but">
+                <button type="submit" className="news-valid-form-but" onClick={() => manageState(!modalState)}>
                   <i className="picture-valid">
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-x" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
