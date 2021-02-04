@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import uploadImage from 'src/middlewares/firebase';
+// import uploadImage from 'src/middlewares/firebase';
 import PropTypes from 'prop-types';
 import { NavLink, useParams } from 'react-router-dom';
 import './style.scss';

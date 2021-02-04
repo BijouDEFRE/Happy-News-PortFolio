@@ -21,6 +21,8 @@ import Register from 'src/containers/register';
 // import Login from 'src/components/Login';
 import RetaillerP from 'src/containers/RetaillerP';
 import newsList from 'src/data/data';
+// Composant test pour firebase
+import ReactFirebaseFileUpload from 'src/components/Testimg';
 // == Import CSS
 import './styles.scss';
 
@@ -31,6 +33,10 @@ const App = ({ isLogged }) => (
     <Switch>
       <Route exact path="/">
         <Home />
+      </Route>
+      {/** Route test pour le file upload de Fiirebase */}
+      <Route exact path="/test">
+        <ReactFirebaseFileUpload />
       </Route>
       <Route exact path="/connexion">
         {isLogged ? <Redirect to="/news/liste" /> : <Login />}

@@ -12,13 +12,13 @@ const firebaseConfig = {
   measurementId: "G-7HSGVBVG54"
 };
 
-// firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 // if (!firebase.apps.length) {
 //   firebase.initializeApp({});
 // }else {
 //   firebase.app(); // if already initialized, use that one
 // }
 
-// const storage = firebase.storage();
+ const storage = firebase.storage();
 
-// export { storage, firebase as default};
+export { storage, firebase as default};
