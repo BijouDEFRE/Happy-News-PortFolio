@@ -48,7 +48,7 @@ const ReactFirebaseFileUpload = () => {
 
   return (
     <div className="container">
-     Test d'upload sur firebase
+     <h1 className="ttl">Test d'upload sur firebase</h1>
      <br/>
      {/** Ici on sélectionne l'image */}
      <input type="file" onChange={handleChange} className="inp"/>
