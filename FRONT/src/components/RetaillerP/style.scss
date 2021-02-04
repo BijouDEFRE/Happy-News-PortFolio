@@ -1,4 +1,7 @@
+@use 'src/styles/vars';
+
 .profil-container{
+    background: vars.$Linear-gradient;
     display: flex;
     flex-direction: column;
     align-items: center;

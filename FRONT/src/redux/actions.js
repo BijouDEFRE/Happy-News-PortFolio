@@ -75,7 +75,12 @@ export const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
 export const GET_CITY_FROM_API = 'GET_CITY_FROM_API';
 export const ACTIVITY_SELECTED = 'ACTIVITY_SELECTED';
 export const GET_CITY_FROM_API_SUCCESS = 'GET_CITY_FROM_API_SUCCESS';
+export const GET_NEWS = 'GET_NEWS';
 // export const RESET_ACTIVITY_SELECTED = 'RESET_ACTIVITY_SELECTED';
+
+export const loadNews = () => ({
+  type: GET_NEWS,
+});
 
 export const changeSearchValueAction = (value, name) => ({
   type: CHANGE_SEARCH_VALUE,
@@ -188,3 +193,14 @@ export const deleteNewsSuccess = (message) => {
 export const deleteNewsError = () => ({
   type: DELETE_NEWS_ERROR,
 });
+
+// Update content USER
+export const UPDATE_CONTENT_USER = 'UPDATE_CONTENT_USER';
+
+export const updateTextContent = (value) => {
+  console.log('je suis dans ma reponse ', value);
+  return {
+    type: UPDATE_CONTENT_USER,
+    value,
+  };
+};

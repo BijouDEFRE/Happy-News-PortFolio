@@ -36,7 +36,6 @@ const NewsModal = ({
                     {popUp === true
                     && <PopUp news={news} changePopup={changePopup} />}
                   </>
-
                 )}
             </div>
           </div>

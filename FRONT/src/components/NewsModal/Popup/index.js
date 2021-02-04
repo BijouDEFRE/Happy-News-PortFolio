@@ -23,7 +23,6 @@ const PopUp = ({ changePopup, handleDelete, news }) => {
           className="popup_bouton_delete"
           name={news.article_title}
           value={news.id}
-        //   onClick={(event) => handleDelete(console.log(event.target.value))}
           onClick={handleDeleteCard}
         >
           Confirmer la suppresion

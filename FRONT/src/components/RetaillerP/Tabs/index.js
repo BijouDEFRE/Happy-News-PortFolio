@@ -5,7 +5,11 @@ import NewsModal from 'src/components/NewsModal';
 import './style.scss';
 import TabTitle from './TabTitle';
 
-const Tabs = ({ user, news }) => {
+const Tabs = ({ user, news, changeContent }) => {
+  const changeField = (event) => {
+    changeContent(event.target.value);
+  };
+
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -56,9 +60,20 @@ const Tabs = ({ user, news }) => {
       </div>
       <div className="content-tabs">
         <div className={toggleState === 1 ? 'content  active-content' : 'content'}>
-          <p>
+
+          <textarea
+            id="story"
+            name="story"
+            placeholder="Décrivez nous votre activité, votre passion et laissez un petit mot pour vos futures clients !"
+            rows="18"
+            cols="153"
+            className="content-tabs__textarea"
+            value={user.content}
+            // onChange={(event) => changeContent(event.target.value)}
+            onChange={changeField}
+          >
             {user.content}
-          </p>
+          </textarea>
         </div>
 
         <div className={toggleState === 2 ? 'content  active-content' : 'content'}>
