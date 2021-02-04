@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import uploadImage from '../../middlewares/firebase';
 import PropTypes from 'prop-types';
 import { NavLink, useParams } from 'react-router-dom';
 import './style.scss';
 
 export const AddNewsForm = ({ article_title, description, picture_url,price, userId, handleChangeField, activities, handleAddNews }) => {
  
-// console.log(state.auth.userId);
+  const [image, setImage ] = useState(null);
+  const [pictureUrl, setPictureUrl ] = useState(null);
 
   const handleChange = e => handleChangeField([e.target.name], e.target.value);
+  
+  const handleChangeImg = e => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+  console.log(image);
+
+  console.log(pictureUrl);
+  const handleUpload = async () => {
+    const url = await uploadImage(image);
+    setPictureUrl(url);
+    console.log(url);
+  };
+
+
 
   {/** ------------- Récupère l'image et la transforme en blob --------
      const handleChangeImage = e => {
@@ -91,15 +109,15 @@ export const AddNewsForm = ({ article_title, description, picture_url,price, use
               <input
                 name="picture_url"
                 type="file"
-                value={picture_url}
+                value={pictureUrl}
                 accept="image" 
-                onChange={e => handleChange(e)}
+                onChange={handleChangeImg}
                 //multiple
               />
               <span className="bar"></span>
             </div>
             <div className="input-group">
-              <button className="news-valid-form-but">
+              <button className="news-valid-form-but" onClick={handleUpload}>
                 <i className="picture-valid">
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-telegram" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
