@@ -13,18 +13,20 @@ export const AddNewsForm = ({ article_title, description, picture_url,price, use
   
   const handleChangeImg = e => {
     if (e.target.files[0]) {
-      setImage(e.target.files[0]);
+      // setImage(e.target.files[0]);
     }
   };
   console.log(image);
 
+  const handleUpload = () => {};
+
   
-  const handleUpload = async () => {
-    const url = await uploadImage(image);
-    setPictureUrl(url);
-    console.log(url);
-  };
-  console.log(pictureUrl);
+  // const handleUpload = async () => {
+  //   const url = await uploadImage(image);
+  //   setPictureUrl(url);
+  //   console.log(url);
+  // };
+  // console.log(pictureUrl);
 
 
 
@@ -82,7 +84,7 @@ export const AddNewsForm = ({ article_title, description, picture_url,price, use
             </div>
             <div className="input-group">
               <i className="news-category" />
-              <select
+              {/* <select
                 onChange={(e) => handleChange(e)}
                 name="activity_id"
                 placeholder="Catégorie..."
@@ -91,7 +93,7 @@ export const AddNewsForm = ({ article_title, description, picture_url,price, use
                 {activities.map((tag) => (
                 <option className="input-group" placeholder="Catégorie..." key={tag.id} value={tag.id} selected="charcuterie">{tag.activity_name}</option>
                 ))}
-              </select>
+              </select> */}
               <span className="bar" />
             </div>
             <div className="input-group">
