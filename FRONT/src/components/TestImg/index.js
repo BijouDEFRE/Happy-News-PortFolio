@@ -27,7 +27,8 @@ const ReactFirebaseFileUpload = () => {
       snapshot => {
         const pregress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // To get a progress bar on upload img
-        )
+        );
+        setProgress(progress)
       },
       error => {
         console.log(error);
