@@ -11,11 +11,13 @@ const multer = require('multer');
 // express server creation
 const app = express();
 
-app.use(cors({
-    origin: '*',
-    methods: 'GET,POST,PATCH,DELETE,OPTIONS',
-    allowedHeaders: 'Content-Type'
-}));
+// authorize data echange between different websites
+app.use(cors('*'));
+// app.use(cors({
+//     origin: '*',
+//     methods: 'GET,POST,PATCH,DELETE,OPTIONS',
+//     allowedHeaders: 'Content-Type'
+// }));
 const bodyParser = multer();
 app.use(bodyParser.none());
 // call express middleware for json data reading 
