@@ -6,6 +6,8 @@ import './style.scss';
 // Definition du state de l'upload
 const ReactFirebaseFileUpload = () => {
   const [image, setImage] = useState(null);
+  const [url, setUrl] = useState("");
+  const [progress, setProgress] = useState(0);
 
   // écouteur d'évènement qui agit au chargement d'une image
   const handleChange = e => {
@@ -22,7 +24,11 @@ const ReactFirebaseFileUpload = () => {
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
-      snapshot => {},
+      snapshot => {
+        const pregress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // To get a progress bar on upload img
+        )
+      },
       error => {
         console.log(error);
       },
@@ -32,7 +38,8 @@ const ReactFirebaseFileUpload = () => {
           .child(image.name)
           .getDownloadURL()
           .then(url => {
-            console.log(url);
+            console.log('L\'Url de l\'image est : ', url);
+            setUrl(url)
           });
       }
     );
@@ -45,7 +52,9 @@ const ReactFirebaseFileUpload = () => {
      {/** Ici on sélectionne l'image */}
      <input type="file" onChange={handleChange} className="inp"/>
      {/** Ici on envoie l'image */}
-     <button onClick={handleUpload} className="btn">Chargement</button> 
+     <button onClick={handleUpload} className="btn">Chargement</button>
+     <br/>
+     {url} 
     </div>
   );
 };
