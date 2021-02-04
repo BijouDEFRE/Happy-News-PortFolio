@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { storage } from 'src/components/firebase';
 // Composants
 // import App from 'src/components/App';
 import App from 'src/containers/app';

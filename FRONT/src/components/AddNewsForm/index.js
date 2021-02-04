@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import uploadImage from '../../middlewares/firebase';
+import uploadImage from 'src/middlewares/firebase';
 import PropTypes from 'prop-types';
 import { NavLink, useParams } from 'react-router-dom';
 import './style.scss';
@@ -18,12 +18,13 @@ export const AddNewsForm = ({ article_title, description, picture_url,price, use
   };
   console.log(image);
 
-  console.log(pictureUrl);
+  
   const handleUpload = async () => {
     const url = await uploadImage(image);
     setPictureUrl(url);
     console.log(url);
   };
+  console.log(pictureUrl);
 
 
 
