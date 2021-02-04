@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
 
-const NewsModal = ({ news }) =>
-  // const [modalState, setModalState] = useState(false);
-  // const manageState = () => {
-  //   setModalState(!modalState);
-  // };
+const NewsModal = ({ news }) => {
+  const [modalState, setModalState] = useState(false);
+  const manageState = () => {
+    setModalState(!modalState);
+  };
   // { `section-addnews-form modalBackground modalShowing-${modalState}`; }
-  (
+  return (
     <>
       <section>
         <div className="product-card">
           <div className="badge">Hot</div>
           <div className="product-tumb">
-            <img src={news.picture_url} alt="news-image" />
+            <img src={news.picture_url} alt="news-image" onClick={() => manageState(!modalState)} />
           </div>
           <div className="product-details">
             <span className="product-catagory">{news.activity_name}</span>
@@ -33,8 +33,9 @@ const NewsModal = ({ news }) =>
           </div>
         </div>
       </section>
-      {/* <section>
-        <div className={`product-card modalBackground modalShowing-${modalState} `}>
+
+      <section>
+        <div className={`product-card modalBackground modalShowing-${modalState} active-modal-cart`}>
           <div className="badge">Hot</div>
           <div className="product-tumb">
             <img src={news.picture_url} alt="news-image" />
@@ -46,17 +47,18 @@ const NewsModal = ({ news }) =>
             <div className="product-bottom-details">
               <div className="product-price"><small>$96.00</small>${news.price}</div>
               <div className="product-links">
-                {/* <button onClick={() => manageState(!modalState)}>
-                  creer une news
-                </button> */}
-      {/* <Link to={`/commercant/profil/${news.user_id}`}>Voir le profil de ce commercant</Link>
+                <button onClick={() => manageState(!modalState)}>
+                  fermer la modale
+                </button>
+                <NavLink to={`/commercant/profil/${news.user_id}`}>Voir le profil de ce commercant</NavLink>
               </div>
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </>
   );
+};
 NewsModal.propTypes = {
   news: PropTypes.shape({
     article_title: PropTypes.string.isRequired,

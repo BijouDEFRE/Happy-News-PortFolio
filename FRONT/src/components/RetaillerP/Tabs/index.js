@@ -59,6 +59,7 @@ const Tabs = ({ user, news }) => {
       <div className="content-tabs">
         <div className={toggleState === 1 ? 'content  active-content' : 'content'}>
           <p>
+
             {user.content}
           </p>
         </div>
