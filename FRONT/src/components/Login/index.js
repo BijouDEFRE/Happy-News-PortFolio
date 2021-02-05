@@ -55,8 +55,7 @@ const Login = ({
           </form>
           <a className="form__link" href="#">Mot de passe oublié ?</a>
           <h2 className="form__h2">Si vous n'avez pas encore de compte :</h2>
-          <NavLink to="/inscription/client"><Button>Création compte Client</Button></NavLink>
-          <NavLink to="/inscription/commercant"><Button>Création compte Commerçant</Button></NavLink>
+          <NavLink to="/inscription"><Button>Creer votre compte</Button></NavLink>
         </div>
       </section>
     </div>
