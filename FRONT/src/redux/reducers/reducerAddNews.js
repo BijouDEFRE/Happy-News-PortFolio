@@ -1,4 +1,4 @@
-import { CHANGE_ADDNEWS_FIELD, ADD_NEWS_SUCCESS} from '../actions';
+import { CHANGE_ADDNEWS_FIELD, ADD_NEWS_SUCCESS, HANDLE_CHANGE_IMG} from '../actions';
 
 // Initial State
 const initialState = {
@@ -24,6 +24,11 @@ const reducerAddNews = (oldState = initialState, action) => {
         ...oldState,
         [action.name]: action.value,
       };
+    case HANDLE_CHANGE_IMG:
+      return {
+        ...oldState,
+        picture_url: action.picture_url,
+      }
     case ADD_NEWS_SUCCESS:
       console.log("case addNewsSuccess");
       return {

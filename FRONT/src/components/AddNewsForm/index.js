@@ -1,63 +1,96 @@
 import React, { useState } from 'react';
 // import uploadImage from 'src/middlewares/firebase';
+// import de Firebase pour les images
+import { storage } from "../firebase";
 import PropTypes from 'prop-types';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './style.scss';
 
-export const AddNewsForm = ({ article_title, description, picture_url,price, userId, handleChangeField, activities, handleAddNews }) => {
+export const AddNewsForm = ({ article_title, description, picture_url, price, userId, handleChangeField, activities, handleAddNews }) => {
  
-  const [image, setImage ] = useState(null);
-  const [pictureUrl, setPictureUrl ] = useState(null);
+  const [image, setImage ] = useState("");
+  //const [url, setUrl] = useState(''); // [picture_url, setPicture_url]
+  const [progress, setProgress] = useState(0);
+  //const [isDisabled, setIsDisabled] = useState(true)
+
+//setUrl(url) --- setPicture_url(picture_url)
 
   const handleChange = e => handleChangeField([e.target.name], e.target.value);
   
   const handleChangeImg = e => {
     if (e.target.files[0]) {
-      // setImage(e.target.files[0]);
+      setImage(e.target.files[0]);
     }
   };
-  console.log(image);
+  //console.log('l\'image sélectionnée est : ',image);
 
-  const handleUpload = () => {};
-
-  
-  // const handleUpload = async () => {
-  //   const url = await uploadImage(image);
-  //   setPictureUrl(url);
-  //   console.log(url);
-  // };
-  // console.log(pictureUrl);
-
-
-
-  {/** ------------- Récupère l'image et la transforme en blob --------
-     const handleChangeImage = e => {
-    const reader = new FileReader() // Je crée un nouveau reader
-    const file = e.target.files[0] // Je récupère mon image 
-    reader.onloadend =() =>{ // Je la converti en blob afin de pouvoir l'envoyer au back.
-      // console.log('reader.result', reader.result)
-      handleChangeField('picture_url', reader.result)
-    }
-    console.log(reader.readAsDataURL(file))
+  const uploadImageFirebase = e => {
+    e.preventDefault()
+    // la logique d'upload d'image vers firebase
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // To get a progress bar on upload img
+        );
+        setProgress(progress)
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then(url => {
+            console.log('L\'Url de l\'image est : ', url); // console.log(picture_url)
+            //setUrl(url) 
+            handleChangeField('picture_url', url)
+            //setIsDisabled(false)
+            // setPicture_url(picture_url)
+          });
+      }
+    );
   }
-   */}
 
- 
-  console.log(handleAddNews);
+  // Appelé pour envoyer l'image a Firebase
+  const handleUpload = (e) => {
+    e.preventDefault()
+    console.log('handleUpload')
+  }; 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     handleAddNews();
-    // e.target.reset()
   };
+
+  // console.log(handleAddNews);
+/*   const handleSubmit = (event) => {
+    event.preventDefault();
+    // uploadImageFirebase()
+    console.log('imageUrl', url)
+    
+    // e.target.reset()
+        
+    // lorsque je submit
+    // j'upload l'image
+    //j'attends le retour de la requete firebase (url)
+    //handleAddNews();
+    //const data = new FormData()
+    //data.append('url', url)
+    //props.????(data)
+  }; */
 
   return (
     <section className="section-addnews-form">
       <div id="wraper">
         <div className="form-container">
           <span className="form-heading">Ajouter une News</span>
-          <form method="post" 
+          <form 
             className="form-body" 
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit} // {handleSubmit, handleUpload}
             >
             <div className="input-group">
               <i className="news-title" />
@@ -67,7 +100,7 @@ export const AddNewsForm = ({ article_title, description, picture_url,price, use
                 value={article_title}
                 placeholder="Titre..." 
                 onChange={e => handleChange(e)}
-                required
+                //required
                 />
               <span className="bar"></span>
             </div>
@@ -110,17 +143,21 @@ export const AddNewsForm = ({ article_title, description, picture_url,price, use
             <div className="input-group">
               <i className="picture-downlaod" />
               <input
-                name="picture_url"
+                name="url"
                 type="file"
-                value={pictureUrl}
-                accept="image" 
+                // value={url}
+                // accept="image" 
                 onChange={handleChangeImg}
                 //multiple
               />
+              <button type="button" onClick={uploadImageFirebase}>v</button>
               <span className="bar"></span>
             </div>
             <div className="input-group">
-              <button className="news-valid-form-but" onClick={handleUpload}>
+              <button className="news-valid-form-but"
+              //disabled={isDisabled} 
+              onClick={handleSubmit}
+              >
                 <i className="picture-valid">
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-telegram" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />

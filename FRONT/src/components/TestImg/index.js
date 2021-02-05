@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import firebase from 'firebase/app'
+// import firebase from 'firebase/app'
 import { storage } from "../firebase";
+// export { storage, firebase as default};
 import './style.scss';
 
 // Definition du state de l'upload
@@ -25,7 +26,7 @@ const ReactFirebaseFileUpload = () => {
     uploadTask.on(
       "state_changed",
       snapshot => {
-        const pregress = Math.round(
+        const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // To get a progress bar on upload img
         );
         setProgress(progress)

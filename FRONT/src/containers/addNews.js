@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { AddNewsForm } from 'src/components/AddNewsForm';
-import { addNews, addNewsSuccess, changeAddNewsField, handleAddNews } from '../redux/actions';
+import { addNews, addNewsSuccess, changeAddNewsField, handleAddNews, handleChangeImg } from '../redux/actions';
 
 // const { auth } = store.getState();
 // console.log(state.auth.user_id);
@@ -28,6 +28,9 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch(changeAddNewsField(name,value));
       // console.log('la value :', value);
       // console.log('le name :', name);
+    },
+    handleChangeImg: (picture_url) => {
+      dispatch(handleChangeImg(picture_url))
     },
     handleAddNews: () => {
       // dispatch(addNews());

@@ -48,6 +48,12 @@ export const changeAddNewsField = (name, value) => ({
   value,
 });
 
+export const HANDLE_CHANGE_IMG = 'HANDLE_CHANGE_IMG';
+export const handleChangeImg = (picture_url) => ({
+  type: HANDLE_CHANGE_IMG,
+  picture_url,
+});
+
 // Function to submit the addNewsForm
 export const handleAddNews = () => ({
   type: ADD_NEWS,

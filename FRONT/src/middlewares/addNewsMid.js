@@ -21,17 +21,17 @@ const add = (store) => (next) => (action) => {
       console.log('State.addNews.price:', state.addNews.price);
       console.log('State.addNews.is_news:', state.addNews.is_news);
       console.log('State.auth.user_id:', state.auth.userId);
-      console.log('State.addNews.activity_id:', parseInt(state.addNews.activity_id));
+      console.log('State.addNews.activity_id:', state.user.user.activity_id);
       
       const formData = new FormData();
       // Ici, les données du formulaire
       formData.append('article_title', state.addNews.article_title);
       formData.append('description', state.addNews.description);
-      formData.append('picture_url', ''); // **********
+      formData.append('picture_url', state.addnews.picture_url); // **********
       formData.append('price', state.addNews.price);
       formData.append('is_news', state.addNews.is_news);
       formData.append('user_id', state.auth.userId);
-      formData.append('activity_id', parseInt(state.addNews.activity_id)); // *********
+      formData.append('activity_id', state.user.user.activity_id); // *********
       console.log(formData);
       const config = {
         method: 'post', // verbe de la requête, ici un post pour insérer des informations à la bdd
