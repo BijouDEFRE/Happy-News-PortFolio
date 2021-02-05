@@ -6,8 +6,9 @@ import './style.scss';
 import TabTitle from './TabTitle';
 
 const Tabs = ({ user, news, changeContent }) => {
-  const changeField = (event) => {
+  const changeFieldContent = (event) => {
     changeContent(event.target.value);
+    console.log(event.target.value);
   };
 
   const [toggleState, setToggleState] = useState(1);
@@ -20,17 +21,14 @@ const Tabs = ({ user, news, changeContent }) => {
   // console.log(parseInt(id));
   // const { id } = useParams();
   // console.log(news);
-
   // const newsByUserId = news.filter((article) => article.user_id = id);
   // console.log(newsByUserId);
   // console.log(news);
-  const newsIsNewsTrue = news.filter((news) => (news.is_news === true));
+  // const newsIsNewsTrue = news.filter((news) => (news.is_news === true));
   // console.log(newsIsNewsTrue);
-
-  const newsIsNewsFalse = news.filter((news) => (news.is_news === false));
+  // const newsIsNewsFalse = news.filter((news) => (news.is_news === false));
   // console.log(newsIsNewsFalse);
-
-  const newsUserId = news.filter((news) => (news.user_id === parseInt(id)));
+  // const newsUserId = news.filter((news) => (news.user_id === parseInt(id)));
   // console.log(newsUserId);
 
   const newsUserIdIsTrue = news.filter((news) => ((news.is_news === true) && (news.user_id === parseInt(id))));
@@ -60,20 +58,31 @@ const Tabs = ({ user, news, changeContent }) => {
       </div>
       <div className="content-tabs">
         <div className={toggleState === 1 ? 'content  active-content' : 'content'}>
+          <form>
 
-          <textarea
-            id="story"
-            name="story"
-            placeholder="Décrivez nous votre activité, votre passion et laissez un petit mot pour vos futures clients !"
-            rows="18"
-            cols="153"
-            className="content-tabs__textarea"
-            value={user.content}
+            {/* <input
+              type="text"
+              id="story"
+              name="story"
+              className="content-tabs__textarea"
+              value={user.content}
+              onChange={changeFieldContent}
+            /> */}
+            <textarea
+              id="story"
+              name="story"
+            // placeholder="Décrivez nous votre activité, votre passion et laissez un petit mot pour vos futures clients !"
+              rows="18"
+              cols="153"
+              className="content-tabs__textarea"
+            // value={user.content}
+              value=""
             // onChange={(event) => changeContent(event.target.value)}
-            onChange={changeField}
-          >
-            {user.content}
-          </textarea>
+              onChange={changeFieldContent}
+            > }
+              {/* {user.content} */}
+            </textarea>
+          </form>
         </div>
 
         <div className={toggleState === 2 ? 'content  active-content' : 'content'}>

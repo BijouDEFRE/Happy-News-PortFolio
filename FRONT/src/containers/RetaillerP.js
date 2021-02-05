@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import RetailerP from 'src/components/RetaillerP';
-import { getUserDetails } from 'src/redux/actions';
+import { getUserDetails, updateTextContent } from 'src/redux/actions';
 
 const mapStateToProps = (state) => ({
   user: state.user,
@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   loadNews: () => {
     dispatch({ type: 'GET_NEWS' });
+  },
+  changeContent: (value) => {
+    dispatch(updateTextContent(value));
   },
 });
 

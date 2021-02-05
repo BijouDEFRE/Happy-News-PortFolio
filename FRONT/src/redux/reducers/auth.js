@@ -134,7 +134,7 @@ const authReducer = (state = initialState, action) => {
     case UPDATE_CONTENT_USER:
       return {
         ...state,
-        content: action.value,
+        content: action.contentValue,
       };
     default:
       return { ...state };

@@ -197,10 +197,10 @@ export const deleteNewsError = () => ({
 // Update content USER
 export const UPDATE_CONTENT_USER = 'UPDATE_CONTENT_USER';
 
-export const updateTextContent = (value) => {
-  console.log('je suis dans ma reponse ', value);
+export const updateTextContent = (contentValue) => {
+  console.log('je suis dans ma reponse ', contentValue);
   return {
     type: UPDATE_CONTENT_USER,
-    value,
+    contentValue,
   };
 };
