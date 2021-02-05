@@ -10,7 +10,7 @@
 }
 
 .badge {
-  // position: absolute;
+  // position: relative;
   left: 0;
   top: 20px;
   text-transform: uppercase;
@@ -80,7 +80,7 @@
 
 .product-price {
   font-size: 18px;
-  color: #fbb72c;
+  color: vars.$Secondary;
   font-weight: 600;
 }
 
@@ -105,8 +105,10 @@
 }
 
 .product-links a:hover {
-  color: #fbb72c;
+  color: vars.$Secondary;
 }
+// MODAL
+
 .modalBackground {
   opacity: 0;
   pointer-events: none;
@@ -116,13 +118,86 @@
   right: 0;
   bottom: 0;
   top: 0;
-  width: 100%;
-  height: 150vh;
+  // width: 100%;
+  // height: 150vh;
   background: rgba(0, 0, 0, 0.7);
-  display: flex;
+  // display: flex;
 }
 .modalShowing-true {
   opacity: 1;
   pointer-events: visible;
 }
-
+.product-modal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-modal{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-height: 50%;
+  max-width: 25%;
+  transition: opacity 0.4s ease-in-out;
+  // background: vars.$Clear;
+}
+.badge-modal{
+  left: 0;
+  top: 20px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  background: red;
+  color: rgb(248, 248, 248);
+  padding: 3px 10px;
+}
+.product-tumb-modal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20em;
+  padding: 10px;
+  background: #ffffff;
+}
+.modal-picture{
+  max-width: 100%;
+  max-height: 100%;
+}
+.product-details-modal{
+  padding: 25px;
+  background: vars.$Clear;
+}
+.product-catagory-modal{
+  display: block;
+  font-size: 1.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  margin-bottom: 15px;
+}
+.product-details-modal p {
+  font-weight: 500;
+  // display: block;
+  // margin-bottom: 18px;
+  text-transform: uppercase;
+  // color: #797979;
+  text-decoration: none;
+  transition: 0.3s;
+  height: 4.5em;
+  // overflow: auto;
+  font-size: 15px;
+  line-height: 22px;
+  // margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+}
+.product-price-modal{
+  font-size: 18px;
+  color: vars.$Secondary;
+  font-weight: 600;
+}
+.product-links-modal {
+  text-align: right;
+}
+.product-links-modal a:hover {
+  color: vars.$Secondary;
+}
