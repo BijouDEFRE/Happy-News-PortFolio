@@ -36,10 +36,10 @@ const Login = ({
               type="email"
               register={register({
                 required: true,
-                minLength: { value: 8, message: 'vous devez entrer au moins 10 caracteres' },
+                minLength: { value: 8, message: 'vous devez entrer au moins 8 caracteres' },
               })}
             />
-            {errors.email && <span> {errors.email.message} </span>}
+            <div className="login__form-error">{errors.email && <span className="login__form-error"> {errors.email.message} </span>}</div>
             <Field
               name="password"
               value={password}
