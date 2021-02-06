@@ -199,6 +199,17 @@ export const handleIsNewsArticle = (checked) => {
   console.log('je suis is news dans action creator');
   return {
     type: SET_ISNEWS_ON_ARTICLE,
-    checked
+    checked,
+  };
+};
+
+// Update content USER
+export const CHANGE_CONTENT_USER_FIELD = 'CHANGE_CONTENT_USER_FIELD';
+
+export const changeContentUserField = (value) => {
+  console.log('je suis dans changeContentUserField de action creator ', value);
+  return {
+    type: CHANGE_CONTENT_USER_FIELD,
+    value,
   };
 };
