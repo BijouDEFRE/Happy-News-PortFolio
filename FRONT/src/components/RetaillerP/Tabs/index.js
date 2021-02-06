@@ -7,7 +7,11 @@ import Button from 'src/components/Header/Button';
 import './style.scss';
 import TabTitle from './TabTitle';
 
-const Tabs = ({ user, news, changeContent, content }) => {
+const Tabs = ({ user, news, changeContent, content, handleChangeProfilContent }) => {
+  const handleChange = (event) => {
+    event.preventDefault();
+    handleChangeProfilContent();
+  };
   const changeField = (event) => {
     changeContent(event.target.value);
   };
@@ -55,7 +59,7 @@ const Tabs = ({ user, news, changeContent, content }) => {
       <div className="content-tabs">
         <div className={toggleState === 1 ? 'content  active-content' : 'content'}>
           {/* update content */}
-          <form id="content-form">
+          <form id="content-form" onSubmit={handleChange}>
             <label htmlFor="content"></label>
             <textarea
               form="content-form"
@@ -99,6 +103,7 @@ const Tabs = ({ user, news, changeContent, content }) => {
 };
 
 Tabs.propTypes = {
+  handleChangeProfilContent: PropTypes.func.isRequired,
   content: PropTypes.string.isRequired,
   changeContent: PropTypes.func.isRequired,
   user: PropTypes.shape({

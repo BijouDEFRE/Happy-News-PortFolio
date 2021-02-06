@@ -205,6 +205,9 @@ export const handleIsNewsArticle = (checked) => {
 
 // Update content USER
 export const CHANGE_CONTENT_USER_FIELD = 'CHANGE_CONTENT_USER_FIELD';
+export const HANDLE_CHANGE_PROFIL_CONTENT = 'HANDLE_CHANGE_PROFIL_CONTENT';
+export const HANDLE_CHANGE_PROFIL_CONTENT_SUCCESS = 'HANDLE_CHANGE_PROFIL_CONTENT_SUCCESS';
+export const HANDLE_CHANGE_PROFIL_CONTENT_ERROR = 'HANDLE_CHANGE_PROFIL_CONTENT_ERROR';
 
 export const changeContentUserField = (value) => {
   console.log('je suis dans changeContentUserField de action creator ', value);
@@ -213,3 +216,13 @@ export const changeContentUserField = (value) => {
     value,
   };
 };
+
+export const handleChangeProfilContent = () => ({
+  type: HANDLE_CHANGE_PROFIL_CONTENT,
+});
+export const handleChangeProfilContentSuccess = () => ({
+  type: HANDLE_CHANGE_PROFIL_CONTENT_SUCCESS,
+});
+export const handleChangeProfilContentError = () => ({
+  type: HANDLE_CHANGE_PROFIL_CONTENT_ERROR,
+});

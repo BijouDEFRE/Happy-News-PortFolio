@@ -1,7 +1,8 @@
 import axios from 'axios';
 import FormData from 'form-data';
 import {
-  handleLoginSuccess, handleSubscribeSuccess, LOGIN, SUBSCRIBE
+  handleLoginSuccess, handleSubscribeSuccess, LOGIN, SUBSCRIBE,
+  handleChangeProfilContent,
 } from '../redux/actions';
 
 const api = (store) => (next) => (action) => {
@@ -32,11 +33,6 @@ const api = (store) => (next) => (action) => {
           localStorage.setItem('id', id);
           store.dispatch(handleLoginSuccess(response.data));
           // on le stocke aussi dans le localStorage
-
-          // console.log(response.data);
-          // console.log('Je suis dans la réponse, et response.data du Tokenvaut : ', response.data.userToken);
-          // console.log('Je suis dans la réponse, et response.data du logged : ', response.data.logged);
-          // console.log('Je suis dans la réponse, et response.data de l\'id : ', response.data.user[0].id);
         })
         .catch((error) => { // cas d'erreur
           console.log(error);

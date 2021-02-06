@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Tab from 'src/components/RetaillerP/Tabs';
-import { changeContentUserField } from 'src/redux/actions';
+import { changeContentUserField, handleChangeProfilContent } from 'src/redux/actions';
 
 const mapStateToProps = (state) => ({
   user: state.user.user,
@@ -10,6 +10,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeContent: (value) => {
     dispatch(changeContentUserField(value));
+  },
+  handleChangeProfilContent: () => {
+    dispatch(handleChangeProfilContent());
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Tab);
