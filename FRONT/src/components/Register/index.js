@@ -176,6 +176,7 @@ const FormRegister = ({
            />
          </div>
        </div>
+       {errors.registration_number && <div className="login__form-error"> {errors.registration_number.message} </div>}
      </fieldset>
    </>
    )}

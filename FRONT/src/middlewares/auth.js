@@ -2,7 +2,7 @@ import axios from 'axios';
 import FormData from 'form-data';
 import {
   handleLoginSuccess, handleSubscribeSuccess, LOGIN, SUBSCRIBE,
-  handleChangeProfilContent,
+  HANDLE_CHANGE_PROFIL_CONTENT, handleChangeProfilContentSuccess,
 } from '../redux/actions';
 
 const api = (store) => (next) => (action) => {
@@ -78,6 +78,46 @@ const api = (store) => (next) => (action) => {
       axios(config)
         .then((response) => {
           store.dispatch(handleSubscribeSuccess(response.data));
+        })
+        .catch((error) => { // cas d'erreur
+          console.log(error);
+        });
+      break;
+    }
+    case HANDLE_CHANGE_PROFIL_CONTENT: {
+      const token = localStorage.getItem('token');
+      const state = store.getState();
+      console.log(state.auth.userId);
+
+      const form = new FormData();
+      form.append('first_name', state.auth.first_name);
+      form.append('last_name', state.auth.last_name);
+      form.append('email', state.auth.email);
+      form.append('password', state.auth.password);
+      form.append('adress', state.auth.adress);
+      form.append('zip_code', state.auth.zip_code);
+      form.append('city', state.auth.city);
+      // form.append('company_name', state.auth.company_name);
+      form.append('shop_name', state.auth.shop_name);
+      form.append('registration_number', state.auth.registration_number);
+      form.append('role_id', state.auth.role_id);
+      form.append('content', state.auth.content);
+      form.append('activity_id', state.auth.activity_id);
+
+      const config = {
+        method: 'patch',
+        url: `https://api-happy-news.herokuapp.com/user/${state.auth.userId}`,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+        data: form,
+      };
+      axios(config)
+        .then((response) => {
+          store.dispatch(handleChangeProfilContentSuccess(response.data));
+          store.dispatch({ type: 'GET_USER_DETAILS' });
+          console.log(response.data);
         })
         .catch((error) => { // cas d'erreur
           console.log(error);
