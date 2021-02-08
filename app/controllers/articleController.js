@@ -1,5 +1,6 @@
 const articleDataMapper = require('../dataMappers/articleDataMapper');
 const activityDataMapper = require('../dataMappers/activityDataMapper');
+const CustomError = require('../middlewares/CustomError');
 
 module.exports = {
     async getAllArticles(_, response, next) {
