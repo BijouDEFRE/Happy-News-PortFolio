@@ -65,6 +65,7 @@ const authController = {
             }
 
             response.json({
+                registered: true,
                 message: 'User create',
                 data: newUser
             });
