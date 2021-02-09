@@ -15,6 +15,7 @@ import './style.scss';
 const News = ({
   list, loadNews, hasData, activities, loadActivities, hasDataActivities,
   searchValue, changeSearchField, handleSearchSubmit, activitySelected, handleSelectedActivity,
+  resetActivitySelected,
 }) => {
   // je déclare une variable qui ne garde que les news avec la prop
   // isNews à true (donc la News est effective en ce moment pour le commerçant)
@@ -90,15 +91,18 @@ const News = ({
         {activities.map((tag) => (
           <div key={tag.id} className="newsContainer__tagsContainer__tag">
             {hasDataActivities && (
-              <Button
-                event={(event) => {
-                  handleSelectedActivity(event.target.textContent);
-                }}
-              >{tag.activity_name}
-              </Button>
+            <Button
+              event={(event) => {
+                handleSelectedActivity(event.target.textContent);
+              }}
+            >{tag.activity_name}
+            </Button>
             )}
           </div>
         ))}
+        <div className="container-buttonResetActivitySelected">
+          <Button className="button" event={() => resetActivitySelected()}>Toutes catégories</Button>
+        </div>
       </div>
       <section className="newsContainer__newsList">
         {!hasData && <Spinner />}
@@ -114,6 +118,7 @@ const News = ({
 };
 
 News.propTypes = {
+  resetActivitySelected: PropTypes.func.isRequired,
   handleSelectedActivity: PropTypes.func.isRequired,
   activitySelected: PropTypes.string,
   handleSearchSubmit: PropTypes.func.isRequired,

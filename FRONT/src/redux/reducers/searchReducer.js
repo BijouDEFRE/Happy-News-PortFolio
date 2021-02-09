@@ -1,5 +1,7 @@
 // import { CHANGE_SEARCH_VALUE } from '../actions';
-import { ACTIVITY_SELECTED, CHANGE_SEARCH_VALUE, GET_CITY_FROM_API_SUCCESS } from 'src/redux/actions';
+import {
+  ACTIVITY_SELECTED, CHANGE_SEARCH_VALUE, GET_CITY_FROM_API_SUCCESS, RESET_ACTIVITY_SELECTED
+} from 'src/redux/actions';
 
 const initialState = {
   searchValue: '',
@@ -15,8 +17,8 @@ const searchReducer = (state = initialState, action) => {
       return { ...state, activitySelected: action.value };
     case GET_CITY_FROM_API_SUCCESS:
       return { ...state, cityCoordinates: action.cityCoordinates };
-/*     case RESET_ACTIVITY_SELECTED:
-      return { ...state, activitySelected: action.value }; */
+    case RESET_ACTIVITY_SELECTED:
+      return { ...state, activitySelected: '' };
     default:
       return { ...state };
   }
