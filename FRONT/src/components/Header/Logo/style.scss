@@ -16,8 +16,9 @@
   from {transform: rotateY(0);}
   to {transform: rotateY(360deg);}
 }
+
 .logo-img {
-   animation: rotateAnim 10s linear infinite;
+  animation: rotateAnim 10s linear infinite;
 }
 // .logo-img {
 //   -webkit-transition:-webkit-transform .9s; 
