@@ -116,7 +116,7 @@ const api = (store) => (next) => (action) => {
       axios(config)
         .then((response) => {
           store.dispatch(handleChangeProfilContentSuccess(response.data));
-          store.dispatch({ type: 'GET_USER_DETAILS' });
+          // store.dispatch({ type: 'GET_USER_DETAILS' });
           console.log(response.data);
         })
         .catch((error) => { // cas d'erreur
