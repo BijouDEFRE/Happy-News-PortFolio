@@ -20,15 +20,15 @@ const NewsModal = ({
     setModalState(!modalState);
   };
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const location = useLocation();
-  console.log(location.pathname);
+  // console.log(location.pathname);
 
   useEffect(() => {
     // loadNews : une prop qui charge les news (les articles)
     // cette fonction prop sera définie dans le container
     loadNews();
-    console.log('je suis dans le useEffect de NewsModal');
+    // console.log('je suis dans le useEffect de NewsModal');
   }, [popUp]);
 
   return (
