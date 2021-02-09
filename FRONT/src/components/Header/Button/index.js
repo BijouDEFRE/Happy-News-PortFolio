@@ -11,4 +11,12 @@ const Button = ({
   </div>
 );
 
+/* Button.propTypes = {
+  className: PropTypes.string,
+};
+
+Button.defaultPropTypes = {
+  className: "button",
+}; */
+
 export default Button;

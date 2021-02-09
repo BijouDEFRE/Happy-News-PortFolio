@@ -67,6 +67,17 @@
   }
 }
 
+.container-buttonResetActivitySelected {
+  margin: 1em 0 0 0.5em;
+  &:hover {
+    animation: bounce 0.35s ease alternate;
+  }
+}
+
+@keyframes bounce{
+  from {transform: translateY(0);}
+  to   {transform: translateY(-0.8em);}
+}
 
 @media (max-width: 600px) {
   .newsContainer {

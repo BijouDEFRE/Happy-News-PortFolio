@@ -71,7 +71,6 @@ export const GET_CITY_FROM_API = 'GET_CITY_FROM_API';
 export const ACTIVITY_SELECTED = 'ACTIVITY_SELECTED';
 export const GET_CITY_FROM_API_SUCCESS = 'GET_CITY_FROM_API_SUCCESS';
 
-// export const RESET_ACTIVITY_SELECTED = 'RESET_ACTIVITY_SELECTED';
 export const GET_NEWS = 'GET_NEWS';
 export const loadNews = () => ({
   type: GET_NEWS,
@@ -98,10 +97,10 @@ export const getCityFromApiSuccess = (cityCoordinates) => ({
   cityCoordinates,
 });
 
-/* export const resetActivitySelected = (value) => ({
+export const RESET_ACTIVITY_SELECTED = 'RESET_ACTIVITY_SELECTED';
+export const resetActivitySelected = () => ({
   type: RESET_ACTIVITY_SELECTED,
-  value,
-}); */
+});
 
 // FIN ACTION CREATOR DE YANN
 

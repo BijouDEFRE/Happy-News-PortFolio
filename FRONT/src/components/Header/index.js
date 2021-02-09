@@ -8,6 +8,7 @@ import Logo from 'src/components/Header/Logo';
 import './style.scss';
 import Title from './Title';
 
+
 const Header = ({
   token, handleLogout, id, prenom,
 }) =>
