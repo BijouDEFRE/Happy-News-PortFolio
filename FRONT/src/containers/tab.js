@@ -5,7 +5,7 @@ import { changeContentUserField, handleChangeProfilContent } from 'src/redux/act
 const mapStateToProps = (state) => ({
   user: state.user.user,
   news: state.newsList.list,
-  content: state.auth.content,
+  content: state.user.user.content,
 });
 const mapDispatchToProps = (dispatch) => ({
   changeContent: (value) => {

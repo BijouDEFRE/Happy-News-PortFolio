@@ -1,13 +1,15 @@
 /* eslint-disable react/button-has-type */
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import NewsModal from 'src/components/NewsModal';
 import Button from 'src/components/Header/Button';
+import NewsModal from 'src/components/NewsModal';
 import './style.scss';
 import TabTitle from './TabTitle';
 
-const Tabs = ({ user, news, changeContent, content, handleChangeProfilContent }) => {
+const Tabs = ({
+  user, news, changeContent, content, handleChangeProfilContent,
+}) => {
   const handleChange = (event) => {
     event.preventDefault();
     handleChangeProfilContent();
@@ -21,19 +23,16 @@ const Tabs = ({ user, news, changeContent, content, handleChangeProfilContent })
     setToggleState(index);
   };
   const { id } = useParams();
+  console.log(content);
 
   const newsIsNewsTrue = news.filter((news) => (news.is_news === true));
   // console.log(newsIsNewsTrue);
-
   const newsIsNewsFalse = news.filter((news) => (news.is_news === false));
   // console.log(newsIsNewsFalse);
-
   const newsUserId = news.filter((news) => (news.user_id === parseInt(id)));
   // console.log(newsUserId);
-
   const newsUserIdIsTrue = news.filter((news) => ((news.is_news === true) && (news.user_id === parseInt(id))));
   // console.log(newsUserIdIsTrue);
-
   const newsUserIdIsFalse = news.filter((news) => ((news.is_news === false) && (news.user_id === parseInt(id))));
   // console.log(newsUserIdIsFalse);
 
@@ -60,7 +59,7 @@ const Tabs = ({ user, news, changeContent, content, handleChangeProfilContent })
         <div className={toggleState === 1 ? 'content  active-content' : 'content'}>
           {/* update content */}
           <form id="content-form" onSubmit={handleChange}>
-            <label htmlFor="content"></label>
+            <label htmlFor="content" />
             <textarea
               form="content-form"
               id="content"

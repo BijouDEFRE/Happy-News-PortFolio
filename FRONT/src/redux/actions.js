@@ -14,32 +14,28 @@ export const CHANGE_ADDNEWS_FIELD = 'CHANGE_ADDNEWS_FIELD';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_ALL_USERS_SUCCESS = 'GET_ALL_USERS_SUCCESS';
 
-  export const getAllUsers = () => ({
-    type: GET_ALL_USERS,
-  });
+export const getAllUsers = () => ({
+  type: GET_ALL_USERS,
+});
 
-  export const getAllUsersSuccess = (users) => ({
-    type: GET_ALL_USERS_SUCCESS,
-    users,
-  });
+export const getAllUsersSuccess = (users) => ({
+  type: GET_ALL_USERS_SUCCESS,
+  users,
+});
   // function to change input field
-  export const changeAuthField = (value, name) => ({
-      type: CHANGE_AUTH_FIELD,
-      name,
-      value,
-  });
+export const changeAuthField = (value, name) => ({
+  type: CHANGE_AUTH_FIELD,
+  name,
+  value,
+});
 
-  export const handleLogin = () => {
-    return {
-        type: LOGIN
-    };
-  }
+export const handleLogin = () => ({
+  type: LOGIN,
+});
 
-  export const handleLogout = () => {
-    return {
-        type: LOGOUT
-    };
-  }
+export const handleLogout = () => ({
+  type: LOGOUT,
+});
 
 // Function to change fields on addNewsForm
 export const changeAddNewsField = (name, value) => ({
@@ -220,8 +216,9 @@ export const changeContentUserField = (value) => {
 export const handleChangeProfilContent = () => ({
   type: HANDLE_CHANGE_PROFIL_CONTENT,
 });
-export const handleChangeProfilContentSuccess = () => ({
+export const handleChangeProfilContentSuccess = (user) => ({
   type: HANDLE_CHANGE_PROFIL_CONTENT_SUCCESS,
+  user,
 });
 export const handleChangeProfilContentError = () => ({
   type: HANDLE_CHANGE_PROFIL_CONTENT_ERROR,

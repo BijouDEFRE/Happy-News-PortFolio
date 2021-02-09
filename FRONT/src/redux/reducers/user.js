@@ -1,4 +1,6 @@
-import { GET_USER_DETAILS_ERROR, GET_USER_DETAILS_SUCCESS, GET_ALL_USERS_SUCCESS } from 'src/redux/actions';
+import {
+  GET_ALL_USERS_SUCCESS, GET_USER_DETAILS_ERROR, GET_USER_DETAILS_SUCCESS, HANDLE_CHANGE_PROFIL_CONTENT_SUCCESS
+} from 'src/redux/actions';
 
 const initialState = {
   user: [],
@@ -20,6 +22,11 @@ const userReducer = (state = initialState, action) => {
     case GET_USER_DETAILS_ERROR:
       return {
         ...state,
+      };
+    case HANDLE_CHANGE_PROFIL_CONTENT_SUCCESS:
+      return {
+        ...state,
+        user: action.user,
       };
     default:
       return { ...state };

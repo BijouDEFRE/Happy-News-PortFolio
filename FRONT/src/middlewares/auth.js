@@ -1,8 +1,8 @@
 import axios from 'axios';
 import FormData from 'form-data';
 import {
-  handleLoginSuccess, handleSubscribeSuccess, LOGIN, SUBSCRIBE,
-  HANDLE_CHANGE_PROFIL_CONTENT, handleChangeProfilContentSuccess,
+  handleChangeProfilContentSuccess, handleLoginSuccess, handleSubscribeSuccess,
+  HANDLE_CHANGE_PROFIL_CONTENT, LOGIN, SUBSCRIBE
 } from '../redux/actions';
 
 const api = (store) => (next) => (action) => {
