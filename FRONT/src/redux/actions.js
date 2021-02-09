@@ -1,7 +1,7 @@
 export const CHANGE_AUTH_FIELD = 'CHANGE_AUTH_FIELD';
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-// export const LOGIN_ERROR  = 'LOGIN_ERROR'
+export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT = 'LOGOUT';
 export const SUBSCRIBE = 'SUBSCRIBE';
 export const SUBSCRIBE_ROLE_ID = 'SUBSCRIBE_ROLE_ID';
@@ -52,16 +52,6 @@ export const handleAddNews = () => ({
 export const addNewsSuccess = () => ({
   type: ADD_NEWS_SUCCESS,
 });
-
-// Action Creator Paco Show modal
-// export const showModalAction = () => ({
-//   type: 'SHOW_MODAL',
-//   modalType: 'DELETE_POST',
-//   modalProps: {
-//     postId: 42
-//   }
-// })
-// >>>>>>> origin/front/getDataFromNewsForm
 
 // ACTION CREATOR YANN
 // je crée une action pour le changement de la valeur de l'input de recherche
@@ -124,11 +114,10 @@ export const handleLoginSuccess = (data) => ({
 /* export const handleLogout = () => ({
   type: LOGOUT,
 }); */
-//   export const handleLoginError = () => {
-//     return {
-//         type: 'LOGIN_ERROR'
-//     };
-//   }
+export const handleLoginError = (message) => ({
+  type: 'LOGIN_ERROR',
+  payload: message,
+});
 
 export const subscriptionSubmitForm = () => {
   console.log('je suis dans submit form de l\'action creation');

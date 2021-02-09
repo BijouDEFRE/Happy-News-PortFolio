@@ -1,6 +1,6 @@
 // ajout de loggin success pour thunk
 import {
-  CHANGE_AUTH_FIELD, GET_SELECT_FIELD, LOGIN_SUCCESS, LOGOUT, SUBSCRIBE_ROLE_ID, SUBSCRIBE_SUCCESS
+  CHANGE_AUTH_FIELD, GET_SELECT_FIELD, LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT, SUBSCRIBE_ROLE_ID, SUBSCRIBE_SUCCESS
 } from 'src/redux/actions';
 
 export const initialState = {
@@ -23,6 +23,7 @@ export const initialState = {
   registration_number: '',
   role_id: 4,
   activity_id: '',
+  messageErrorLogin: '',
 };
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -31,6 +32,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         [action.name]: action.value,
       };
+
     case LOGIN_SUCCESS:
       return {
         ...state,
@@ -44,6 +46,13 @@ const authReducer = (state = initialState, action) => {
         zip_code: action.data.user[0].zip_code,
         city: action.data.user[0].city,
         role_id: action.data.user[0].role_id,
+      };
+
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        // on copie les données de l'action dans le reducer
+        messageErrorLogin: action.payload.message,
       };
     case LOGOUT:
       //   localStorage.removeItem('token')

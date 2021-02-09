@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { MdReportProblem } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 import avatar from 'src/assets/Images/avatar-SVG-primarycolor.svg';
 import Button from '../Header/Button';
@@ -10,7 +11,7 @@ import Field from './Field';
 import './style.scss';
 
 const Login = ({
-  email, password, changeField, handleLogin,
+  email, password, changeField, handleLogin, messageErrorLogin,
 }) => {
   // pour react hook form on commente handle submit
   // const handleSubmit = (event) => {
@@ -19,12 +20,15 @@ const Login = ({
   // };
   const { register, handleSubmit, errors } = useForm();
   // const handleSubmit = data => console.log(data);
+  console.log(messageErrorLogin);
   return (
+
     <div>
       <section className="login">
         <div className="login__loginbox">
           <img alt="avatar" src={avatar} className="login__loginbox__avatar" />
           <h1 className="login__loginbox__title">Connexion</h1>
+
           {/* (handlelogin pour react hook form */}
           <form onSubmit={handleSubmit(handleLogin)}>
 
@@ -52,11 +56,27 @@ const Login = ({
             {errors.password && <div className="login__form-error"> {errors.password.message}</div>}
             <div className="buttonDiv">
               <Button type="submit">Se connecter</Button>
+              {
+            messageErrorLogin && (
+            <div className="error-message">
+              <MdReportProblem className="error-icon" /> {messageErrorLogin}
             </div>
+            )
+}
+            </div>
+
           </form>
           <a className="form__link" href="#">Mot de passe oublié ?</a>
           <h2 className="form__h2">Si vous n'avez pas encore de compte :</h2>
           <NavLink to="/inscription"><Button>Inscrivez vous</Button></NavLink>
+          {/* {
+        messageErrorLogin && (
+        <div className="error-message">
+          <MdReportProblem className="error-icon" /> {messageErrorLogin}
+        </div>
+
+        )
+} */}
         </div>
       </section>
     </div>
