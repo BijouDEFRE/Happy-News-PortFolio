@@ -64,19 +64,10 @@ const Login = ({
             )
 }
             </div>
-
           </form>
           <a className="form__link" href="#">Mot de passe oublié ?</a>
           <h2 className="form__h2">Si vous n'avez pas encore de compte :</h2>
           <NavLink to="/inscription"><Button>Inscrivez vous</Button></NavLink>
-          {/* {
-        messageErrorLogin && (
-        <div className="error-message">
-          <MdReportProblem className="error-icon" /> {messageErrorLogin}
-        </div>
-
-        )
-} */}
         </div>
       </section>
     </div>

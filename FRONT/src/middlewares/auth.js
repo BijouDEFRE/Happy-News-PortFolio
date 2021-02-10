@@ -1,7 +1,7 @@
 import axios from 'axios';
 import FormData from 'form-data';
 import {
-  handleLoginError, handleLoginSuccess, handleSubscribeSuccess, LOGIN, SUBSCRIBE
+  handleLoginError, handleLoginSuccess, handleSubscribeError, handleSubscribeSuccess, LOGIN, SUBSCRIBE
 } from '../redux/actions';
 
 const api = (store) => (next) => (action) => {
@@ -53,22 +53,17 @@ const api = (store) => (next) => (action) => {
 
       if (state.auth.role_id == 3) {
         form.append('company_name', state.auth.company_name);
-        console.log(state.auth.company_name);
         form.append('shop_name', state.auth.shop_name);
-        console.log(state.auth.shop_name);
         form.append('registration_number', state.auth.registration_number);
-        console.log(state.auth.registration_number);
       }
       form.append('role_id', state.auth.role_id);
-      console.log(state.auth.role_id);
       if (state.auth.role_id == 3) {
         form.append('activity_id', state.auth.activity_id);
-        console.log(state.auth.activity_id);
       }
 
       const config = {
         method: 'post',
-        url: 'https://api-happy-news.herokuapp.com/signup',
+        url: 'https://api-happy-news.herokuapp.com/signu',
         data: form,
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -77,11 +72,11 @@ const api = (store) => (next) => (action) => {
       axios(config)
         .then((response) => {
           store.dispatch(handleSubscribeSuccess(response.data));
-          console.log(response.data);
           console.log(response.data.registered);
         })
         .catch((error) => { // cas d'erreur
           console.log(error);
+          store.dispatch(handleSubscribeError());
         });
       break;
     }

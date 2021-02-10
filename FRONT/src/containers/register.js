@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import FormRegister from 'src/components/Register';
 import {
-    changeAuthField, getSelectField, HandleRoleIdChecked, subscriptionSubmitForm
+  changeAuthField, getSelectField, HandleRoleIdChecked, subscriptionSubmitForm
 } from 'src/redux/actions';
 
 const mapStateToProps = (state) => ({
@@ -16,6 +16,7 @@ const mapStateToProps = (state) => ({
   email: state.auth.email,
   password: state.auth.password,
   role_id: state.auth.role_id,
+  messageErrorsubscribe: state.auth.messageErrorsubscribe,
 });
 
 const mapDispatchToProps = (dispatch) => ({

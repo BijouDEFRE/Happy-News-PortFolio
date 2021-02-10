@@ -7,7 +7,7 @@ export const SUBSCRIBE = 'SUBSCRIBE';
 export const SUBSCRIBE_ROLE_ID = 'SUBSCRIBE_ROLE_ID';
 export const GET_SELECT_FIELD = 'GET_SELECT_FIELD';
 export const SUBSCRIBE_SUCCESS = 'GET_SELECT_FIELD';
-// export const SUBSCRIBE_ERROR= 'SUBSCRIBE_ERROR'
+export const SUBSCRIBE_ERROR = 'SUBSCRIBE_ERROR';
 export const ADD_NEWS_SUCCESS = 'ADD_NEWS_SUCCESS';
 export const ADD_NEWS = 'ADD_NEWS';
 export const CHANGE_ADDNEWS_FIELD = 'CHANGE_ADDNEWS_FIELD';
@@ -140,11 +140,9 @@ export const handleSubscribeSuccess = (data) => ({
   type: SUBSCRIBE_SUCCESS,
   data,
 });
-//   export const handleSubscribeError = () => {
-//     return {
-//         type: 'SUBSCRIBE_ERROR'
-//     };
-//   }
+export const handleSubscribeError = () => ({
+  type: 'SUBSCRIBE_ERROR',
+});
 export const getUserDetails = (id) => ({
   type: GET_USER_DETAILS,
   id,

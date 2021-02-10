@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { MdReportProblem } from 'react-icons/md';
 import Button from '../Header/Button';
 import Field from '../Login/Field';
 import './style.scss';
@@ -22,6 +23,7 @@ const FormRegister = ({
   role_id,
   changeSelectField,
   subscriptionSubmit,
+  messageErrorsubscribe,
 }) => {
   const { register, handleSubmit, errors } = useForm({
     shouldFocusError: true,
@@ -32,6 +34,13 @@ const FormRegister = ({
       <form className="register" onSubmit={handleSubmit(subscriptionSubmit)}>
         {/* <Avatar /> */}
         <h1 className="register-title">Inscription</h1>
+        {
+            messageErrorsubscribe && (
+            <div className="error-message">
+              <MdReportProblem className="error-icon" /> {messageErrorsubscribe}
+            </div>
+            )
+}
         <fieldset className="register-sec-identite">
           <legend className="register-leg-identite">Identité</legend>
           <div className="register-form">

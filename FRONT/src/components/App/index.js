@@ -12,13 +12,10 @@ import Home from 'src/components/Home';
 // import NewsModal from 'src/components/NewsModal';
 import Terms from 'src/components/Terms';
 import AddNewsForm from 'src/containers/addNews';
-// import Header from 'src/components/Header';
 import Header from 'src/containers/header';
 import Login from 'src/containers/login';
 import News from 'src/containers/news';
-// import Register from 'src/components/Register';
 import Register from 'src/containers/register';
-// import Login from 'src/components/Login';
 import RetaillerP from 'src/containers/RetaillerP';
 // == Import CSS
 import './styles.scss';
@@ -36,10 +33,8 @@ const App = ({ isLogged, isRegistered }) => (
       </Route>
       <Route exact path="/inscription">
         {isRegistered ? <Redirect to="/connexion" /> : <Register />}
-        {/* <Register /> */}
       </Route>
       <Route exact path="/commercant/profil/:id">
-        {/* { isLogged ? <RetaillerP /> : <Redirect to="/news/liste" />} */}
         <RetaillerP />
       </Route>
       <Route exact path="/news/liste">

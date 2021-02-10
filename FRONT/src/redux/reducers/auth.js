@@ -1,6 +1,6 @@
 // ajout de loggin success pour thunk
 import {
-  CHANGE_AUTH_FIELD, GET_SELECT_FIELD, LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT, SUBSCRIBE_ROLE_ID, SUBSCRIBE_SUCCESS
+  CHANGE_AUTH_FIELD, GET_SELECT_FIELD, LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT, SUBSCRIBE_ERROR, SUBSCRIBE_ROLE_ID, SUBSCRIBE_SUCCESS
 } from 'src/redux/actions';
 
 export const initialState = {
@@ -24,6 +24,7 @@ export const initialState = {
   role_id: 4,
   activity_id: '',
   messageErrorLogin: '',
+  messageErrorsubscribe: '',
 };
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -53,6 +54,8 @@ const authReducer = (state = initialState, action) => {
         ...state,
         // on copie les données de l'action dans le reducer
         messageErrorLogin: action.payload.message,
+        email: '',
+        password: '',
       };
     case LOGOUT:
       //   localStorage.removeItem('token')
@@ -155,6 +158,22 @@ const authReducer = (state = initialState, action) => {
         shop_name: '',
         registration_number: '',
         role_id: 4,
+      };
+    case SUBSCRIBE_ERROR:
+      return {
+        ...state,
+        email: '',
+        password: '',
+        first_name: '',
+        last_name: '',
+        adress: '',
+        zip_code: '',
+        city: '',
+        company_name: '',
+        shop_name: '',
+        registration_number: '',
+        role_id: 4,
+        messageErrorsubscribe: 'Une erreur inatendu est survenu, veuillez réessayer',
       };
     default:
       return { ...state };

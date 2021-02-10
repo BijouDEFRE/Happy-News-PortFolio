@@ -1,8 +1,5 @@
 @use 'src/styles/vars';
 
-.avatar {
-  //  width: 40%;
-}
   .avatar img {
     width: 30%;
     border-radius: 9999px;
@@ -19,14 +16,12 @@
     border: solid 2px vars.$Primary ;
   }
     
-  // min size 1313px
 @media screen and (min-width: 1313px) {
     .avatar-img {
         width: 120px;
     }
 
 }
-// max size 1312 px
 @media screen and (max-width: 1312px) {
     .avatar-img {
         width: 100px;
