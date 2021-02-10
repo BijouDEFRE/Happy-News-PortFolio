@@ -12,7 +12,7 @@ const About = () => (
   <section className="aboutUs">
     <div className="aboutUs__presentationSection">
       <h2 className="aboutUs__presentationSection__title">Le projet</h2>
-      <p className="aboutUs__presentationSection__text">Happy News est une application qui vise à renouer les liens entre les commerçants de proximité et les clients. </p>
+      <p className="aboutUs__presentationSection__text">Happy News est une application qui a pour but de renouer les liens entre les commerçants de proximité et les clients. </p>
       <p className="aboutUs__presentationSection__text">Ces clients profiteront de promotions  mise en ligne par les commerçants.  </p>
       <img className="aboutUs__presentationSection__img" src={ Discount } alt=""/>
     </div>
