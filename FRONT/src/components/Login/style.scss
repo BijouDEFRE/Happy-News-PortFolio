@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   background: vars.$Linear-gradient;
-  height: 51em;
+  min-height: 80vh;
   &__loginbox {
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
     border-radius: 1em;
@@ -22,7 +22,7 @@
       height: 6em;
       border-radius: 50%;
       position: absolute;
-      top: 8.5em;
+      top: 11em;
       left: calc(50% - 3em);
     }
     &__title {
