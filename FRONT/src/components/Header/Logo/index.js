@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../../assets/Images/logo-happy-news-SVG.svg';
+import logo from '../../../assets/Images/logo-happy-news-green.svg';
 import './style.scss';
 
 function Logo() {
