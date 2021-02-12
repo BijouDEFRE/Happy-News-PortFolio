@@ -1,101 +1,13 @@
-/* @use 'src/styles/vars';
-// body {
-//  background: vars.$Linear-gradient;
-// }
-.container {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-    height: 40em;
-    background: vars.$Background;
-    margin: 100px auto 0;
-    word-break: break-all;
-    border: 1px solid rgba(0, 0, 0, 0.274);
-  }
-  
-  .bloc-tabs {
-    display: flex;
-  }
-  .tabs {
-  
-    padding: 1em;
-    text-align: center;
-    width: 50%;
-    background: vars.$Background;
-    cursor: pointer;
-    border-bottom: 2px solid vars.$Primary;
-    box-sizing: content-box;
-    position: relative;
-    outline: none;
-  }
-  .tabs:not(:last-child){
-    border-right: 1px solid rgba(0, 0, 0, 0.274);
-  }
-  
-  .active-tabs  {
-    background: vars.$Background;
-    border-bottom: 1px solid transparent;
-  }
-  
-  .active-tabs::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% + 2px);
-    height: 4px;
-    background: rgb(88, 147, 241);
-  }
-  button {
-    border: none;
-  }
-  .content-tabs {
-    flex-grow : 1;
-  }
-  .content {
-    background: vars.$Background;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-  .content h2 {
-    padding: 0px 0 5px 0px;
-  }
-  .content hr {
-    width: 100px;
-    height: 2px;
-    background: #222;
-    margin-bottom: 5px;
-  }
-  .content p {
-    width: 100%;
-    height: 100%;
-  }
-  .active-content {
-    display: block;
-  }
- */
 
-
- // NOUVEAU CSS
 
  @use 'src/styles/vars';
-/* body {
- background: vars.$Linear-gradient;
-} */
+
 .container {
     display: flex;
     flex-direction: column;
-    // position: relative;
     width: 100%;
-    // height: 30em;
     background: vars.$Background;
     margin: 1em auto 0;
-    // word-break: break-all;
     border: 1px solid rgba(0, 0, 0, 0.274);
   }
   
@@ -111,7 +23,6 @@
     cursor: pointer;
     border-bottom: 2px solid vars.$Primary;
     box-sizing: content-box;
-    // position: relative;
     outline: none;
   }
   .tabs:not(:last-child){
@@ -124,9 +35,7 @@
   }
   
   .active-tabs::before {
-    // content: "";
     display: block;
-    // position: absolute;
     top: -5px;
     left: 50%;
     transform: translateX(-50%);
@@ -141,7 +50,6 @@
 
   .content {
     background: vars.$Background;
-    // padding: 20px;
     width: 100%;
     height: 100%;
     display: none;
@@ -167,20 +75,12 @@
   
   .active-content {
     display: flex;
-    // flex-direction: row;
     flex-wrap:wrap;
     min-height: 70vh;
-    // width: 100%;
     padding: 2em;
     justify-content: space-around;
-    // overflow-x: auto;
   }
-  // .newsList__item {
-  //   display: flex;
-  //   flex: wrap;
-  //   margin: 0 1em;
-    // height: 100%;
-  // }
+
   
 
 @media (max-width: 600px) {

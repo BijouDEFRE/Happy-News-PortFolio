@@ -1,8 +1,8 @@
+import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ProfilInformation from 'src/components/RetaillerP/ProfilInformation';
 import AddNewsForm from 'src/containers/addNews';
-// import AddNewsFormulaire from '../AddNewsForm';
 import Tabs from 'src/containers/tab';
 import './style.scss';
 import TitleProfil from './TitleProfil';
@@ -21,11 +21,13 @@ const RetailerP = ({
       <TitleProfil> Bienvenue sur le profil de {user.user.first_name} </TitleProfil>
       <ProfilInformation />
       <AddNewsForm />
-      {/* <AddNewsButton /> */}
-      {/* <AddNewsForm /> */}
       <Tabs />
     </div>
   );
+};
+RetailerP.propTypes = {
+  loadUserDetails: PropTypes.func.isRequired,
+  loadNews: PropTypes.func.isRequired,
 };
 
 export default RetailerP;

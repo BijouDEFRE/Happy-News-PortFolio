@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import './style.scss';
 
@@ -10,13 +11,10 @@ const Button = ({
     </button>
   </div>
 );
-
-/* Button.propTypes = {
-  className: PropTypes.string,
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  type: PropTypes.string.isRequired,
+  event: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
 };
-
-Button.defaultPropTypes = {
-  className: "button",
-}; */
-
 export default Button;

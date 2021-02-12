@@ -1,54 +1,73 @@
 // import Avatar from '../Header/Avatar';
 import PropTypes from 'prop-types';
 import React from 'react';
+// import react hook form
 import { useForm } from 'react-hook-form';
+// import react icon
+import { MdReportProblem } from 'react-icons/md';
 import Button from '../Header/Button';
 import Field from '../Login/Field';
+// import SCSS
 import './style.scss';
 
 const FormRegister = ({
-  last_name,
-  first_name,
+  lastName,
+  firstName,
   adress,
-  zip_code,
+  zipCode,
   city,
-  company_name,
-  shop_name,
-  registration_number,
+  companyName,
+  shopName,
+  registrationNumber,
   email,
   password,
   changeField,
   HandleRoleId,
-  role_id,
+  roleId,
   changeSelectField,
   subscriptionSubmit,
+  messageErrorsubscribe,
 }) => {
+  // set up react hook form:
+  // register link the input to react hook form,
+  // handleSubmit link the form t react hook form
+  // error display the error message
   const { register, handleSubmit, errors } = useForm({
     shouldFocusError: true,
   });
 
   return (
     <div className="containerRegister">
+      {/*  we use react hook for to submit cf handle submit L-29 */}
       <form className="register" onSubmit={handleSubmit(subscriptionSubmit)}>
-        {/* <Avatar /> */}
         <h1 className="register-title">Inscription</h1>
+        {/*  display the error message */}
+        {
+            messageErrorsubscribe && (
+            <div className="error-message">
+              <MdReportProblem className="error-icon" /> {messageErrorsubscribe}
+            </div>
+            )
+}
         <fieldset className="register-sec-identite">
           <legend className="register-leg-identite">Identité</legend>
           <div className="register-form">
             <Field
               name="last_name"
-              value={last_name}
+              value={lastName}
               onChange={changeField}
               placeholder="Nom"
               type="text"
               register={register({
+                // condition about inputs
                 required: { value: true, message: 'ce champ est obligatoire' },
               })}
             />
+            {/*  display the error message if the user fail */}
             {errors.last_name && <div className="login__form-error"> {errors.last_name.message} </div>}
             <Field
               name="first_name"
-              value={first_name}
+              value={firstName}
               onChange={changeField}
               placeholder="prenom"
               type="text"
@@ -78,7 +97,7 @@ const FormRegister = ({
           <div className="register-form">
             <Field
               name="zip_code"
-              value={zip_code}
+              value={zipCode}
               onChange={changeField}
               placeholder="code postal"
               type="number"
@@ -117,7 +136,7 @@ const FormRegister = ({
           />
         </div>
 
-        { role_id === 3
+        { roleId === 3
     && (
     <>
       <fieldset className="register-sec-business">
@@ -130,7 +149,6 @@ const FormRegister = ({
               id="activity"
               onChange={(event) => {
                 changeSelectField(event.target.value);
-                console.log(event.target.value);
               }}
               name="activity_id"
             >
@@ -149,7 +167,7 @@ const FormRegister = ({
           <div>
             <Field
               name="company_name"
-              value={company_name}
+              value={companyName}
               onChange={changeField}
               placeholder="societe"
               type="text"
@@ -158,7 +176,7 @@ const FormRegister = ({
           <div className="register-form">
             <Field
               name="shop_name"
-              value={shop_name}
+              value={shopName}
               onChange={changeField}
               placeholder="enseigne"
               type="text"
@@ -167,10 +185,10 @@ const FormRegister = ({
           <div className="register-form">
             <Field
               name="registration_number"
-              value={registration_number}
+              value={registrationNumber}
               onChange={changeField}
               placeholder="siret"
-              type="text"
+              type="number"
               register={register({
                 minLength: { value: 14, message: 'le siret doit contenir 14 caracteres' },
                 maxLength: { value: 14, message: 'le siret doit contenir 14 caracteres' },
@@ -206,13 +224,11 @@ const FormRegister = ({
               type="password"
               register={register({
                 required: { value: true, message: 'ce champ est obligatoire' },
-                // minLength: { value: 8, message: 'le password doit contenir au moins 8 caracteres' },
               })}
             />
           </div>
           {errors.password && <div className="login__form-error"> {errors.password.message} </div>}
         </fieldset>
-        {/* <Button>Validez la création</Button> */}
         <Button>Validez la création</Button>
       </form>
     </div>
@@ -221,24 +237,27 @@ const FormRegister = ({
 
 export default FormRegister;
 FormRegister.propTypes = {
-  last_name: PropTypes.string.isRequired,
-  first_name: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
   adress: PropTypes.string.isRequired,
-  zip_code: PropTypes.string,
+  zipCode: PropTypes.string,
   city: PropTypes.string.isRequired,
-  company_name: PropTypes.string.isRequired,
-  shop_name: PropTypes.string.isRequired,
-  // registration_number: PropTypes.number,
+  companyName: PropTypes.string.isRequired,
+  shopName: PropTypes.string.isRequired,
+  // registrationNumber: PropTypes.number.isRequired,
   email: PropTypes.string,
   password: PropTypes.string,
   changeField: PropTypes.func.isRequired,
   HandleRoleId: PropTypes.func.isRequired,
-  role_id: PropTypes.number.isRequired,
+  roleId: PropTypes.number.isRequired,
   changeSelectField: PropTypes.func.isRequired,
   subscriptionSubmit: PropTypes.func.isRequired,
-
+  messageErrorsubscribe: PropTypes.string,
 };
 FormRegister.defaultProps = {
-  // siret: 0,
-  zip_code: '',
+  // registrationNumber: 0,
+  zipCode: '',
+  messageErrorsubscribe: '',
+  email: '',
+  password: '',
 };

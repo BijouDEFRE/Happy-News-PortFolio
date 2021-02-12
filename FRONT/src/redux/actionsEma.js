@@ -3,33 +3,6 @@ import axios from 'axios';
 
 const api = (store) => (next) => (action) => {
   switch (action.type) {
-    // shows all shop owners on the map when starts
-    // case 'GET_USERS':
-    //   // axios query on bdd
-    //   axios.get('https://api-happy-news.herokuapp.com/user')
-    //     .then((response) => {
-    //       console.log(response.data);
-    //       store.dispatch(getAllUsers(response.data));
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    //   break;
-    // // locate users on map from home search bar
-    // case 'GET_GPS_COORDINATES':
-    //   axios.get(`https://api-adresse.data.gouv.fr/search/?q=${search}`)
-    //     .then((response) => {
-    //       // console.log(response.data);
-    //       const coordGPSCity = [
-    //         response.data.features[0].geometry.coordinates[1],
-    //         response.data.features[0].geometry.coordinates[0],
-    //       ];
-    //       store.dispatch(getDataCity(coordGPSCity));
-    //     })
-    //     .catch((error) => {
-    //       console.error(error);
-    //     });
-    //   break;
     case 'GET_NEWS':
       // on déclenche la requete
       axios.get('https://api-happy-news.herokuapp.com/article')

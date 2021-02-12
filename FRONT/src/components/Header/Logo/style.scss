@@ -9,6 +9,14 @@
   &:hover {
     transform: scale(1.1) rotate(10deg);
   }
+    width: 33%;
+    display: flex;
+
+    &__img {
+        height: 10em;
+        margin-top: -1.8em;
+        animation: rotateAnim 10s linear infinite;
+    }
 }
 
 @media (max-width: 800px) and (orientation: portrait) {
@@ -16,28 +24,10 @@
   height: 7em;
 }
 }
-/* @keyframes rotateAnim {
-from {transform: rotateY(0);}
-to {transform: rotateY(360deg);}
-} */
 .logo-img {
- // animation: rotateAnim 10s linear infinite;
  transition: transform .5s;
  &:hover {
    transform: scale(1.1) rotate(10deg);
  }
 }
-// .logo-img {
-//   -webkit-transition:-webkit-transform .9s; 
-//   -moz-transition:-moz-transform .9s;       
-//   -o-transition:-o-transform .9s;           
-//   -ms-transition:-ms-transform .9s;        
-//   transition:transform .9s;
-// }
-// .logo-img :hover{
-//   -webkit-transform:rotate(360deg); 
-//   -moz-transform:rotate(360deg);
-//   -o-transform:rotate(360deg); 
-//   -ms-transform:rotate(360deg); 
-//   transform:rotate(360deg);
-// }
+

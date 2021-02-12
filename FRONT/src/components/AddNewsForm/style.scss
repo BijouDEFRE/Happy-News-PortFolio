@@ -1,144 +1,4 @@
-// @use '../../styles/vars';
 
-// .section-addnews-form {
-//   /*display: none;*/
-//   height: 75vh;
-//   // border: 1px solid red;
-//   // background: vars.$Linear-gradient;
-//   // rgba(0,0,0,0.4);
-// }
-
-// #wraper {
-//   width: 90%;
-//   height: 100%;
-//   margin: 0 auto;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// .form-container {
-//   width: 100%;
-//   max-width: 40rem;
-//   height: 80%;
-//   background-color: #ffffff;
-//   position: relative;
-//   top:-2em;
-//   padding: 10rem 0;
-//   box-shadow: 0 1px 1.5rem rgba(0,0,0,.1);
-//   border-radius: 1rem;
-//   z-index: 1;
-// }
-
-// .form-container::before{
-//   content: '';
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 27rem;
-//   background: linear-gradient(to left, #1DB1DD, #23D0D2);
-//   border-bottom-right-radius: 100%;
-//   border-bottom-left-radius: 100%;
-//   z-index: -1;
-// }
-
-// .form-heading {
-//   color: #ffffff;
-//   font-size: 2.5rem;
-//   position: absolute;
-//   top: 3.5rem;
-//   left: 10rem;
-// }
-
-// .form-body {
-// transform: translateX(8rem) translateY(-3rem);
-// padding: 1rem 0;
-// background-color: #fff;
-// border-radius: 1rem;
-// box-shadow: 0 1px 1.5rem rgba(0,0,0,.1);
-// }
-
-// .input-group {
-//   width: 90%;
-//   margin: 0 auto;
-//   position: relative;
-//   display: flex;
-//   align-items: baseline;
-// }
-
-// .input-group input {
-//   position: relative;
-//   width: 100%;
-//   padding: 1rem 0;
-//   margin-top: .5rem;
-//   border: none;
-//   outline: none;
-//   font-size: 1.2rem;
-//   color: vars.$Primary;
-// }
-
-// .input-group select {
-//   position: relative;
-//   width: 100%;
-//   padding: 1rem 0;
-//   margin-top: .5rem;
-//   border: none;
-//   outline: none;
-//   font-size: 1.2rem;
-//   color: vars.$Primary;
-// }
-
-// .input-group > i{
-//   font-size: 2rem;
-//   margin-right: 1rem;
-//   color: vars.$Primary;
-// }
-
-// .input-group .bar {
-//   position: absolute;
-//   left: 0;
-//   bottom: 0;
-//   background-color: rgba(0,0,0,.2);
-//   width: 100%;
-//   height: 1px;
-// }
-
-// .input-group .bar::before {
-//   content: '';
-//   position: absolute;
-//   background-color: vars.$Primary;
-//   width: 0;
-//   height: 2px;
-// }
-
-// .input-group input:focus + .bar::before {
-//   width: 100%;
-//   transition: width 650ms;
-// }
-
-// .input-group button{
-//   margin: 2rem auto;
-//   padding: 0.4rem 4rem;
-//   background: linear-gradient(to left,  #1DB1DD, #23D0D2);
-//   border: none;
-//   color: #fff;
-//   font-size: 2.5rem;
-//   cursor: pointer;
-//   border-radius: 3rem;
-// }
-
-// .input-group button:focus,
-// .input-group button:hover {
-//   background: linear-gradient(to right,  #1DB1DD, #23D0D2);
-// }
-
-// .form__send--picture {
-//   height: 2em;
-// }
-
-
-// NOUVEAU CSS
 
 @use '../../styles/vars';
 .addNewsButton {
@@ -288,7 +148,7 @@ box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
   transition: opacity 0.4s ease-in-out;
   overflow: hidden;
   position: absolute;
-  // overflow-y: scroll;
+
   left: 0;
   right: 0;
   bottom: 0;
@@ -298,47 +158,14 @@ box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
   background: rgba(0, 0, 0, 0.7);
   display: flex;
 }
-// body.modalShowing-true{
-//   overflow: hidden;
-// }
+
 .modalShowing-true {
-  // display: block;
   opacity: 1;
   pointer-events: visible;
   overflow: hidden;
-  // position: fixed;
   width: 100%;
   height: 100%;
-  // display: none;
   position: fixed;
 }
 
 
-
-// @media screen and (max-width: 700px){
-//   .form-container::before{
-//     height: 10rem;
-//   }
-
-//   .form-container::before{
-//     height: 17rem;
-//   }
-
-//   .form-heading {
-//     left: 50%;
-//     font-size: 1.5rem;
-//     transform: translateX(-50%);
-//   }
-
-//   .form-body {
-//     border-radius: initial;
-//     transform: initial;
-//     box-shadow: none;
-//   }
-// }
-
-// @media screen and (max-width: 600px){
-//   .form-container::before{
-//     height: 8.5rem;
-//   }
-// }

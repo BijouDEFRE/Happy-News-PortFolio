@@ -17,7 +17,7 @@ const ContactForm = () => (
     <div className="contact-form">
       <label className="contact-label-form" htmlFor="ImputEmail">Email</label>
       <input type="email" className="contact-form-input" name="ImputEmail" id="ImputEmail" placeholder="Entrer votre email" />
-    </div>
+    </div>git branch
     <div className="contact-form">
       <label className="contact-label-form" htmlFor="ImputText">Votre message</label>
       <textarea type="text-area" className="contact-form-input" name="ImputEmail" id="ImputEmail" placeholder="Entrer votre message" />

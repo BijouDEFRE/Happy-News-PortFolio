@@ -4,7 +4,6 @@ import PopUp from '../components/NewsModal/Popup';
 
 const mapDispatchToProps = (dispatch) => ({
   handleDelete: (value) => {
-    console.log(value);
     dispatch(deleteNews(value));
   },
 });

@@ -14,13 +14,13 @@ const add = (store) => (next) => (action) => {
       // store.getstate nous donne l'état du store à un instant T.
       // On le déstructure pour prendre ce dont on a besoin
       // const { addNews, auth } = store.getState();
-       console.log('State.addNews.article_title:', state.addNews.article_title);
-       console.log('State.addNews.description:', state.addNews.description);
-       console.log('State.addNews.picture_url:', state.addNews.picture_url);
-       console.log('State.addNews.price:', state.addNews.price);
-       console.log('State.addNews.is_news:', state.addNews.is_news);
-       console.log('State.auth.user_id:', state.auth.userId);
-       console.log('State.addNews.activity_id:', state.user.user.activity_id);
+      console.log('State.addNews.article_title:', state.addNews.article_title);
+      console.log('State.addNews.description:', state.addNews.description);
+      console.log('State.addNews.picture_url:', state.addNews.picture_url);
+      console.log('State.addNews.price:', state.addNews.price);
+      console.log('State.addNews.is_news:', state.addNews.is_news);
+      console.log('State.auth.user_id:', state.auth.userId);
+      console.log('State.addNews.activity_id:', state.user.user.activity_id);
       const formData = new FormData();
       // Ici, les données du formulaire
       formData.append('article_title', state.addNews.article_title);
@@ -52,7 +52,6 @@ const add = (store) => (next) => (action) => {
           if (error) {
             console.log(error);
             window.alert('La création de news a échoué, merci de remplir tous les champs du formulaire');
-            // console.log('Je suis dans l\'erreur, et response.error vaut:', error);
           }
         });
       break;

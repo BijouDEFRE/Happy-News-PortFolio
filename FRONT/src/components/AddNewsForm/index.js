@@ -1,10 +1,10 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+import Button from 'src/components/Header/Button';
 // import uploadImage from 'src/middlewares/firebase';
 // import de Firebase pour les images
 import { storage } from 'src/middlewares/firebase';
-import PropTypes from 'prop-types';
-import { NavLink, useParams } from 'react-router-dom';
-import Button from 'src/components/Header/Button';
 import './style.scss';
 
 const AddNewsForm = ({
@@ -51,12 +51,6 @@ const AddNewsForm = ({
       },
     );
   };
-
-  // Appelé pour envoyer l'image a Firebase
-  /*   const handleUpload = (e) => {
-    e.preventDefault(),
-    console.log('handleUpload');
-  }; */
 
   const { id } = useParams();
 

@@ -1,4 +1,4 @@
-import { CHANGE_ADDNEWS_FIELD, ADD_NEWS_SUCCESS, SET_ISNEWS_ON_ARTICLE } from '../actions';
+import { ADD_NEWS_SUCCESS, CHANGE_ADDNEWS_FIELD, SET_ISNEWS_ON_ARTICLE } from '../actions';
 
 // Initial State
 const initialState = {

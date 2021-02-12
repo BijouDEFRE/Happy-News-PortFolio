@@ -10,7 +10,6 @@ export default function Title() {
           Happy News
         </h1>
       </NavLink>
-      {/* <p className="header-accroche">Vos producteurs locaux ont une bonne nouvelle à vous annoncer</p> */}
     </div>
   );
 }

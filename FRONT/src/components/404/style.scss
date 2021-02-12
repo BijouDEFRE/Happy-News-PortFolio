@@ -4,11 +4,9 @@
    display: flex;
    flex-direction: column;
    background-color: vars.$Linear-gradient;
-
    &_picture {
         margin : auto ;
     }
-
     &_message {
         color: vars.$Dark;
         margin : auto ;

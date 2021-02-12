@@ -1,4 +1,5 @@
 /* eslint-disable react/button-has-type */
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import NewsModal from 'src/components/NewsModal';
@@ -6,32 +7,28 @@ import './style.scss';
 import TabTitle from './TabTitle';
 
 const Tabs = ({ user, news }) => {
+  // toggleState props creation, togglestate value is 1
   const [toggleState, setToggleState] = useState(1);
-
+  // function to cahnge the prop's value
   const toggleTab = (index) => {
     setToggleState(index);
   };
+  // to get the parameter in URL
   const { id } = useParams();
 
-  const newsIsNewsTrue = news.filter((news) => (news.is_news === true));
-  // console.log(newsIsNewsTrue);
-
-  const newsIsNewsFalse = news.filter((news) => (news.is_news === false));
-  // console.log(newsIsNewsFalse);
-
-  const newsUserId = news.filter((news) => (news.user_id === parseInt(id)));
-  // console.log(newsUserId);
-
+  // filter depends on isNews props and userid
   const newsUserIdIsTrue = news.filter((news) => ((news.is_news === true) && (news.user_id === parseInt(id))));
-  // console.log(newsUserIdIsTrue);
-
   const newsUserIdIsFalse = news.filter((news) => ((news.is_news === false) && (news.user_id === parseInt(id))));
-  // console.log(newsUserIdIsFalse);
 
   return (
     <div className="container">
       <div className="bloc-tabs">
-        <button className={toggleState === 1 ? 'tabs active-tabs' : 'tabs'} onClick={() => toggleTab(1)}>
+        {/* when you click, you call toggleTab function with is value
+         if toggleState value = 1, you render this div */}
+        <button
+          className={toggleState === 1 ? 'tabs active-tabs' : 'tabs'}
+          onClick={() => toggleTab(1)}
+        >
           <TabTitle> Mon activité</TabTitle>
         </button>
         <button
@@ -47,15 +44,17 @@ const Tabs = ({ user, news }) => {
           <TabTitle>Ma vitrine</TabTitle>
         </button>
       </div>
+      {/* when you click, you call toggleTab function with is value
+      if toggleState value = 1, you render this div */}
       <div className="content-tabs">
         <div className={toggleState === 1 ? 'content  active-content' : 'content'}>
           <p className="content-tabs-p">
             {user.content}
           </p>
         </div>
-        <div className={toggleState === 2 ? 'content  active-content' : 'content'}> 
-            {/* // news.map((item) => <li> {item.id}</li>) */}
-            {
+        <div className={toggleState === 2 ? 'content  active-content' : 'content'}>
+          {/* // news.map((item) => <li> {item.id}</li>) */}
+          {
                 newsUserIdIsTrue.map((news) => (
                   <div key={news.id} className="newsList__item">
                     <NewsModal news={news} />
@@ -64,7 +63,7 @@ const Tabs = ({ user, news }) => {
               }
         </div>
         <div className={toggleState === 3 ? 'content  active-content' : 'content'}>
-            {
+          {
                 newsUserIdIsFalse.map((news) => (
                   <div key={news.id} className="newsList__item">
                     <NewsModal news={news} />
@@ -75,5 +74,19 @@ const Tabs = ({ user, news }) => {
       </div>
     </div>
   );
+};
+Tabs.propTypes = {
+  news: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    article_title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    picture_url: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    activity_name: PropTypes.string.isRequired,
+    user_id: PropTypes.number.isRequired,
+  }).isRequired,
+  user: PropTypes.shape({
+    content: PropTypes.string.isRequired,
+  }),
 };
 export default Tabs;

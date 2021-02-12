@@ -1,20 +1,19 @@
 import axios from 'axios';
 import FormData from 'form-data';
 import {
-  handleLoginSuccess, handleSubscribeSuccess, LOGIN, SUBSCRIBE
+  handleLoginError, handleLoginSuccess, handleSubscribeError, handleSubscribeSuccess, LOGIN, SUBSCRIBE
 } from '../redux/actions';
 
 const api = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
+      // to get state
       const state = store.getState();
-      // console.log(state);
-
+      // create new form data
       const form = new FormData();
       form.append('email', state.auth.email);
       form.append('password', state.auth.password);
-      // console.log(form);
-
+      // config axios
       const config = {
         method: 'post', // verbe POST
         url: 'https://api-happy-news.herokuapp.com/login', // endpoint de login
@@ -25,21 +24,18 @@ const api = (store) => (next) => (action) => {
       };
       axios(config) // on lance la requete...
         .then((response) => { // cas de réussite
+          // to get userToken in BDD
           const { userToken } = response.data;
+          // to get user id in BDD
           const { id } = response.data.user[0];
-          // console.log(userToken);
+          // to save in localStorage
           localStorage.setItem('token', userToken);
           localStorage.setItem('id', id);
           store.dispatch(handleLoginSuccess(response.data));
           // on le stocke aussi dans le localStorage
-
-          // console.log(response.data);
-          // console.log('Je suis dans la réponse, et response.data du Tokenvaut : ', response.data.userToken);
-          // console.log('Je suis dans la réponse, et response.data du logged : ', response.data.logged);
-          // console.log('Je suis dans la réponse, et response.data de l\'id : ', response.data.user[0].id);
         })
         .catch((error) => { // cas d'erreur
-          console.log(error);
+          store.dispatch(handleLoginError(error.response.data));
         });
       break;
     }
@@ -58,17 +54,12 @@ const api = (store) => (next) => (action) => {
 
       if (state.auth.role_id == 3) {
         form.append('company_name', state.auth.company_name);
-        console.log(state.auth.company_name);
         form.append('shop_name', state.auth.shop_name);
-        console.log(state.auth.shop_name);
         form.append('registration_number', state.auth.registration_number);
-        console.log(state.auth.registration_number);
       }
       form.append('role_id', state.auth.role_id);
-      console.log(state.auth.role_id);
       if (state.auth.role_id == 3) {
         form.append('activity_id', state.auth.activity_id);
-        console.log(state.auth.activity_id);
       }
 
       const config = {
@@ -82,11 +73,11 @@ const api = (store) => (next) => (action) => {
       axios(config)
         .then((response) => {
           store.dispatch(handleSubscribeSuccess(response.data));
-          console.log(response.data);
           console.log(response.data.registered);
         })
         .catch((error) => { // cas d'erreur
           console.log(error);
+          store.dispatch(handleSubscribeError());
         });
       break;
     }

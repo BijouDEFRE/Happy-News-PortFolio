@@ -11,6 +11,9 @@ const api = (store) => (next) => (action) => {
           // avec un second paramètre qui contient la réponse
           store.dispatch({ type: 'GET_ACTIVITIES_SUCCESS', activities: response.data.data });
           // list existant déjà dans nos data, j'appel la liste des activités : activities
+        })
+        .catch((error) => { // cas d'erreur
+          console.log(error);
         });
       break;
     default:
