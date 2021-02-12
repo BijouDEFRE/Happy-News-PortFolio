@@ -1,31 +1,36 @@
+// == Import npm
 import { connect } from 'react-redux';
-// composant de présentation
+
+// Import components
 import News from 'src/components/News';
+
+// Import from actions creator
 import {
   changeSearchValueAction,
   getCityFromApiSuccess, handleSearchSubmit, handleSelectedActivity,
-  resetActivitySelected
+  resetActivitySelected,
 } from 'src/redux/actions';
 
 const mapStateToProps = (state) => ({
-  // on crée un booleen qui vaut vrai si on a des news sont dans la liste
+  // we create a booleen that is true if we have news are in the list
   hasData: state.newsList.list.length > 0,
-  // on crée un booleen qui vaut vrai si on a des activitiés dans la liste (activities)
+  // we create a booleen that is true if we have activities in the list (activities)
   hasDataActivities: state.activities.activitiesList.length > 0,
-  // on crée la data qui liste nos news
+  // we create the data that lists our news
   list: state.newsList.list,
-  // on crée la data qui liste nos activités (= catégories dans notre page News)
+  // we create the data that lists our activities (= categories on our News page)
   activities: state.activities.activitiesList,
-  // on crée un booleen pour gérer notre spinner
+  // we create a booleen to manage our spinner
   isLoading: !state.hasData,
-  // La donnée qui correspond à la recherche saisie par l'utilisateur dans News
+  // The data that corresponds to the search entered by the user in News
   searchValue: state.searchValue.searchValue,
-  // La donnée qui correspond à l'activité choisie pour filtrer les news
+  // The data that corresponds to the activity chosen to filter the news
   activitySelected: state.searchValue.activitySelected,
-  // les coordonnées de la ville retournée par l'api
+  // the coordinates of the city returned by the api
   cityCoordinates: state.searchValue.cityCoordinates,
 });
-// mapDispatchToProps = cablage des actions (props de type fonction)
+
+// mapDispatchToProps = cabling of actions (function type props)
 const mapDispatchToProps = (dispatch) => ({
   loadNews: () => {
     dispatch({ type: 'GET_NEWS' });
