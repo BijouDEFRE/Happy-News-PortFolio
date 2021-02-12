@@ -11,9 +11,9 @@ const userSchema = Joi.object({
     .messages({
         'string.base':`last_name doit être de type "STRING.`
     }),
-    adress: Joi.string(),
-    zip_code: Joi.string(),
-    city: Joi.string(),
+    adress: Joi.string().required(),
+    zip_code: Joi.string().required(),
+    city: Joi.string().required(),
     latitude: Joi.number(),
     longitude: Joi.number(),
     email: Joi.string().regex(patternMail).messages({
@@ -33,7 +33,7 @@ const userSchema = Joi.object({
     registration_number: Joi.string().min(5).max(14),
     role_id: Joi.number().integer().required(),
     activity_id: Joi.number(),
-    content: Joi.string(),
+    // content: Joi.string(),
 });
 
 module.exports = userSchema;

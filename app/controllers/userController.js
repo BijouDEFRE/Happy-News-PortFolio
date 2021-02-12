@@ -64,42 +64,18 @@ module.exports = {
         }
     },
 
-    // async handleSignForm(request, response, next) {
-    //     try {
-    //         const userInfo = request.body;
-
-    //         const saltRounds = 10;
-    //         const hashedPassword = bcrypt.hashSync(userInfo.password, saltRounds);
-
-    //         const newUser = await authDataMapper.createUser(userInfo, hashedPassword);
-
-    //         if(!newUser) {
-    //             response.locals.notFound = "Vous n'avez pas encore de compte";
-    //             next();
-    //             return;
-    //         }
-
-    //         response.json({
-    //             data: newUser
-    //         })
-
-    //     } catch (error) {
-    //         next(error);
-    //     }
-    // },
-
     async deleteUserById(request, response, next) {
         try {
             const { userId } = request.params;
             const deleteUser = await userDataMapper.deleteUserById(userId);
 
-            if(deleteUser){
+            if(deleteUser == null) {
                 response.locals.notFound = "user unknow";
                 next();
                 return;
             }
             response.json({
-                message: 'User deleted',
+                message: `User ${userId} deleted`,
                 data: deleteUser });
         } catch (error) {
             next(error)

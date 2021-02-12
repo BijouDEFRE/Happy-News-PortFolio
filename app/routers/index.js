@@ -10,8 +10,8 @@ const activityRouter = require('./activityRouter');
 const authController = require('../controllers/authController');
 const errorController = require('../controllers/errorController');
 const auth = require('../middlewares/auth');
-// const userSchema = require('../validation/schema/user');
-// const { validateBody } = require('../validation/validationMiddleware');
+const userSchema = require('../validation/schema/user');
+const { validateBody } = require('../validation/validationMiddleware');
 
 const router = express.Router();
 
@@ -21,8 +21,8 @@ router.use('/activity', activityRouter);
 
 // routes utilisants "auth"
 router.post('/login', authController.handleLoginForm);
-router.post('/signup', authController.handleSignForm);
-// router.post('/signup', validateBody(userSchema), authController.handleSignForm);
+// router.post('/signup', authController.handleSignForm);
+router.post('/signup', validateBody(userSchema), authController.handleSignForm);
 
 router.use(auth);
 

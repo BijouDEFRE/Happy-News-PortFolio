@@ -3,7 +3,7 @@
 */
 const express = require('express');
 const articleController = require('../controllers/articleController');
-const {articleImageUploads} = require('../middlewares/articleImageUploads');
+const { getRetailerAcces } = require('../middlewares/authAcces');
 
 const router = express.Router();
 
@@ -19,5 +19,6 @@ router.post('/', articleController.createArticle);
 
 router.patch('/:articleId(\\d+)', articleController.updateArticleById);
 router.delete('/:articleId(\\d+)', articleController.deleteArticle);
+// router.delete('/:articleId(\\d+)', getRetailerAcces, articleController.deleteArticle);
 
 module.exports = router;

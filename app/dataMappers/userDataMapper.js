@@ -5,16 +5,49 @@ const client = require('./client');
 
 module.exports = {
 
-    //('SELECT u.id, u.first_name, u.last_name, u.email, u.adress, u.city, u.shopname, a.id AS activity_id, a.activity_name FROM "user" AS u JOIN "acticity" AS a ON u.activity_id = a.id');
-    // SELECT * FROM "user" AS u JOIN "activity" AS a ON u.activity_id = a.id
-    // SELECT * FROM "user" LEFT JOIN "activity" USING (id)
     async getAllUsers() {
-        const result = await client.query('SELECT u.id, u.first_name, u.last_name, u.email, u.password, u.adress, u.zip_code, u.city, u.latitude, u.longitude, u.shop_name, u.registration_number, u.role_id, u.content, a.id AS activity_id, a.activity_name FROM "user" AS u JOIN "activity" AS a ON u.activity_id = a.id');
+        const result = await client.query(`SELECT
+        u.id,
+        u.first_name,
+        u.last_name,
+        u.email,
+        u.password,
+        u.adress,
+        u.zip_code,
+        u.city,
+        u.latitude,
+        u.longitude,
+        u.shop_name,
+        u.registration_number,
+        u.role_id,
+        u.content,
+        a.id AS activity_id, a.activity_name
+        FROM "user" AS u
+        JOIN "activity" AS a ON u.activity_id = a.id`);
+
         return result.rows;
     },
 
     async getUserById(userId) {
-        const result = await client.query('SELECT u.id, u.first_name, u.last_name, u.email, u.password, u.adress, u.zip_code, u.city, u.latitude, u.longitude, u.shop_name, u.registration_number, u.role_id, u.content, a.id AS activity_id, a.activity_name FROM "user" AS u JOIN "activity" AS a ON u.activity_id = a.id WHERE u.id = $1', [userId]);
+        const result = await client.query(`SELECT
+        u.id,
+        u.first_name,
+        u.last_name,
+        u.email,
+        u.password,
+        u.adress,
+        u.zip_code,
+        u.city,
+        u.latitude,
+        u.longitude,
+        u.shop_name,
+        u.registration_number,
+        u.role_id,
+        u.content,
+        a.id AS activity_id, a.activity_name
+        FROM "user" AS u
+        JOIN "activity" AS a ON u.activity_id = a.id
+        WHERE u.id = $1`, [userId]);
         // Je m'attends à recevoir 1 user
         // et pas une liste contenant 1 user
 
@@ -31,7 +64,7 @@ module.exports = {
 
     async updateUserById(userId, userUpdate) {
         // je vérifie si le user existe déjà
-        const isExist = await client.query('SELECT * FROM "user" WHERE id = $1', [userId]);
+        const isExist = await client.query(`SELECT * FROM "user" WHERE id = $1`, [userId]);
         console.log('userinfo', isExist);
 
         if (isExist.rowCount >= 0) {
@@ -61,7 +94,7 @@ module.exports = {
     },
 
     async deleteUserById(userId) {
-        const result = await client.query('DELETE FROM "user" WHERE id=$1 RETURNING *', [userId]);
+        const result = await client.query(`DELETE FROM "user" WHERE id=$1`, [userId]);
         if (result.rowCount == 0) {
             return 'User not exist';
         }
