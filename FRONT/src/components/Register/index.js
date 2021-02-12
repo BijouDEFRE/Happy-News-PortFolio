@@ -32,7 +32,6 @@ const FormRegister = ({
   return (
     <div className="containerRegister">
       <form className="register" onSubmit={handleSubmit(subscriptionSubmit)}>
-        {/* <Avatar /> */}
         <h1 className="register-title">Inscription</h1>
         {
             messageErrorsubscribe && (
@@ -215,13 +214,11 @@ const FormRegister = ({
               type="password"
               register={register({
                 required: { value: true, message: 'ce champ est obligatoire' },
-                // minLength: { value: 8, message: 'le password doit contenir au moins 8 caracteres' },
               })}
             />
           </div>
           {errors.password && <div className="login__form-error"> {errors.password.message} </div>}
         </fieldset>
-        {/* <Button>Validez la création</Button> */}
         <Button>Validez la création</Button>
       </form>
     </div>

@@ -13,27 +13,16 @@ const PopUp = ({ changePopup, handleDelete, news }) => {
   return (
 
     <div className="popup">
-      <div className="popup_inner">
-        <p className="popup_message">Êtes vous sûr de vouloir supprimer cette news?</p>
-
+      <div className="popup__inner">
+        <p className="popup__message">Êtes vous sûr de vouloir supprimer cette news?</p>
         <Button
           type="button"
           event={() => changePopup()}
         > Fermer
         </Button>
-        {console.log(news.id)}
-        {console.log(news.article_title)}
-        {/* <Button
-          type="button"
-          name={news.article_title}
-          value={news.id}
-          event={handleDeleteCard}
-        >
-          Confirmer la suppresion
-        </Button> */}
         <button
           type="button"
-          className="popup_bouton_delete"
+          className="popup__bouton__delete"
           name={news.article_title}
           value={news.id}
           onClick={handleDeleteCard}

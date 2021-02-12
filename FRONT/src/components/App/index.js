@@ -9,7 +9,6 @@ import CGU from 'src/components/CGU';
 import ContactForm from 'src/components/ContactForm';
 import Footer from 'src/components/Footer';
 import Home from 'src/components/Home';
-// import NewsModal from 'src/components/NewsModal';
 import Terms from 'src/components/Terms';
 import AddNewsForm from 'src/containers/addNews';
 import Header from 'src/containers/header';

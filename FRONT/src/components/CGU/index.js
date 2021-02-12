@@ -53,27 +53,20 @@ const CGU = () => (
     </p>
 
     <h3 className="cgu_title3">4.2 Communication</h3>
-    <p className="cgu_text">           Happy NEWS peut vous contacter par écrit (email, envoie d’un message par notre site). Nous sommes à votre disposition pour répondre dans les meilleurs délais toutes vos questions par rapport à nos services. Tous les interlocuteurs liés à Happy NEWS reconnaissent que tous les moyens de communication sont faits à des fins contractuelles et professionnelles. Vous acceptez que tous les accords, informations, divulgations et autres communications que nous vous enverrons électroniquement remplissent toutes les obligations légales des communiqués par écrit.</p>
+    <p className="cgu_text"> Happy NEWS peut vous contacter par écrit (email, envoie d’un message par notre site). Nous sommes à votre disposition pour répondre dans les meilleurs délais toutes vos questions par rapport à nos services. Tous les interlocuteurs liés à Happy NEWS reconnaissent que tous les moyens de communication sont faits à des fins contractuelles et professionnelles. Vous acceptez que tous les accords, informations, divulgations et autres communications que nous vous enverrons électroniquement remplissent toutes les obligations légales des communiqués par écrit.</p>
 
     <h2>5. Conditions financières</h2>
     <p className="cgu_text">  L’accès et l’inscription à la Plateforme, de même que la recherche et la consultation d’Annonces sont gratuits. En revanche, la publication d'annonce et l'accès à la page de présentation de votre société est payante dans les conditions décrites ci-dessous.</p>
 
     <h3 className="cgu_title3">5.1 Abonnement</h3>
-    <p className="cgu_text">
-      CA annuelle	Mensuel	Trimestriel	Semestriel	Annuel	Biannuel
-    </p>
-    <p className="cgu_text">
-
-      10€	20€	30€	40€	45€
-    </p>
+    <p className="cgu_text">CA annuelle	Mensuel	Trimestriel	Semestriel	Annuel	Biannuel</p>
+    <p className="cgu_text"> 10€	20€	30€	40€	45€</p>
     <p className="cgu_text">Pour déposer une annonce, il faut souscrire à un abonnement à la plateforme. Nous vous proposons de différents forfaits d’abonnement en fonction de votre chiffre d’affaire de l'année précédente. Le prix d'abonnement est en HT.</p>
 
     <h3 className="cgu_title3">5.2. Mode de paiement</h3>
-
     <p className="cgu_text">   Le système de paiement de la plateforme est sécurisé. Tous les services payants sont faits en ligne sur notre site afin de garder toutes les traces de transactions et de faciliter la vie de tous les utilisateurs. Nous n’acceptons donc ni les chèques, ni les virements.</p>
 
     <h4 className="cgu_title3">5.2.1 Mode de paiement de l’abonnement</h4>
-
     <p className="cgu_text">  Le paiement se fait uniquement par carte bancaire. Le prélèvement se fait automatiquement tous les premiers du moi jusqu’à la fin de l’abonnement inscrit. Nous vous demandons alors de nous autoriser à prélever sur votre compte. Si jamais le paiement ne peut se réaliser, à cause d'un manque de provision ou autres problèmes, la plateforme enverra un mail au membre pour le prévenir qu’il aura cinq jours pour régler la situation. Si la situation n'est pas réglée au bout de cinq jours, AGRIPOUSSE pourra désactiver le compte du membre ainsi que toutes ses annonces. Vous êtes redevable de tout montant non prélevé.</p>
 
   </div>

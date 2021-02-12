@@ -63,7 +63,7 @@ const api = (store) => (next) => (action) => {
 
       const config = {
         method: 'post',
-        url: 'https://api-happy-news.herokuapp.com/signu',
+        url: 'https://api-happy-news.herokuapp.com/signup',
         data: form,
         headers: {
           'Content-Type': 'multipart/form-data',

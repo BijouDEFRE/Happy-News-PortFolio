@@ -7,7 +7,7 @@ const AddNewsButton = () =>
   (
     <div className="bouton">
       <NavLink to="/creation-de-news">
-        <button className="btn">Ajouter une News</button>
+        <button type="button" className="btn">Ajouter une News</button>
       </NavLink>
 
     </div>

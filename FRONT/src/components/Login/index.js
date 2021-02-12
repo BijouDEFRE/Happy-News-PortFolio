@@ -6,20 +6,14 @@ import { NavLink } from 'react-router-dom';
 import avatar from 'src/assets/Images/avatar-SVG-primarycolor.svg';
 import Button from '../Header/Button';
 import Field from './Field';
-// pour react hook form
 // Import du CSS
 import './style.scss';
 
 const Login = ({
   email, password, changeField, handleLogin, messageErrorLogin,
 }) => {
-  // pour react hook form on commente handle submit
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   handleLogin();
-  // };
   const { register, handleSubmit, errors } = useForm();
-  // const handleSubmit = data => console.log(data);
+
   console.log(messageErrorLogin);
   return (
 
@@ -28,10 +22,7 @@ const Login = ({
         <div className="login__loginbox">
           <img alt="avatar" src={avatar} className="login__loginbox__avatar" />
           <h1 className="login__loginbox__title">Connexion</h1>
-
-          {/* (handlelogin pour react hook form */}
           <form onSubmit={handleSubmit(handleLogin)}>
-
             <Field
               name="email"
               value={email}
@@ -58,7 +49,7 @@ const Login = ({
               <Button type="submit">Se connecter</Button>
               {
             messageErrorLogin && (
-            <div className="error-message">
+            <div className="error_message">
               <MdReportProblem className="error-icon" /> {messageErrorLogin}
             </div>
             )

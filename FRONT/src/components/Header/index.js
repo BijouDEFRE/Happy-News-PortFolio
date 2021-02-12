@@ -8,21 +8,18 @@ import Logo from 'src/components/Header/Logo';
 import './style.scss';
 import Title from './Title';
 
-
 const Header = ({
   token, handleLogout, id, prenom,
-}) =>
-  // console.log(useParams);
-  (
-    <header className="header">
-      <Logo />
-      <Title />
-      <div className="header-nav">
+}) => (
+  <header className="header">
+    <Logo />
+    <Title />
+    <div className="header__nav">
 
-        {token && (
+      {token && (
         <>
           <Avatar />
-          <div className="header-helloUser">
+          <div className="header__helloUser">
             <p>Bonjour {prenom}</p>
           </div>
           <NavLink to="/">
@@ -35,18 +32,18 @@ const Header = ({
           </NavLink>
           <NavLink to={`/commercant/profil/${id}`}> <Button>Mon profil</Button></NavLink>
         </>
-        )}
-        {token == null && (
+      )}
+      {token == null && (
         <>
           <div className="header-adjustSize" />
           <NavLink to="/connexion"> <Button>Connexion</Button></NavLink>
           <NavLink to="/inscription"> <Button>Inscription</Button></NavLink>
         </>
-        )}
-        <NavLink to="/news/liste"><Button>Liste des news</Button></NavLink>
-      </div>
-    </header>
-  );
+      )}
+      <NavLink to="/news/liste"><Button>Liste des news</Button></NavLink>
+    </div>
+  </header>
+);
 Header.propTypes = {
   handleLogout: PropTypes.func.isRequired,
   token: PropTypes.string,
