@@ -18,6 +18,7 @@ router.post('/', articleController.createArticle);
 // router.post('/picture_url/:articleId(\\d+)', articleImageUploads.single('picture_url'), articleController.addArticleImage);
 
 router.patch('/:articleId(\\d+)', articleController.updateArticleById);
-router.delete('/:articleId(\\d+)', getRetailerAcces, articleController.deleteArticle);
+router.delete('/:articleId(\\d+)', articleController.deleteArticle);
+// router.delete('/:articleId(\\d+)', getRetailerAcces, articleController.deleteArticle);
 
 module.exports = router;
