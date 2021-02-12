@@ -7,12 +7,13 @@ import {
 const api = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
+      // to get state
       const state = store.getState();
-
+      // create new form data
       const form = new FormData();
       form.append('email', state.auth.email);
       form.append('password', state.auth.password);
-
+      // config axios
       const config = {
         method: 'post', // verbe POST
         url: 'https://api-happy-news.herokuapp.com/login', // endpoint de login
@@ -23,8 +24,11 @@ const api = (store) => (next) => (action) => {
       };
       axios(config) // on lance la requete...
         .then((response) => { // cas de réussite
+          // to get userToken in BDD
           const { userToken } = response.data;
+          // to get user id in BDD
           const { id } = response.data.user[0];
+          // to save in localStorage
           localStorage.setItem('token', userToken);
           localStorage.setItem('id', id);
           store.dispatch(handleLoginSuccess(response.data));

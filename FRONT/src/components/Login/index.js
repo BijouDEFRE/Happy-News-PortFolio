@@ -12,11 +12,11 @@ import './style.scss';
 const Login = ({
   email, password, changeField, handleLogin, messageErrorLogin,
 }) => {
+  // react hook form
   const { register, handleSubmit, errors } = useForm();
 
   console.log(messageErrorLogin);
   return (
-
     <div>
       <section className="login">
         <div className="login__loginbox">
@@ -29,10 +29,13 @@ const Login = ({
               onChange={changeField}
               placeholder="Email"
               type="email"
+              // to do a ref for each input name, and connect it to react hook form
               register={register({
+                // explain the condition of the validation
                 required: { value: true, message: 'Ce champ est obligatoire' },
               })}
             />
+            {/* render the error message if the user fail */}
             {errors.email && <div className="login__form-error"> {errors.email.message} </div>}
             <Field
               name="password"
@@ -48,12 +51,12 @@ const Login = ({
             <div className="buttonDiv">
               <Button type="submit">Se connecter</Button>
               {
-            messageErrorLogin && (
-            <div className="error_message">
-              <MdReportProblem className="error-icon" /> {messageErrorLogin}
-            </div>
-            )
-}
+                messageErrorLogin && (
+                <div className="error_message">
+                  <MdReportProblem className="error-icon" /> {messageErrorLogin}
+                </div>
+                )
+              }
             </div>
           </form>
           <a className="form__link" href="#">Mot de passe oublié ?</a>
@@ -69,5 +72,6 @@ Login.propTypes = {
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
+  messageErrorLogin: PropTypes.string.isRequired,
 };
 export default Login;

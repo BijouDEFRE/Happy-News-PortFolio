@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ProfilInformation from 'src/components/RetaillerP/ProfilInformation';
@@ -23,6 +24,10 @@ const RetailerP = ({
       <Tabs />
     </div>
   );
+};
+RetailerP.propTypes = {
+  loadUserDetails: PropTypes.func.isRequired,
+  loadNews: PropTypes.func.isRequired,
 };
 
 export default RetailerP;

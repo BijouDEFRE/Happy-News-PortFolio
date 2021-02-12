@@ -5,7 +5,9 @@ import './style.scss';
 const Field = ({
   type, value, name, onChange, placeholder, register,
 }) => {
+  //
   const inputId = `input-${name}`;
+  // to get the input's value
   const handleChange = (event) => {
     onChange(event.target.value, name);
   };
@@ -33,6 +35,7 @@ const Field = ({
 
 Field.propTypes = {
   value: PropTypes.string,
+  register: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
@@ -44,6 +47,7 @@ Field.propTypes = {
 Field.defaultProps = {
   value: '',
   placeholder: '',
+  register: '',
 };
 
 export default Field;

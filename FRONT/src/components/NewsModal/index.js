@@ -10,16 +10,19 @@ import './style.scss';
 const NewsModal = ({
   news,
 }) => {
+  // state for the pop up
   const [popUp, setPopUp] = useState(false);
   const changePopup = () => {
     setPopUp(!popUp);
   };
-
+  // state for the modal
   const [modalState, setModalState] = useState(false);
   const manageState = () => {
     setModalState(!modalState);
   };
+  // to catch the parameter in URL
   const { id } = useParams();
+  // to catch the all URL
   const location = useLocation();
 
   useEffect(() => {
@@ -32,6 +35,7 @@ const NewsModal = ({
     <>
       <div className="product-card">
         <div className="badge">
+          {/* conditionnal display on card */}
           {
               news.is_news === true ? 'News' : 'Article en vitrine'
             }
@@ -44,8 +48,10 @@ const NewsModal = ({
           <h4 className="product-card__title">{news.article_title}</h4>
           <p>{news.description}</p>
           <div className="product-card__bottom-details">
+            {/*  conditionnal display of the bin, it depends on isNews and the userId */}
             { news.is_news === true
               && <div className="product-card__price">{news.price} €</div>}
+            {/* we compare the localstorageId and the userId, if we've find the same id, we display the bin */}
             { parseInt(localStorage.getItem('id'), 10) === news.user_id
                   && (
                     <>
@@ -61,6 +67,8 @@ const NewsModal = ({
                     </>
                   )}
             <div className="product-card__links">
+              {/* get URL to do a condition for the rendering, the goal is to display
+              the link if we're not on the customer's profil */}
               {
                   location.pathname !== `/commercant/profil/${id}`
                   && (
@@ -75,7 +83,7 @@ const NewsModal = ({
           </div>
         </div>
       </div>
-
+      {/* Modal CODE, the same JSX, but changing classname */}
       <div className={`modalBackground modalShowing-${modalState} product-modal`}>
         <div className="product-modal__container">
           <div className="product-modal__container__badge">
@@ -103,6 +111,7 @@ const NewsModal = ({
                       </>
                     )
                   }
+                {/* button to close the modal and change the state */}
                 <button type="button" className="button" onClick={() => manageState(!modalState)}>
                   Fermer  la fenêtre
                 </button>

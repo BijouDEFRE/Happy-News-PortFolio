@@ -1,10 +1,13 @@
 // import Avatar from '../Header/Avatar';
 import PropTypes from 'prop-types';
 import React from 'react';
+// import react hook form
 import { useForm } from 'react-hook-form';
+// import react icon
 import { MdReportProblem } from 'react-icons/md';
 import Button from '../Header/Button';
 import Field from '../Login/Field';
+// import SCSS
 import './style.scss';
 
 const FormRegister = ({
@@ -25,14 +28,20 @@ const FormRegister = ({
   subscriptionSubmit,
   messageErrorsubscribe,
 }) => {
+  // set up react hook form:
+  // register link the input to react hook form,
+  // handleSubmit link the form t react hook form
+  // error display the error message
   const { register, handleSubmit, errors } = useForm({
     shouldFocusError: true,
   });
 
   return (
     <div className="containerRegister">
+      {/*  we use react hook for to submit cf handle submit L-29 */}
       <form className="register" onSubmit={handleSubmit(subscriptionSubmit)}>
         <h1 className="register-title">Inscription</h1>
+        {/*  display the error message */}
         {
             messageErrorsubscribe && (
             <div className="error-message">
@@ -50,9 +59,11 @@ const FormRegister = ({
               placeholder="Nom"
               type="text"
               register={register({
+                // condition about inputs
                 required: { value: true, message: 'ce champ est obligatoire' },
               })}
             />
+            {/*  display the error message if the user fail */}
             {errors.last_name && <div className="login__form-error"> {errors.last_name.message} </div>}
             <Field
               name="first_name"
@@ -138,7 +149,6 @@ const FormRegister = ({
               id="activity"
               onChange={(event) => {
                 changeSelectField(event.target.value);
-                console.log(event.target.value);
               }}
               name="activity_id"
             >
@@ -248,4 +258,6 @@ FormRegister.defaultProps = {
   // registrationNumber: 0,
   zipCode: '',
   messageErrorsubscribe: '',
+  email: '',
+  password: '',
 };

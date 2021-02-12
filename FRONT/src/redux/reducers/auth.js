@@ -36,8 +36,9 @@ const authReducer = (state = initialState, action) => {
 
     case LOGIN_SUCCESS:
       return {
+        // we duplicate the state
         ...state,
-        // on copie les données de l'action dans le reducer
+        // we change state information
         logged: action.data.logged,
         token: action.data.userToken,
         first_name: action.data.user[0].first_name,
@@ -76,13 +77,13 @@ const authReducer = (state = initialState, action) => {
       };
       // case SUBSCRIBE_ROLE_ID:
     case SUBSCRIBE_ROLE_ID:
-      if (action.checked == true) {
+      if (action.checked === true) {
         return {
           ...state,
           role_id: 3,
         };
       }
-      if (action.checked == false) {
+      if (action.checked === false) {
         return {
           ...state,
           role_id: 4,

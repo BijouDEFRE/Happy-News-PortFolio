@@ -15,7 +15,7 @@ const Header = ({
     <Logo />
     <Title />
     <div className="header__nav">
-
+      {/* display of buttons depends on token in local storage */}
       {token && (
         <>
           <Avatar />
@@ -30,9 +30,11 @@ const Header = ({
               Déconnexion
             </Button>
           </NavLink>
+          {/* redirect to the retailler's profil */}
           <NavLink to={`/commercant/profil/${id}`}> <Button>Mon profil</Button></NavLink>
         </>
       )}
+      {/* display conditional, depends on the token in the LocalStorage */}
       {token == null && (
         <>
           <div className="header-adjustSize" />

@@ -28,9 +28,11 @@ const App = ({ isLogged, isRegistered }) => (
         <Home />
       </Route>
       <Route exact path="/connexion">
+        {/* redirect if the user is logged */}
         {isLogged ? <Redirect to="/news/liste" /> : <Login />}
       </Route>
       <Route exact path="/inscription">
+        {/* redirect if the user susbcribe  */}
         {isRegistered ? <Redirect to="/connexion" /> : <Register />}
       </Route>
       <Route exact path="/commercant/profil/:id">

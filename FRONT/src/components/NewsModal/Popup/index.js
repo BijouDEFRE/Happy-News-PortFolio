@@ -4,14 +4,13 @@ import Button from 'src/components/Header/Button';
 import './style.scss';
 
 const PopUp = ({ changePopup, handleDelete, news }) => {
+  // when we wanna delete the card, we call changePop up to close the pop up and in the same time delete the card
   const handleDeleteCard = (event) => {
-    console.log('je suis dans ma fonctin handleDEleteCAD');
     handleDelete(event.target.value);
     changePopup();
   };
 
   return (
-
     <div className="popup">
       <div className="popup__inner">
         <p className="popup__message">Êtes vous sûr de vouloir supprimer cette news?</p>
