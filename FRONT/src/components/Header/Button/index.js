@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import './style.scss';
 
@@ -10,5 +11,10 @@ const Button = ({
     </button>
   </div>
 );
-
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  type: PropTypes.string.isRequired,
+  event: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+};
 export default Button;

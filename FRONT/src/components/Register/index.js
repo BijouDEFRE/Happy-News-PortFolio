@@ -8,19 +8,19 @@ import Field from '../Login/Field';
 import './style.scss';
 
 const FormRegister = ({
-  last_name,
-  first_name,
+  lastName,
+  firstName,
   adress,
-  zip_code,
+  zipCode,
   city,
-  company_name,
-  shop_name,
-  registration_number,
+  companyName,
+  shopName,
+  registrationNumber,
   email,
   password,
   changeField,
   HandleRoleId,
-  role_id,
+  roleId,
   changeSelectField,
   subscriptionSubmit,
   messageErrorsubscribe,
@@ -45,7 +45,7 @@ const FormRegister = ({
           <div className="register-form">
             <Field
               name="last_name"
-              value={last_name}
+              value={lastName}
               onChange={changeField}
               placeholder="Nom"
               type="text"
@@ -56,7 +56,7 @@ const FormRegister = ({
             {errors.last_name && <div className="login__form-error"> {errors.last_name.message} </div>}
             <Field
               name="first_name"
-              value={first_name}
+              value={firstName}
               onChange={changeField}
               placeholder="prenom"
               type="text"
@@ -86,7 +86,7 @@ const FormRegister = ({
           <div className="register-form">
             <Field
               name="zip_code"
-              value={zip_code}
+              value={zipCode}
               onChange={changeField}
               placeholder="code postal"
               type="number"
@@ -125,7 +125,7 @@ const FormRegister = ({
           />
         </div>
 
-        { role_id === 3
+        { roleId === 3
     && (
     <>
       <fieldset className="register-sec-business">
@@ -157,7 +157,7 @@ const FormRegister = ({
           <div>
             <Field
               name="company_name"
-              value={company_name}
+              value={companyName}
               onChange={changeField}
               placeholder="societe"
               type="text"
@@ -166,7 +166,7 @@ const FormRegister = ({
           <div className="register-form">
             <Field
               name="shop_name"
-              value={shop_name}
+              value={shopName}
               onChange={changeField}
               placeholder="enseigne"
               type="text"
@@ -175,10 +175,10 @@ const FormRegister = ({
           <div className="register-form">
             <Field
               name="registration_number"
-              value={registration_number}
+              value={registrationNumber}
               onChange={changeField}
               placeholder="siret"
-              type="text"
+              type="number"
               register={register({
                 minLength: { value: 14, message: 'le siret doit contenir 14 caracteres' },
                 maxLength: { value: 14, message: 'le siret doit contenir 14 caracteres' },
@@ -227,24 +227,25 @@ const FormRegister = ({
 
 export default FormRegister;
 FormRegister.propTypes = {
-  last_name: PropTypes.string.isRequired,
-  first_name: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
   adress: PropTypes.string.isRequired,
-  zip_code: PropTypes.string,
+  zipCode: PropTypes.string,
   city: PropTypes.string.isRequired,
-  company_name: PropTypes.string.isRequired,
-  shop_name: PropTypes.string.isRequired,
-  // registration_number: PropTypes.number,
+  companyName: PropTypes.string.isRequired,
+  shopName: PropTypes.string.isRequired,
+  // registrationNumber: PropTypes.number.isRequired,
   email: PropTypes.string,
   password: PropTypes.string,
   changeField: PropTypes.func.isRequired,
   HandleRoleId: PropTypes.func.isRequired,
-  role_id: PropTypes.number.isRequired,
+  roleId: PropTypes.number.isRequired,
   changeSelectField: PropTypes.func.isRequired,
   subscriptionSubmit: PropTypes.func.isRequired,
-
+  messageErrorsubscribe: PropTypes.string,
 };
 FormRegister.defaultProps = {
-  // siret: 0,
-  zip_code: '',
+  // registrationNumber: 0,
+  zipCode: '',
+  messageErrorsubscribe: '',
 };

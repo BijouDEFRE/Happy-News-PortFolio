@@ -64,7 +64,10 @@ const App = ({ isLogged, isRegistered }) => (
 
 App.propTypes = {
   isLogged: PropTypes.bool.isRequired,
+  isRegistered: PropTypes.bool,
 };
-
+App.defaultProps = {
+  isRegistered: false,
+};
 // == Export
 export default App;
