@@ -1,14 +1,18 @@
+// == Import npm
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
+
+// Import components
 import Button from 'src/components/Header/Button';
-// Import des composants
 import Field from 'src/components/Login/Field';
 import NewsModal from 'src/components/NewsModal';
 import Spinner from 'src/components/Spinner';
-// utils
+
+// Import utils
 import getNewsByCityNameAndActivity from 'src/utils/getNewsByCityNameAndActivity';
+
 // Import du CSS
 import './style.scss';
 
@@ -17,28 +21,27 @@ const News = ({
   searchValue, changeSearchField, handleSearchSubmit, activitySelected, handleSelectedActivity,
   resetActivitySelected,
 }) => {
-  // je déclare une variable qui ne garde que les news avec la prop
-  // isNews à true (donc la News est effective en ce moment pour le commerçant)
+  // I declare a variable that only keeps news with the prop
+  // isNews to true (so the News is effective at this time for the retailer)
   const listIsNewsTrue = list.filter((item) => ((item.is_news === true)));
-  console.log(listIsNewsTrue);
+  // filteredNews is a variable that stores the result of my utils function
+  // getNewsByCityNameAndActivity
   const filteredNews = (
     // getNewsByCityName(list, searchValue) && getNewsByActivity(list, activitySelected));
     getNewsByCityNameAndActivity(listIsNewsTrue, searchValue, activitySelected));
-  // useEffect : appelle une fonction au chargement du composant
-  // car 2eme parametre = []
+  // useEffect: calls a function when the component is loaded
+  // because 2eme parameters = []
   useEffect(() => {
-  // loadNews : une prop qui charge les news (les articles)
-  // cette fonction prop sera définie dans le container
+  // loadNews: a prop that loads news (articles)
+  // this prop function will be defined in the container
     loadNews();
-    // loadActivities: une prop qui charge les acitivités (les catégories de news)
+    // loadActivities: a prop that loads acitivities (news categories)
     loadActivities();
   }, []);
 
-  // Ajout d'un useEffect pour le filtre par recherche dans l'input
-  // Ou par activité ou les 2
+  // Adding a useEffect for the search filter in the input
+  // Or by activity or both
   useEffect(() => {
-    // const listIsNewsTrue = list.filter((item) => ((item.is_news === true)));
-    // console.log(listIsNewsTrue);
     getNewsByCityNameAndActivity(list, searchValue, activitySelected);
   }, [list, searchValue, activitySelected]);
 
@@ -86,7 +89,8 @@ const News = ({
           </div>
         </div>
       </section>
-      {/* On prévoit ici la future fonctionnalité de recherche par tag */}
+      {/* Here, we generate buttons that we will use to sort the articles by categories
+      = (activity) */}
       <div className="newsContainer__tagsContainer">
         {activities.map((tag) => (
           <div key={tag.id} className="newsContainer__tagsContainer__tag">
@@ -100,16 +104,18 @@ const News = ({
             )}
           </div>
         ))}
+        {/* A button to reset the search parameter by activity */}
         <div className="container-buttonResetActivitySelected">
           <Button className="button" event={() => resetActivitySelected()}>Toutes catégories</Button>
         </div>
       </div>
+      {/* below, the display of news (our articles) */}
       <section className="newsContainer__newsList">
         {!hasData && <Spinner />}
         {filteredNews && filteredNews.map((news) => (
           <div key={news.id} className="newsContainer__newsList__item">
             {hasData && <NewsModal news={news} />}
-            {/* Affichage conditionnel avec hasData : si pas de donnée, pas de News */}
+            {/* Conditional display with hasData: if no data, no News */}
           </div>
         ))}
       </section>

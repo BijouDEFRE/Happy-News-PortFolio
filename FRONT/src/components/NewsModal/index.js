@@ -1,10 +1,18 @@
+// == Import npm
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { MdDeleteForever } from 'react-icons/md';
+// a trash icon for the delete item button
 import { NavLink, useLocation, useParams } from 'react-router-dom';
+
+// Import components
 import Button from 'src/components/Header/Button';
 import PopUp from 'src/containers/popup';
+
+// Import action
 import { loadNews } from 'src/redux/actions';
+
+// Import du CSS
 import './style.scss';
 
 const NewsModal = ({
@@ -25,10 +33,9 @@ const NewsModal = ({
   // console.log(location.pathname);
 
   useEffect(() => {
-    // loadNews : une prop qui charge les news (les articles)
-    // cette fonction prop sera définie dans le container
+  // loadNews: a prop that loads news (articles)
+  // this prop function will be defined in the container
     loadNews();
-    // console.log('je suis dans le useEffect de NewsModal');
   }, [popUp]);
 
   return (

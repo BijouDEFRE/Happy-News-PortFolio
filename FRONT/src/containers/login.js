@@ -1,5 +1,10 @@
+// == Import npm
 import { connect } from 'react-redux';
+
+// Import components
 import Login from 'src/components/Login';
+
+// Import from actions creator
 import { changeAuthField, handleLogin } from 'src/redux/actions';
 
 const mapStateToProps = (state) => ({
@@ -9,6 +14,7 @@ const mapStateToProps = (state) => ({
   isLogged: state.auth.logged,
 });
 
+// mapDispatchToProps = cabling of actions (function type props)
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, name) => {
     dispatch(changeAuthField(value, name));

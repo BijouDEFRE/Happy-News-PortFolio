@@ -32,6 +32,7 @@ const Field = ({
 };
 
 Field.propTypes = {
+  register: PropTypes.func.isRequired,
   value: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
