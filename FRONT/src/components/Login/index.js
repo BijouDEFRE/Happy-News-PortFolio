@@ -2,30 +2,22 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-<<<<<<< HEAD
 // useForm is an API to handling form fields
-=======
 import { MdReportProblem } from 'react-icons/md';
->>>>>>> origin/update-code-commentaire
 import { NavLink } from 'react-router-dom';
-
 // Import img
 import avatar from 'src/assets/Images/avatar-SVG-primarycolor.svg';
-
 // Import components
 import Button from '../Header/Button';
 import Field from './Field';
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/update-code-commentaire
 // Import du CSS
 import './style.scss';
+
+
 
 const Login = ({
   email, password, changeField, handleLogin, messageErrorLogin,
 }) => {
-<<<<<<< HEAD
   // With React Hook Form, we have to comment handleSubmit
   // const handleSubmit = (event) => {
   //   event.preventDefault();
@@ -33,22 +25,13 @@ const Login = ({
   // };
   // This is a config line to use React Hook Form
   const { register, handleSubmit, errors } = useForm();
-=======
-  // react hook form
-  const { register, handleSubmit, errors } = useForm();
-
-  console.log(messageErrorLogin);
->>>>>>> origin/update-code-commentaire
   return (
     <div>
       <section className="login">
         <div className="login__loginbox">
           <img alt="avatar" src={avatar} className="login__loginbox__avatar" />
           <h1 className="login__loginbox__title">Connexion</h1>
-<<<<<<< HEAD
           {/* (handlelogin for react hook form */}
-=======
->>>>>>> origin/update-code-commentaire
           <form onSubmit={handleSubmit(handleLogin)}>
             <Field
               name="email"

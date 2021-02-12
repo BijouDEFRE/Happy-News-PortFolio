@@ -55,7 +55,7 @@ export const handleLoginSuccess = (data) => ({
   data,
 });
 export const handleLoginError = (message) => ({
-  type: 'LOGIN_ERROR',
+  type: LOGIN_ERROR,
   payload: message,
 });
 export const handleLogout = () => ({
@@ -70,7 +70,7 @@ export const handleSubscribeSuccess = (data) => ({
   data,
 });
 export const handleSubscribeError = () => ({
-  type: 'SUBSCRIBE_ERROR',
+  type: SUBSCRIBE_ERROR,
 });
 // function to get all users
 export const getAllUsers = () => ({
@@ -119,11 +119,11 @@ export const changeAddNewsField = (name, value) => ({
 });
 // function to get activity id and roleid in subscribe
 export const HandleRoleIdChecked = (checked) => ({
-  type: 'SUBSCRIBE_ROLE_ID',
+  type: SUBSCRIBE_ROLE_ID,
   checked,
 });
 export const getSelectField = (value) => ({
-  type: 'GET_SELECT_FIELD',
+  type: GET_SELECT_FIELD,
   value,
 });
 // Function to submit the addNewsForm
