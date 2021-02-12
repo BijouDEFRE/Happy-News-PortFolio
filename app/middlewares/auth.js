@@ -9,6 +9,7 @@ module.exports = (request, response, next) => {
       if (request.body.userId && request.body.userId !== userId) {
         throw 'Invalid user ID';
       } else {
+          // Save user in locals
           response.locals.userID = userId;
         next();
       }

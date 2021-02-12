@@ -25,8 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // call express middleware to manage POST data
 app.use(express.urlencoded({extended: true}));
 // app.use(express.json());
-// authorize data echange between different websites
-// app.use(cors('*'));
 
 app.use(router);
 // start server on port

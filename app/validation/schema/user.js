@@ -33,7 +33,7 @@ const userSchema = Joi.object({
     registration_number: Joi.string().min(5).max(14),
     role_id: Joi.number().integer().required(),
     activity_id: Joi.number(),
-    content: Joi.string(),
+    // content: Joi.string(),
 });
 
 module.exports = userSchema;

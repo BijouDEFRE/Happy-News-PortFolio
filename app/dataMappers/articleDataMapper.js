@@ -10,12 +10,31 @@ module.exports = {
         // query with JOIN on activity tables
         // const result = await client.query('SELECT * FROM article JOIN activity ON article.activity_id = activity.id');
         // query with JOIN on user and activity tables
-        const result = await client.query('SELECT article.id, "article_title", "description", "picture_url", "price", "is_news", "news_duration", article.activity_id, "activity_name", "user_id", "first_name", "last_name", "shop_name", "city", "latitude", "longitude" FROM article JOIN activity ON activity_id = activity.id JOIN "user" ON user_id ="user"."id"');
+        const result = await client.query(`SELECT article.id,
+        "article_title",
+        "description",
+        "picture_url",
+        "price",
+        "is_news",
+        "news_duration",
+        article.activity_id,
+        "activity_name",
+        "user_id",
+        "first_name",
+        "last_name",
+        "shop_name",
+        "city",
+        "latitude",
+        "longitude"
+        FROM article
+        JOIN activity ON activity_id = activity.id
+        JOIN "user" ON user_id ="user"."id"`);
+        
         return result.rows;
     },
 
     async getArticleById(articleId) {
-        const result = await client.query('SELECT * FROM "article" WHERE id = $1', [articleId]);
+        const result = await client.query(`SELECT * FROM "article" WHERE id = $1`, [articleId]);
         if (result.rowCount == 0) {
             return null;
         }
@@ -24,7 +43,7 @@ module.exports = {
 
     async getArticlesByActivityID(activityId) {
 
-        const result = await client.query('SELECT * FROM "article" WHERE "activity_id" = $1', [activityId]);
+        const result = await client.query(`SELECT * FROM "article" WHERE "activity_id" = $1`, [activityId]);
         return result.rows;
     },
 
@@ -85,12 +104,12 @@ module.exports = {
     },
 
     async deleteArticleById(articleId) {
-        const findArticle = await client.query('SELECT * FROM "article" WHERE id = $1', [articleId]);
+        const findArticle = await client.query(`SELECT * FROM "article" WHERE id = $1`, [articleId]);
 
         if (findArticle.rowCount == 0) {
             return 'Article not exist';
         }
-        const deleteArticle = client.query('DELETE FROM "article" WHERE id = $1', [articleId]);
+        const deleteArticle = client.query(`DELETE FROM "article" WHERE id = $1`, [articleId]);
 
         return deleteArticle.rowCount;
     },

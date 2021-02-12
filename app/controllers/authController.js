@@ -9,6 +9,7 @@ const authController = {
             const email = request.body.email;
             const password = request.body.password;
 
+            /*--- find user by email ---*/
             const user = await authDataMapper.getUser(email);
 
             if(!user) {
@@ -16,15 +17,16 @@ const authController = {
                 next();
                 return;
             }
-            console.log('password', password);
-            console.log('user.password', user.password);
+            // console.log('password', password);
+            // console.log('user.password', user.password);
             // hashed password validation with bcrypt compareSync
             
+            /*--- compare strored password with request.body.password ---*/
             const isPasswordValid = bcrypt.compareSync(
                  password,
                  user.password
             );
-            console.log('isPasswordValid', isPasswordValid);
+            // console.log('isPasswordValid', isPasswordValid);
             if (!isPasswordValid) {
                 // error management
                 return response.status(401).send({
