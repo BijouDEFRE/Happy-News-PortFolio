@@ -1,6 +1,4 @@
 import axios from 'axios';
-// import { useParams } from 'react-router-dom';
-// import FormData from 'form-data';
 import {
   getAllUsersSuccess, getUserDetailsSuccess, GET_ALL_USERS, GET_USER_DETAILS
 } from '../redux/actions';

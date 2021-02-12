@@ -87,12 +87,12 @@ const NewsModal = ({
             <img src={news.picture_url} alt="product-modal__news" className="product-modal__container__tumb__picture" />
           </div>
           <div className="product-modal__container__details">
-            <span className="product-modal__category">{news.activity_name}</span>
-            <h4 className="product-modal__title">{news.article_title}</h4>
+            <span className="product-modal__container__details__category">{news.activity_name}</span>
+            <h4 className="product-modal__container__details__title">{news.article_title}</h4>
             <p>{news.description}</p>
-            <div className="product-modal__bottom-details">
-              <div className="product-modal__bottom-details__price">{news.price} €</div>
-              <div className="product-modal__bottom-details__links">
+            <div className="product-modal__container__details__bottom-details">
+              <div className="product-modal__container__details__bottom-details__price">{news.price} €</div>
+              <div className="product-modal__container__details__bottom-details__links">
                 {
                     location.pathname !== `/commercant/profil/${id}`
                     && (

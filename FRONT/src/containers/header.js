@@ -10,7 +10,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   handleLogout: () => {
-    // dispatch(handleLogout( console.log('je suis dans le container de Header')));
     // 1er changement
     dispatch({ type: 'LOGOUT' });
   },

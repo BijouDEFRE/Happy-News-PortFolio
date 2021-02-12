@@ -25,7 +25,6 @@ const api = (store) => (next) => (action) => {
         .then((response) => { // cas de réussite
           const { userToken } = response.data;
           const { id } = response.data.user[0];
-          // console.log(userToken);
           localStorage.setItem('token', userToken);
           localStorage.setItem('id', id);
           store.dispatch(handleLoginSuccess(response.data));
@@ -33,8 +32,6 @@ const api = (store) => (next) => (action) => {
         })
         .catch((error) => { // cas d'erreur
           store.dispatch(handleLoginError(error.response.data));
-          console.log(error.response.data);
-          console.log(error.response.data.message);
         });
       break;
     }
