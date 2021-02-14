@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import AddNewsForm from 'src/components/AddNewsForm';
 import { addNewsSuccess, changeAddNewsField, handleAddNews, handleIsNewsArticle } from '../redux/actions';
 
+// To get state parameters
 const mapStateToProps = (state) => ({
   article_title: state.addNews.article_title,
   description: state.addNews.description,
