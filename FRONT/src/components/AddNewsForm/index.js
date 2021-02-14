@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// import uploadImage from 'src/middlewares/firebase';
-// import de Firebase pour les images
 import { storage } from 'src/middlewares/firebase';
 import PropTypes from 'prop-types';
 import { NavLink, useParams } from 'react-router-dom';
@@ -13,10 +11,9 @@ const AddNewsForm = ({
 }) => {
   const [image, setImage] = useState('');
   const [progress, setProgress] = useState(0);
-  // const [isDisabled, setIsDisabled] = useState(true);
 
   const handleChange = (e) => handleChangeField([e.target.name], e.target.value);
-  //
+  
   const handleChangeImg = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
@@ -25,14 +22,14 @@ const AddNewsForm = ({
 
   const uploadImageFirebase = (e) => {
     e.preventDefault();
-    // la logique d'upload d'image vers firebase
+    // Upload an image from the user to firebase 
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       'state_changed',
+      // To get a progress bar on upload img
       (snapshot) => {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
-          // To get a progress bar on upload img
         );
         setProgress(progress);
       },
@@ -52,21 +49,15 @@ const AddNewsForm = ({
     );
   };
 
-  // Appelé pour envoyer l'image a Firebase
-  /*   const handleUpload = (e) => {
-    e.preventDefault(),
-    console.log('handleUpload');
-  }; */
-
   const { id } = useParams();
 
-  // Gestion de la modal :
+  // Modal management :
   const [modalState, setModalState] = useState(false);
   const manageState = () => {
     setModalState(!modalState);
   };
 
-  // Validation du formulaire :
+  // Validation form :
   const handleSubmit = (event) => {
     event.preventDefault();
     handleAddNews();
@@ -160,7 +151,6 @@ const AddNewsForm = ({
                 <button
                   type="button"
                   className="news-valid-form-but"
-                  // disabled={isDisabled}
                   onClick={handleSubmit}
                 >
                   <i className="picture-valid">
