@@ -15,14 +15,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   handleChangeField: (name, value) => {
-    // console.log('name from handleChangeField : ', name);
-    // console.log('value from handleChangeField : ', value);
     dispatch(changeAddNewsField(name, value));
-    // console.log('la value :', value);
-    // console.log('le name :', name);
   },
   handleAddNews: () => {
-    // dispatch(addNews());
     dispatch(handleAddNews());
   },
   addNewsSuccess: () => {
