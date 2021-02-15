@@ -12,9 +12,15 @@ const Button = ({
   </div>
 );
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  type: PropTypes.string.isRequired,
-  event: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  type: PropTypes.string,
+  event: PropTypes.func,
+  name: PropTypes.string,
+};
+Button.defaultProps = {
+  children: '',
+  type: '',
+  event: () => {},
+  name: '',
 };
 export default Button;

@@ -34,9 +34,8 @@ const Field = ({
 };
 
 Field.propTypes = {
-  register: PropTypes.func.isRequired,
+  register: PropTypes.func,
   value: PropTypes.string,
-  register: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
@@ -48,7 +47,7 @@ Field.propTypes = {
 Field.defaultProps = {
   value: '',
   placeholder: '',
-  register: '',
+  register: () => {},
 };
 
 export default Field;

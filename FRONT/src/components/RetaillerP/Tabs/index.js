@@ -76,7 +76,7 @@ const Tabs = ({ user, news }) => {
   );
 };
 Tabs.propTypes = {
-  news: PropTypes.shape({
+  news: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     article_title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -84,9 +84,9 @@ Tabs.propTypes = {
     price: PropTypes.string.isRequired,
     activity_name: PropTypes.string.isRequired,
     user_id: PropTypes.number.isRequired,
-  }).isRequired,
+  })).isRequired,
   user: PropTypes.shape({
     content: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 export default Tabs;
