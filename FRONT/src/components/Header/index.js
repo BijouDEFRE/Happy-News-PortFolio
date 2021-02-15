@@ -37,7 +37,7 @@ const Header = ({
       {/* display conditional, depends on the token in the LocalStorage */}
       {token == null && (
         <>
-          <div className="header-adjustSize" />
+          <div className="header__adjustSize" />
           <NavLink to="/connexion"> <Button>Connexion</Button></NavLink>
           <NavLink to="/inscription"> <Button>Inscription</Button></NavLink>
         </>

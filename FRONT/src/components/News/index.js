@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
-
 // Import components
 import Button from 'src/components/Header/Button';
 import Field from 'src/components/Login/Field';
 import NewsModal from 'src/components/NewsModal';
 import Spinner from 'src/components/Spinner';
-
 // Import utils
 import getNewsByCityNameAndActivity from 'src/utils/getNewsByCityNameAndActivity';
-
 // Import du CSS
 import './style.scss';
+
+
+
 
 const News = ({
   list, loadNews, hasData, activities, loadActivities, hasDataActivities,
@@ -29,11 +29,11 @@ const News = ({
   const filteredNews = (
     // getNewsByCityName(list, searchValue) && getNewsByActivity(list, activitySelected));
     getNewsByCityNameAndActivity(listIsNewsTrue, searchValue, activitySelected));
-  // useEffect: calls a function when the component is loaded
-  // because 2eme parameters = []
+    // useEffect: calls a function when the component is loaded
+    // because 2eme parameters = []
   useEffect(() => {
-  // loadNews: a prop that loads news (articles)
-  // this prop function will be defined in the container
+    // loadNews: a prop that loads news (articles)
+    // this prop function will be defined in the container
     loadNews();
     // loadActivities: a prop that loads acitivities (news categories)
     loadActivities();
