@@ -2,29 +2,30 @@
   width: 33%;
   display: flex;
 }
-.logo-img {
+.logo__img {
   height: 10em;
   margin-top: -1.8em;
   transition: transform .5s;
   &:hover {
     transform: scale(1.1) rotate(10deg);
   }
-    width: 33%;
-    display: flex;
+    
 
     &__img {
-        height: 10em;
-        margin-top: -1.8em;
-        animation: rotateAnim 10s linear infinite;
+      width: 33%;
+      display: flex;
+      height: 10em;
+      margin-top: -1.8em;
+      animation: rotateAnim 10s linear infinite;
     }
 }
 
 @media (max-width: 800px) and (orientation: portrait) {
-.logo-img {
+.logo__img {
   height: 7em;
 }
 }
-.logo-img {
+.logo__img {
  transition: transform .5s;
  &:hover {
    transform: scale(1.1) rotate(10deg);
