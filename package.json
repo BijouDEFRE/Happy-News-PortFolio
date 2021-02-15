@@ -25,5 +25,14 @@
   "directories": {
     "doc": "docs"
   },
-  "description": "projet happynews"
+  "description": "projet happynews",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Lyra-JS/projet-happy-news.git"
+  },
+  "bugs": {
+    "url": "https://github.com/O-clock-Lyra-JS/projet-happy-news/issues"
+  },
+  "homepage": "https://github.com/O-clock-Lyra-JS/projet-happy-news#readme"
 }
