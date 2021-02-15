@@ -19,7 +19,7 @@ router.use('/user', userRouter);
 router.use('/article', articleRouter);
 router.use('/activity', activityRouter);
 
-// routes utilisants "auth"
+// "auth" routes
 router.post('/login', authController.handleLoginForm);
 // router.post('/signup', authController.handleSignForm);
 router.post('/signup', validateBody(userSchema), authController.handleSignForm);

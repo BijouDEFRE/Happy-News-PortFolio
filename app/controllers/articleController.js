@@ -85,10 +85,10 @@ module.exports = {
         }
     },
 
-    // ajout d'une image dans l'article: à faire
+    // add image in article
     async addArticleImage(request, response, next) {
         try {
-            // je cherche l'id de l'article
+            // looking for article  id 
             const { articleId } = request.params;
             console.log(articleId);
             const { picture_url } = request.body;

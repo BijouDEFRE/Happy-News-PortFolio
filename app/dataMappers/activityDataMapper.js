@@ -40,7 +40,7 @@ module.exports = {
     },
 
     async updateActivityById(activityId, activityUpdate) {
-        // je vérifie si activity existe déjà
+        // I check if activity already exists
         const findActivity = await client.query('SELECT * FROM "activity" WHERE id = $1', [activityId]);
 
         if (findActivity.rowCount == 0) {

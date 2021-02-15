@@ -1,5 +1,5 @@
 module.exports = {
-    // Middleware pour gérer les erreus 404
+    // Middleware to manage 404 errors
     async error404(_, response) {
         if (! response.locals.notFound) {
             response.locals.notFound = "route";
@@ -13,16 +13,15 @@ module.exports = {
             }
         });
     },
-    // En réalité dans express il existe deux chaines de middleware
-    // La classique et celle d'erreur.
-    // On peut passer de la classique à l'erreur mais pas l'inverse
-    // La chaine d'erreur est la pour renvoyer les erreurs 50+ (les 40+)
-    // Les middlewares de gestion d'erreur prennent EXACTEMENT 4 paramêtres:
+    // In Express there are two middleware chains;: classic and error's
+    // You can pas from classic to error's but not the opposite
+    // Error chainis there to send 50+ and 40+ errors
+    // Error management middlewares take exactly 4 parameters:
     // error, request, response, next
-    // Pour passer de la chaine classique à la chaine d'erreur,
-    // ou au middleware suivant dans la chaine d'erreur
-    // on appelle next
-    // Mais en lui donnant un paramètre (qui sera notre erreur)
+    // To pass from classic to error's chain,
+    // or to following middleware in error chain, you call next()
+    // passing as a parameter the error
+
     async error500(error, _, response, __) {
         console.error(error);
         response.status(500).json({

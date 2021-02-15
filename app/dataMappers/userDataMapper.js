@@ -48,22 +48,22 @@ module.exports = {
         FROM "user" AS u
         JOIN "activity" AS a ON u.activity_id = a.id
         WHERE u.id = $1`, [userId]);
-        // Je m'attends à recevoir 1 user
-        // et pas une liste contenant 1 user
 
-        // il existe en revanche un cas d'erreur
-        // si l'id donnée ne correspond à aucun user nous ne pourront pas renvoyer de données
+        // I wait for a user
+        // and not for a list containing 1 user
+        // there is an error case, if the id doesn't correspond to a user
+        // in this case we can't send data
 
         if (result.rowCount == 0) {
-            // Si je n'ai pas de user, je renvoie null à la place de mon objet
-            // Ce serra facile à tester pour l'utilisateur de mon dataMapper
+            // If there is no user, I send null instead of my object
+            // It will be simple to test for dataMapper user
             return null;
         }
         return result.rows[0];
     },
 
     async updateUserById(userId, userUpdate) {
-        // je vérifie si le user existe déjà
+        // I test if user already exists
         const isExist = await client.query(`SELECT * FROM "user" WHERE id = $1`, [userId]);
         console.log('userinfo', isExist);
 

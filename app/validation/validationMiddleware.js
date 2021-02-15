@@ -5,9 +5,9 @@ module.exports = {
             try {
                 const validation = await schema.validateAsync(request.body);
 
-                // validation contient un propriété error si qqc c'est mal passé
+                // validation has an error prop if there is a problem
                 if (validation.error) {
-                    // Réponse d'erreur
+                    // error response
                     response.status(400).json({error: validation.error});
                     return;
                 }
