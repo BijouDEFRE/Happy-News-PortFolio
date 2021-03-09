@@ -2,7 +2,7 @@ import React from 'react';
 import errorPicture from '../../assets/Images/404.png';
 import './style.scss';
 
-const NotFound = () => (
+const NotFound = () => ( 
   <div className="error">
     <img src={errorPicture} alt="erreur 404" className="error_picture" />
     <p className="error_message">
